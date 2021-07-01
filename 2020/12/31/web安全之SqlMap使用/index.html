@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>web安全之SqlMap | Hexo</title>
+  <meta name="description" content="SqlMapSqlMap是一个开源的测试渗透工具，可以用来自动化检测，利用SQL注入漏洞，获取数据库服务器的权限。  简单示例123456789101112131415161718sqlmap -u &quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;Less-1&#x2F;?id&#x3D;1&quot;#基本格式，默认使用level 1，检测全部数据库类型sqlmap -u &quot;http:&#x2F;&#x2F;127.0.0.1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web安全之SqlMap">
+<meta property="og:url" content="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSqlMap%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="风景这边独好">
+<meta property="og:description" content="SqlMapSqlMap是一个开源的测试渗透工具，可以用来自动化检测，利用SQL注入漏洞，获取数据库服务器的权限。  简单示例123456789101112131415161718sqlmap -u &quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;Less-1&#x2F;?id&#x3D;1&quot;#基本格式，默认使用level 1，检测全部数据库类型sqlmap -u &quot;http:&#x2F;&#x2F;127.0.0.1">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-31T08:01:51.000Z">
+<meta property="article:modified_time" content="2021-06-21T11:18:11.338Z">
+<meta property="article:author" content="Ye-Jun">
+<meta property="article:tag" content="SqlMap">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSqlMap%E4%BD%BF%E7%94%A8/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="风景这边独好" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/yejuns" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">厨师长</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">程序员 &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yejuns" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" rel="tag">2020 年度总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E3%80%81%E9%80%86%E5%90%91/" rel="tag">Android、逆向</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSRF-%E3%80%81%E6%94%BB%E5%87%BB/" rel="tag">CSRF 、攻击</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E3%80%81%E5%AE%89%E5%85%A8/" rel="tag">Linux、安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bwapp%E3%80%81injection/" rel="tag">bwapp、injection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fiddler/" rel="tag">fiddler,</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E3%80%81php%E3%80%81%E6%B3%A8%E5%85%A5%E3%80%81RCE/" rel="tag">web、php、注入、RCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8%E3%80%81Nmap/" rel="tag">web安全、Nmap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows%EF%BC%8C%E6%8C%87%E4%BB%A4/" rel="tag">windows，指令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss%E3%80%81%E6%94%BB%E5%87%BB/" rel="tag">xss、攻击</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss%E3%80%81%E6%94%BB%E5%87%BB%E3%80%81%E8%A0%95%E8%99%AB/" rel="tag">xss、攻击、蠕虫</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss%E3%80%81%E9%9D%B6%E5%9C%BA%E3%80%81%E9%A2%98%E8%A7%A3/" rel="tag">xss、靶场、题解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%89%E5%B7%A5%E6%97%85%E8%A1%8C/" rel="tag">义工旅行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="tag">伪协议、文件包含</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E3%80%81OOB%E6%B3%A8%E5%85%A5/" rel="tag">堆叠注入、OOB注入</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/2020-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" style="font-size: 13px;">2020 年度总结</a> <a href="/tags/Android%E3%80%81%E9%80%86%E5%90%91/" style="font-size: 13px;">Android、逆向</a> <a href="/tags/CSRF-%E3%80%81%E6%94%BB%E5%87%BB/" style="font-size: 13px;">CSRF 、攻击</a> <a href="/tags/Linux%E3%80%81%E5%AE%89%E5%85%A8/" style="font-size: 13px;">Linux、安全</a> <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 13.5px;">SQL注入</a> <a href="/tags/SqlMap/" style="font-size: 13.5px;">SqlMap</a> <a href="/tags/bwapp%E3%80%81injection/" style="font-size: 13px;">bwapp、injection</a> <a href="/tags/fiddler/" style="font-size: 13px;">fiddler,</a> <a href="/tags/hexo%E4%BD%BF%E7%94%A8/" style="font-size: 13px;">hexo使用</a> <a href="/tags/javaScript/" style="font-size: 13px;">javaScript</a> <a href="/tags/web%E3%80%81php%E3%80%81%E6%B3%A8%E5%85%A5%E3%80%81RCE/" style="font-size: 13px;">web、php、注入、RCE</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 13px;">web安全</a> <a href="/tags/web%E5%AE%89%E5%85%A8%E3%80%81Nmap/" style="font-size: 13px;">web安全、Nmap</a> <a href="/tags/windows%EF%BC%8C%E6%8C%87%E4%BB%A4/" style="font-size: 13px;">windows，指令</a> <a href="/tags/xss%E3%80%81%E6%94%BB%E5%87%BB/" style="font-size: 14px;">xss、攻击</a> <a href="/tags/xss%E3%80%81%E6%94%BB%E5%87%BB%E3%80%81%E8%A0%95%E8%99%AB/" style="font-size: 13.5px;">xss、攻击、蠕虫</a> <a href="/tags/xss%E3%80%81%E9%9D%B6%E5%9C%BA%E3%80%81%E9%A2%98%E8%A7%A3/" style="font-size: 13px;">xss、靶场、题解</a> <a href="/tags/%E4%B9%89%E5%B7%A5%E6%97%85%E8%A1%8C/" style="font-size: 13px;">义工旅行</a> <a href="/tags/%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="font-size: 13px;">伪协议、文件包含</a> <a href="/tags/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E3%80%81OOB%E6%B3%A8%E5%85%A5/" style="font-size: 13px;">堆叠注入、OOB注入</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 13px;">测试</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 13px;">计算机网络</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/2020-summary/" class="title">2020-summary</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T13:50:32.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/Ademo/" class="title">创建我的个人博客</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/Linux%20%E4%B8%AD%E7%9A%84%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B/" class="title">Linux 中的安全模型</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/SqlMap%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="title">web安全之SqlMap</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/bwapp-%E9%9D%B6%E5%9C%BA%E9%A2%98%E8%A7%A3%E6%80%9D%E8%B7%AFA1/" class="title">bwapp学习笔记-A1 Injection</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-web安全之SqlMap使用" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      web安全之SqlMap
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSqlMap%E4%BD%BF%E7%94%A8/" class="article-date">
+	  <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/SqlMap/" rel="tag">SqlMap</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSqlMap%E4%BD%BF%E7%94%A8/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="SqlMap"><a href="#SqlMap" class="headerlink" title="SqlMap"></a>SqlMap</h2><p>SqlMap是一个开源的测试渗透工具，可以用来自动化检测，利用SQL注入漏洞，获取数据库服务器的权限。 </p>
+<h3 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://127.0.0.1/Less-1/?id=1&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash">基本格式，默认使用level 1，检测全部数据库类型</span></span><br><span class="line"></span><br><span class="line">sqlmap -u &quot;http://127.0.0.1/Less-1/?id=1&quot; -f --banner --dbs --users</span><br><span class="line"><span class="meta">#</span><span class="bash"> -f表示获取对应的指纹信息（fingerPrint），--banner表示数据库的banner信息，--dbs获取对应的数据库信息，--users获取用户信息</span></span><br><span class="line"></span><br><span class="line">sqlmap -u &quot;http://127.0.0.1/Less-1/?id=1&quot; --dbms mysql --level 3</span><br><span class="line"><span class="meta">#</span><span class="bash">指定数据库类型是mysql，检测级别为3（共5级，级别越高，检测越全面）</span></span><br><span class="line"></span><br><span class="line">sqlmap -u &quot;http://127.0.0.1/Less-1/?id=1&quot; --cookie &quot;id=1&quot; --level 2</span><br><span class="line"><span class="meta">#</span><span class="bash">当程序有防get注入的时候，使用cookie注入。（只有level2以上才会检测cookie）</span></span><br><span class="line"></span><br><span class="line">sqlmap -u &quot;http://127.0.0.1/Less-1/?id=1&quot; --dbms mysql --level 3 -D test --tables</span><br><span class="line"><span class="meta">#</span><span class="bash">查询<span class="built_in">test</span>数据库下有哪些表</span></span><br><span class="line"></span><br><span class="line">sqlmap -u &quot;http://127.0.0.1/Less-1/?id=1&quot; --dbms mysql --level 3 -D test -T admin --columns</span><br><span class="line"><span class="meta">#</span><span class="bash">查询<span class="built_in">test</span>数据库、admin表有哪些字段</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="一些注意点"><a href="#一些注意点" class="headerlink" title="一些注意点"></a>一些注意点</h3><ul>
+<li><p>level      <br/><br> level是注入测试等级，一共有5级。级别越高，检测的内容也就越多。检测级别大于等于2的时候会检测cookie的注入，检测级别大于等于3的时候会检测User-Agent和Referer是否有注入。</p>
+<p>  risk参数是风险等级 等级越高测试的语句越多比如会测试UPDATE 等等对数据库进行操作. </p>
+</li>
+</ul>
+<ul>
+<li><p>*指定注入点    <br/><br>sqlmap可以自动找到URL里的参数，从而确定注入点。但在遇到一些做了伪静态的网页就无法自动识别。</p>
+<p><code>/admin/1/</code>类似这种，SQLMap就无法进行注入测试，但它实际上可能是这样的：<br><code>/admin.php?id=1</code>,它是把参数隐藏在了URL中，对于这样URL，直接在参数后面加一个*就可以：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;www.baidu.com/admin/1*&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>POST数据      <br/><br>在 URL后跟上你要提交的POST数据，SQLMap 也会去自动测试。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap.py -u &quot;http://baidu.com/admin.php&quot; --data=&quot;id=1&amp;name=admin&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>从文件载入HTTP请求测试  <br/><br><code>使用参数：-r</code></p>
+<p>可以可以理解抓个包下来，获取 HTTP 请求然后保存在文件里，然后让 SQLMap 自己去解析请求来进行注入测试。</p>
+<p>可以从 burpsuite 上抓包下来配合 SQLMap 进行联合使用。</p>
+</li>
+<li><p>Google搜索进行测试  <br/></p>
+</li>
+<li><p>注入测试的脚本 <br/><br><code>使用参数：-tamper</code></p>
+<p>WAF的存在，会有很强的输入验证功能，通过一定的判断机制检测输入的内容是否含有非法攻击语句。为了绕过输入验证，达到预期的SQL注入目标，须对原本SQL语句进行同义改写，这种改写在很多情况下是莫名其妙的，但就是这莫名其妙的语句可以通过严密的WAF防守，达到数据库层面。更为神奇的是，数据库可以执行这段看似奇怪的SQL语句，实现预期的攻击。</p>
+<p>而SQLMap自带了一个脚本库（在tamper目录下），内置的脚本库对 payload 进行了混淆，使得可以有效地规避防火墙规则</p>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSqlMap%E4%BD%BF%E7%94%A8/" title="web安全之SqlMap" target="_blank" rel="external">http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSqlMap%E4%BD%BF%E7%94%A8/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/yejuns" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/yejuns" target="_blank"><span class="text-dark">厨师长</span><small class="ml-1x">程序员 &amp; Designer</small></a></h3>
+        <div>平凡的时间，不平凡的你我。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSQL%E6%B3%A8%E5%85%A5-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/" title="web安全之SQL注入-报错注入"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BXSS%E6%94%BB%E5%87%BB/" title="web漏洞"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yejuns" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'z6IxiHbvPL5ILrUKq4XWV0py-gzGzoHsz',
+    appKey: 'MqpLIyiIaepCg2gruAt2hAEY',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

