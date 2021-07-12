@@ -17,21 +17,24 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>计算机网络复习笔记 | Hexo</title>
-  <meta name="description" content="ARP协议arp协议即地址解析协议，是根据IP地址获取物理地址的一个TCP&#x2F;IP协议。它可以解决同一个局域网内主机或路由器的IP地址和MAC地址的映射问题。  arp协议在TCP&#x2F;IP模型中属于IP层(网络层),原因在于ARP协议属于TCP&#x2F;IP协议簇，而在TCP&#x2F;IP模型中，所有定义的协议至少是在网际层（或称网络层，IP层） 在OSI模型中属于链路层,按照OSI的标准,当数据向下传递时,每层会加">
+  <title>爬虫过验证码 | Hexo</title>
+  <meta name="description" content="在我们写爬虫的过程中，目标网站常见的干扰手段就是设置验证码等，因此，这里将简单介绍一些绕过验证码的方式。 1、使用pytesseract模块和PIL模块识别使用pip安装相关的包 12pip install pytesseractpip install pil 整个验证码识别的思路很简单：  截取整个界面 获取验证码位置的坐标，并截取对应位置的图片 使用pytesseract模块进行验证  主要的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络复习笔记">
-<meta property="og:url" content="http://yejuns.github.io/2021/05/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="爬虫过验证码">
+<meta property="og:url" content="http://yejuns.github.io/2021/04/09/%E7%88%AC%E8%99%AB%E4%B9%8B%E8%BF%87%E9%AA%8C%E8%AF%81%E7%A0%81/index.html">
 <meta property="og:site_name" content="风景这边独好">
-<meta property="og:description" content="ARP协议arp协议即地址解析协议，是根据IP地址获取物理地址的一个TCP&#x2F;IP协议。它可以解决同一个局域网内主机或路由器的IP地址和MAC地址的映射问题。  arp协议在TCP&#x2F;IP模型中属于IP层(网络层),原因在于ARP协议属于TCP&#x2F;IP协议簇，而在TCP&#x2F;IP模型中，所有定义的协议至少是在网际层（或称网络层，IP层） 在OSI模型中属于链路层,按照OSI的标准,当数据向下传递时,每层会加">
+<meta property="og:description" content="在我们写爬虫的过程中，目标网站常见的干扰手段就是设置验证码等，因此，这里将简单介绍一些绕过验证码的方式。 1、使用pytesseract模块和PIL模块识别使用pip安装相关的包 12pip install pytesseractpip install pil 整个验证码识别的思路很简单：  截取整个界面 获取验证码位置的坐标，并截取对应位置的图片 使用pytesseract模块进行验证  主要的">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-01T13:01:21.000Z">
-<meta property="article:modified_time" content="2021-07-04T08:54:40.527Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/essay/srcapyselenium-7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/essay/srcapyselenium-8.png">
+<meta property="article:published_time" content="2021-04-09T08:01:51.000Z">
+<meta property="article:modified_time" content="2021-07-09T13:38:21.603Z">
 <meta property="article:author" content="Ye-Jun">
-<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/essay/srcapyselenium-7.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yejuns.github.io/2021/05/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+  <link rel="canonical" href="http://yejuns.github.io/2021/04/09/%E7%88%AC%E8%99%AB%E4%B9%8B%E8%BF%87%E9%AA%8C%E8%AF%81%E7%A0%81/index.html">
   
     <link rel="alternate" href="/atom.xml" title="风景这边独好" type="application/atom+xml">
   
@@ -341,14 +344,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-计算机网络-复习笔记" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-爬虫之过验证码" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      计算机网络复习笔记
+      爬虫过验证码
     </h1>
   
 
@@ -356,61 +359,54 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/05/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-	  <time datetime="2021-05-01T13:01:21.000Z" itemprop="datePublished">2021-05-01</time>
+	<a href="/2021/04/09/%E7%88%AC%E8%99%AB%E4%B9%8B%E8%BF%87%E9%AA%8C%E8%AF%81%E7%A0%81/" class="article-date">
+	  <time datetime="2021-04-09T08:01:51.000Z" itemprop="datePublished">2021-04-09</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a>
+	<a class="article-tag-link-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/05/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/04/09/%E7%88%AC%E8%99%AB%E4%B9%8B%E8%BF%87%E9%AA%8C%E8%AF%81%E7%A0%81/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h2><p>arp协议即地址解析协议，是根据IP地址获取物理地址的一个TCP/IP协议。它可以解决同一个局域网内主机或路由器的IP地址和MAC地址的映射问题。</p>
-<ul>
-<li>arp协议在TCP/IP模型中属于IP层(网络层),原因在于ARP协议属于TCP/IP协议簇，而在TCP/IP模型中，所有定义的协议至少是在网际层（或称网络层，IP层）</li>
-<li>在OSI模型中属于链路层,按照OSI的标准,当数据向下传递时,每层会加上自己的信息,各层互不干扰.这样当网络层的IP包进入链路层时,链路层该如何加这个头部的目标信息呢?它要依靠ARP协议来完成.显然如何加链路头并不是网络层的功能。而且，ARP协议工作时，并不使用IP的包头。所以也有很多人说，ARP是链路层的</li>
-</ul>
-<h2 id="TCP连接与断开"><a href="#TCP连接与断开" class="headerlink" title="TCP连接与断开"></a>TCP连接与断开</h2><h3 id="TCP状态（SYN、FIN、ACK）"><a href="#TCP状态（SYN、FIN、ACK）" class="headerlink" title="TCP状态（SYN、FIN、ACK）"></a>TCP状态（SYN、FIN、ACK）</h3><ul>
-<li>SYN(Synchronize) 建立连接</li>
-<li>FIN 断开连接</li>
-<li>ACK 表示响应</li>
-<li>PSH 有DATA数据传输</li>
-<li>RST 连接重置</li>
-</ul>
-<p>如果出现SYN/FIN包的组合，很有可能这是一个攻击，因为SYN和FIN不应该一起出现  </p>
-<h3 id="三次握手过程"><a href="#三次握手过程" class="headerlink" title="三次握手过程"></a>三次握手过程</h3><p>1、（B）-&gt;[SYN] -&gt; (A) </p>
-<p>当客户机B和服务器A通信时，B首先向A发送一个SYN标识的包，告诉A建立连接；(SYN包就是仅SYN标记标为1的TCP包)</p>
-<p>2、（B）&lt;-[SYN/ACK] &lt;- (A)</p>
-<p>接着，A收到后会发一个对SYN包的确定包（SYN/ACK）回去，表示对第一个SYN包的确定，并继续握手协议</p>
-<p>3、（B）-&gt;[ACK] -&gt; (A)<br>B收到SYN/ACK包，B发一个确认包（ACK），通知连接已经建立。至此，三次握手完成。</p>
-<h3 id="四次挥手过程"><a href="#四次挥手过程" class="headerlink" title="四次挥手过程"></a>四次挥手过程</h3><p>1、(B) -&gt; FIN+ack -&gt; (A)</p>
-<p>2、(B) &lt;- ACK  &lt;- (A)</p>
-<p>3、(B) &lt;- FIN+ACK  &lt;- (A)</p>
-<p>4、(B) -&gt; ACK -&gt; (A)</p>
-<p>因为TCP连接是双向连接，因此关闭连接需要在两个方向上做。</p>
-<p>四次挥手不是关闭TCP连接的唯一方式，有时主机需要尽快关闭连接（或连接超时、主机不可达），RST包将被发送，因为RST包是不需要接收方确认的，所以RST包对于ACK可带可不带。</p>
-<hr>
-<h2 id="HTTPS建立连接的过程"><a href="#HTTPS建立连接的过程" class="headerlink" title="HTTPS建立连接的过程"></a>HTTPS建立连接的过程</h2><p>https是在http的基础上和ssl/tls证书结合的一种协议，保证了传输过程中的安全性，解决了http的3个缺点（被监听、被篡改、被伪装）</p>
-<h3 id="http与https"><a href="#http与https" class="headerlink" title="http与https"></a>http与https</h3><p>HTTP和HTTPS都建立在连接的基础上进行数据传输，都基于TCP，建立连接都要经过3次握手</p>
-<p>当在浏览器中输入地址后，会先根据浏览器DNS缓存、本地DNS缓存、和HOST中寻找对应的记录，如果没有找到会请求DNS服务来获取对应的ip</p>
-<h3 id="建立连接的过程"><a href="#建立连接的过程" class="headerlink" title="建立连接的过程"></a>建立连接的过程</h3><ol>
-<li>客户端发送请求到服务器，告诉自己支持的加密协议以及版本</li>
-<li>服务端选择合适的加密协议，返回一个证书给客户端，证书里面有公钥</li>
-<li>客户端接收公钥后验证证书的安全性，如果通过会生成一个随机数，用公钥对其机密后发送到服务端;<br>(随机数产生的原因是<code>减少公钥加密计算量太大所消耗的时间</code>)</li>
-<li>服务端接收到加密后的随机数，用私钥解密后得到真正的随机数，然后用这个随机数当秘钥（<code>对称秘钥</code>）对需要发送的数据进行加密</li>
-<li>客户端接收到加密的数据后使用生成的随机数（<code>对称秘钥</code>）对数据进行解密，将结果呈现</li>
+        <p>在我们写爬虫的过程中，目标网站常见的干扰手段就是设置验证码等，因此，这里将简单介绍一些绕过验证码的方式。</p>
+<h2 id="1、使用pytesseract模块和PIL模块识别"><a href="#1、使用pytesseract模块和PIL模块识别" class="headerlink" title="1、使用pytesseract模块和PIL模块识别"></a>1、使用pytesseract模块和PIL模块识别</h2><p>使用pip安装相关的包</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install pytesseract</span><br><span class="line">pip install pil</span><br></pre></td></tr></table></figure>
+<p>整个验证码识别的思路很简单：</p>
+<ol>
+<li>截取整个界面</li>
+<li>获取验证码位置的坐标，并截取对应位置的图片</li>
+<li>使用pytesseract模块进行验证</li>
 </ol>
+<p>主要的功能代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#打开谷歌浏览器</span></span><br><span class="line">   browser = webdriver.Chrome()</span><br><span class="line">   <span class="comment">#打开首页</span></span><br><span class="line">   browser.get(<span class="string">&quot;http://localhost:8080/jpress/user/register&quot;</span>)</span><br><span class="line">   browser.maximize_window()</span><br><span class="line">   <span class="comment">#获取验证码图片</span></span><br><span class="line">   t = time.time()</span><br><span class="line">   picture_name1 = <span class="built_in">str</span>(t)+<span class="string">&#x27;.png&#x27;</span></span><br><span class="line">   browser.save_screenshot(picture_name1)</span><br><span class="line">   ce = browser.find_element_by_id(<span class="string">&quot;captchaimg&quot;</span>)</span><br><span class="line">   print(ce.location)</span><br><span class="line">   left = ce.location[<span class="string">&#x27;x&#x27;</span>]</span><br><span class="line">   top = ce.location[<span class="string">&#x27;y&#x27;</span>]</span><br><span class="line">   right = ce.size[<span class="string">&#x27;width&#x27;</span>] + left</span><br><span class="line">   height = ce.size[<span class="string">&#x27;height&#x27;</span>] + top</span><br><span class="line">   im = Image.<span class="built_in">open</span>(picture_name1)</span><br><span class="line">   <span class="comment"># 抠图</span></span><br><span class="line">   img = im.crop((left,top,right, height))</span><br><span class="line">   t = time.time()</span><br><span class="line">   picture_name2 = <span class="built_in">str</span>(t)+<span class="string">&#x27;.png&#x27;</span></span><br><span class="line">   img.save(picture_name2)<span class="comment">#这里就是截取到的验证码图片</span></span><br><span class="line">   browser.close()</span><br></pre></td></tr></table></figure>
+<p>pytesseract虽然很简单直观，但是无法处理比较复杂的验证码。这时候其实我们还可以使用一些方法对图片进行处理，提供识别率。比如对截取的图片转为灰度，将有效信息转为黑，背景和干扰转为白色。</p>
+<p>由于我们需要找到一个像素阈值能够将灰度图片中真实数据和背景干扰分开，因此这一步骤可以借助PS等工具，我们在这里设置为200</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">img = image_obj.convert(<span class="string">&quot;L&quot;</span>)  <span class="comment"># 转灰度图</span></span><br><span class="line">pixdata = img.load()</span><br><span class="line">w, h = img.size</span><br><span class="line">threshold = <span class="number">200</span></span><br><span class="line"><span class="comment"># 遍历所有像素，大于阈值的为黑色</span></span><br><span class="line"><span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(h): <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(w): <span class="keyword">if</span> pixdata[x, y] &lt; threshold: pixdata[x, y] =<span class="string">&quot; 0&quot;</span> <span class="keyword">else</span>:&gt;</span><br><span class="line"><span class="comment"># 根据像素二值结果重新生成图片</span></span><br><span class="line">data = img.getdata()</span><br><span class="line">w, h = img.size</span><br><span class="line">black_point = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, w - <span class="number">1</span>): <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, h - <span class="number">1</span>): mid_pixel = data[w * y + x] <span class="keyword">if</span> mid_pixel &lt; <span class="number">50</span>: top_pixel =<span class="string">&quot; data[w * (y - 1) + x]&quot;</span> left_pixel =<span class="string">&quot; data[w * y + (x - 1)]&quot;</span> down_pixel =<span class="string">&quot; data[w * (y + 1) + x]&quot;</span> right_pixel =<span class="string">&quot; data[w * y + (x + 1)]&quot;</span> <span class="keyword">if</span> top_pixel &lt; <span class="number">10</span>: black_point +=<span class="string">&quot; 1&quot;</span> <span class="keyword">if</span> left_pixel &lt; <span class="number">10</span>: <span class="keyword">if</span> down_pixel &lt; <span class="number">10</span>: <span class="keyword">if</span> right_pixel &lt; <span class="number">10</span>: <span class="keyword">if</span> black_point &lt; <span class="number">1</span>: img.putpixel((x, y), <span class="number">255</span>) black_point =<span class="string">&quot; 0&quot;</span> img.show()&lt; code&gt;</span><br></pre></td></tr></table></figure>
+<p>转换前的图片</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/essay/srcapyselenium-7.png">“</p>
+<p>转换后的图片</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/essay/srcapyselenium-8.png">“</p>
+<h2 id="2、使用第三方API接口帮助识别"><a href="#2、使用第三方API接口帮助识别" class="headerlink" title="2、使用第三方API接口帮助识别"></a>2、使用第三方API接口帮助识别</h2><p>我以前是使用<code>showapi</code>,当然也可以选择别的方法，<a target="_blank" rel="noopener" href="https://www.showapi.com/apiGateway/view/2360">地址</a></p>
+<p>整个验证的流程是：</p>
+<ol>
+<li>下载官方提供的SDK包</li>
+<li>在请求参数中加入自己的key</li>
+<li>把图片和key值一起传给远程API，接收识别出的结果</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lib.ShowapiRequest <span class="keyword">import</span> ShowapiRequest</span><br><span class="line"></span><br><span class="line">r = ShowapiRequest(<span class="string">&quot;http://route.showapi.com/184-4&quot;</span>,<span class="string">&quot;272526&quot;</span>,<span class="string">&quot;a924d4e982ae404b8a068b4d1c7784f2&quot;</span> )</span><br><span class="line">r.addFilePara(<span class="string">&quot;image&quot;</span>, <span class="string">&quot;test.png&quot;</span>)</span><br><span class="line">r.addBodyPara(<span class="string">&quot;typeId&quot;</span>, <span class="string">&quot;34&quot;</span>)</span><br><span class="line">r.addBodyPara(<span class="string">&quot;convert_to_jpg&quot;</span>, <span class="string">&quot;0&quot;</span>)</span><br><span class="line">r.addBodyPara(<span class="string">&quot;needMorePrecise&quot;</span>, <span class="string">&quot;0&quot;</span>)</span><br><span class="line">res = r.post()</span><br><span class="line">result = res.text</span><br><span class="line">print(result)</span><br><span class="line">body = res.json()[<span class="string">&#x27;showapi_res_body&#x27;</span>]</span><br><span class="line">print(body[<span class="string">&#x27;Result&#x27;</span>])</span><br><span class="line"><span class="comment"># print(res.text) # 返回信息</span></span><br></pre></td></tr></table></figure>
+
+<p>有时候我们也可以自己使用<code>tensorflow</code>进行训练.</p>
 
       
     </div>
@@ -420,7 +416,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://yejuns.github.io/2021/05/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="计算机网络复习笔记" target="_blank" rel="external">http://yejuns.github.io/2021/05/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/</a>
+      <a href="http://yejuns.github.io/2021/04/09/%E7%88%AC%E8%99%AB%E4%B9%8B%E8%BF%87%E9%AA%8C%E8%AF%81%E7%A0%81/" title="爬虫过验证码" target="_blank" rel="external">http://yejuns.github.io/2021/04/09/%E7%88%AC%E8%99%AB%E4%B9%8B%E8%BF%87%E9%AA%8C%E8%AF%81%E7%A0%81/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -467,12 +463,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2021/06/14/web%E5%AE%89%E5%85%A8%E4%B9%8B%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E-java/" title="web安全之反序列化漏洞-java"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2021/04/21/web%E5%AE%89%E5%85%A8%E4%B9%8BXSS%E8%A0%95%E8%99%AB/" title="web安全之XSS蠕虫"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2021/04/21/web%E5%AE%89%E5%85%A8%E4%B9%8BXSS%E8%A0%95%E8%99%AB/" title="web安全之XSS蠕虫"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/03/31/Web%E5%AE%89%E5%85%A8%E4%B9%8BXXE%E6%94%BB%E5%87%BB/" title="Web安全之XXE"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
