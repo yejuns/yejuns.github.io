@@ -128,28 +128,6 @@
   </entry>
   
   <entry>
-    <title>常用算法-排序</title>
-    <link href="http://yejuns.github.io/2021/03/31/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F/"/>
-    <id>http://yejuns.github.io/2021/03/31/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F/</id>
-    <published>2021-03-31T08:01:51.000Z</published>
-    <updated>2021-07-18T12:07:40.779Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="选择排序（Selection-sort）"><a href="#选择排序（Selection-sort）" class="headerlink" title="选择排序（Selection sort）"></a>选择排序（Selection sort）</h3><p>每次选择最小值，然后放到待排序数组的开始位置</p><h3 id="冒泡排序-（Bubble-Sort）"><a href="#冒泡排序-（Bubble-Sort）" class="headerlink" title="冒泡排序 （Bubble Sort）"></a>冒泡排序 （Bubble Sort）</h3><p>嵌套循环，每次查看相邻的元素，如果逆序，则交换</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] num)</span></span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> hasChange = <span class="keyword">false</span>;</span><br><span class="line">    <span class="comment">// hasChange的作用是判断某次循环是否开始，方便提前结束循环</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;num.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">        hasChange = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;num.length-<span class="number">1</span>-i;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(num[j]&gt;num[j+<span class="number">1</span>])&#123;</span><br><span class="line">                swap(num[j],num[j+<span class="number">1</span>]); </span><br><span class="line">            &#125;</span><br><span class="line">            hasChange = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="插入排序（Insertion-Sort）"><a href="#插入排序（Insertion-Sort）" class="headerlink" title="插入排序（Insertion Sort）"></a>插入排序（Insertion Sort）</h3><p>从前到后构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到位置并插入</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j, current; i &lt; nums.length; i++) &#123;</span><br><span class="line">        current = nums[i];  <span class="comment">//监视哨的作用</span></span><br><span class="line">        <span class="keyword">for</span> (j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span> &amp;&amp; nums[j] &gt; current; j--) &#123;</span><br><span class="line">            nums[j + <span class="number">1</span>] = nums[j];</span><br><span class="line">        &#125;</span><br><span class="line">        nums[j + <span class="number">1</span>] = current;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">if</span> (lo &gt;= hi) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">    sort(A, lo, mid);</span><br><span class="line">    sort(A, mid + <span class="number">1</span>, hi);</span><br><span class="line">    merge(A, lo, mid, hi);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lo, <span class="keyword">int</span> mid, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] copy = nums.clone();</span><br><span class="line">    <span class="keyword">int</span> k = lo, i = lo, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//在合并过程中会有4种情况</span></span><br><span class="line">    <span class="keyword">while</span> (k &lt;= hi) &#123;</span><br><span class="line">        <span class="comment">//左半边的都处理完了，现在需要把右半边的数拷贝过去</span></span><br><span class="line">        <span class="keyword">if</span> (i &gt; mid) &#123;</span><br><span class="line">            nums[k++] = copy[j++];</span><br><span class="line">        <span class="comment">//右半边的都处理完了，现在需要把左半边的数拷贝过去</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; hi) &#123;</span><br><span class="line">            nums[k++] = copy[i++];</span><br><span class="line">        <span class="comment">//右边的数小于左边的数</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (copy[j] &lt; copy[i]) &#123;</span><br><span class="line">            nums[k++] = copy[j++];</span><br><span class="line">        <span class="comment">//左边的数小于右边的数</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            nums[k++] = copy[i++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="快速排序（Quick-sort）"><a href="#快速排序（Quick-sort）" class="headerlink" title="快速排序（Quick sort）"></a>快速排序（Quick sort）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (lo &gt;= hi) <span class="keyword">return</span>; <span class="comment">//如果只剩下最后一个元素，就直接返回</span></span><br><span class="line">    <span class="keyword">int</span> p = partition(nums, lo, hi);  <span class="comment">//通过partition函数，使得p左边的值都比p要小，右边的都比p大</span></span><br><span class="line">    sort(nums, lo, p - <span class="number">1</span>);</span><br><span class="line">    sort(nums, p + <span class="number">1</span>, hi);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//随机选出一个数字，并和 hi 互换 --&gt; 此时选出进行比较的值就在 hi 处</span></span><br><span class="line">    swap(nums, randRange(lo, h i), hi);</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span> (i = lo, j = lo; j &lt; hi; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[j] &lt;= nums[hi]) &#123;</span><br><span class="line">            swap(nums, i++, j); <span class="comment">//注意这里是先比较，然后 ++ </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    swap(nums, i, j); <span class="comment">//把基准值放在i的位置，这样 i 后面的值都比i要大</span></span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="拓扑排序-（Topological-sort）"><a href="#拓扑排序-（Topological-sort）" class="headerlink" title="拓扑排序 （Topological sort）"></a>拓扑排序 （Topological sort）</h3><p>前提：1、必须是有向图；2、图里面没有环</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Queue&lt;Integer&gt; q = <span class="keyword">new</span> LinkedList();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; V; v++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (indegree[v] == <span class="number">0</span>) q.add(v);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = q.poll();</span><br><span class="line">            print(v);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; adj[v].length; u++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (--indegree[u] == <span class="number">0</span>) &#123;</span><br><span class="line">                    q.add(u);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="堆排序-（Heap-sort）"><a href="#堆排序-（Heap-sort）" class="headerlink" title="堆排序 （Heap sort）"></a>堆排序 （Heap sort）</h3><p>堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。</p><h3 id="桶排序-（Bucket-sort）"><a href="#桶排序-（Bucket-sort）" class="headerlink" title="桶排序 （Bucket sort）"></a>桶排序 （Bucket sort）</h3>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;选择排序（Selection-sort）&quot;&gt;&lt;a href=&quot;#选择排序（Selection-sort）&quot; class=&quot;headerlink&quot; title=&quot;选择排序（Selection sort）&quot;&gt;&lt;/a&gt;选择排序（Selection sort）&lt;/h3&gt;&lt;</summary>
-      
-    
-    
-    
-    
-    <category term="算法" scheme="http://yejuns.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>常用算法-递归</title>
     <link href="http://yejuns.github.io/2021/03/31/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92/"/>
     <id>http://yejuns.github.io/2021/03/31/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92/</id>
@@ -163,6 +141,28 @@
       
     <summary type="html">&lt;p&gt;递归算法是一种调⽤⾃自身函数的算法&lt;/p&gt;
 &lt;h3 id=&quot;算法模板&quot;&gt;&lt;a href=&quot;#算法模板&quot; class=&quot;headerlink&quot; title=&quot;算法模板&quot;&gt;&lt;/a&gt;算法模板&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;t</summary>
+      
+    
+    
+    
+    
+    <category term="算法" scheme="http://yejuns.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用算法-排序</title>
+    <link href="http://yejuns.github.io/2021/03/31/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F/"/>
+    <id>http://yejuns.github.io/2021/03/31/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F/</id>
+    <published>2021-03-31T08:01:51.000Z</published>
+    <updated>2021-07-18T12:07:40.779Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="选择排序（Selection-sort）"><a href="#选择排序（Selection-sort）" class="headerlink" title="选择排序（Selection sort）"></a>选择排序（Selection sort）</h3><p>每次选择最小值，然后放到待排序数组的开始位置</p><h3 id="冒泡排序-（Bubble-Sort）"><a href="#冒泡排序-（Bubble-Sort）" class="headerlink" title="冒泡排序 （Bubble Sort）"></a>冒泡排序 （Bubble Sort）</h3><p>嵌套循环，每次查看相邻的元素，如果逆序，则交换</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] num)</span></span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> hasChange = <span class="keyword">false</span>;</span><br><span class="line">    <span class="comment">// hasChange的作用是判断某次循环是否开始，方便提前结束循环</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;num.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">        hasChange = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;num.length-<span class="number">1</span>-i;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(num[j]&gt;num[j+<span class="number">1</span>])&#123;</span><br><span class="line">                swap(num[j],num[j+<span class="number">1</span>]); </span><br><span class="line">            &#125;</span><br><span class="line">            hasChange = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="插入排序（Insertion-Sort）"><a href="#插入排序（Insertion-Sort）" class="headerlink" title="插入排序（Insertion Sort）"></a>插入排序（Insertion Sort）</h3><p>从前到后构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到位置并插入</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j, current; i &lt; nums.length; i++) &#123;</span><br><span class="line">        current = nums[i];  <span class="comment">//监视哨的作用</span></span><br><span class="line">        <span class="keyword">for</span> (j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span> &amp;&amp; nums[j] &gt; current; j--) &#123;</span><br><span class="line">            nums[j + <span class="number">1</span>] = nums[j];</span><br><span class="line">        &#125;</span><br><span class="line">        nums[j + <span class="number">1</span>] = current;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">if</span> (lo &gt;= hi) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">    sort(A, lo, mid);</span><br><span class="line">    sort(A, mid + <span class="number">1</span>, hi);</span><br><span class="line">    merge(A, lo, mid, hi);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lo, <span class="keyword">int</span> mid, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] copy = nums.clone();</span><br><span class="line">    <span class="keyword">int</span> k = lo, i = lo, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//在合并过程中会有4种情况</span></span><br><span class="line">    <span class="keyword">while</span> (k &lt;= hi) &#123;</span><br><span class="line">        <span class="comment">//左半边的都处理完了，现在需要把右半边的数拷贝过去</span></span><br><span class="line">        <span class="keyword">if</span> (i &gt; mid) &#123;</span><br><span class="line">            nums[k++] = copy[j++];</span><br><span class="line">        <span class="comment">//右半边的都处理完了，现在需要把左半边的数拷贝过去</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; hi) &#123;</span><br><span class="line">            nums[k++] = copy[i++];</span><br><span class="line">        <span class="comment">//右边的数小于左边的数</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (copy[j] &lt; copy[i]) &#123;</span><br><span class="line">            nums[k++] = copy[j++];</span><br><span class="line">        <span class="comment">//左边的数小于右边的数</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            nums[k++] = copy[i++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="快速排序（Quick-sort）"><a href="#快速排序（Quick-sort）" class="headerlink" title="快速排序（Quick sort）"></a>快速排序（Quick sort）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (lo &gt;= hi) <span class="keyword">return</span>; <span class="comment">//如果只剩下最后一个元素，就直接返回</span></span><br><span class="line">    <span class="keyword">int</span> p = partition(nums, lo, hi);  <span class="comment">//通过partition函数，使得p左边的值都比p要小，右边的都比p大</span></span><br><span class="line">    sort(nums, lo, p - <span class="number">1</span>);</span><br><span class="line">    sort(nums, p + <span class="number">1</span>, hi);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//随机选出一个数字，并和 hi 互换 --&gt; 此时选出进行比较的值就在 hi 处</span></span><br><span class="line">    swap(nums, randRange(lo, h i), hi);</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span> (i = lo, j = lo; j &lt; hi; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[j] &lt;= nums[hi]) &#123;</span><br><span class="line">            swap(nums, i++, j); <span class="comment">//注意这里是先比较，然后 ++ </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    swap(nums, i, j); <span class="comment">//把基准值放在i的位置，这样 i 后面的值都比i要大</span></span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="拓扑排序-（Topological-sort）"><a href="#拓扑排序-（Topological-sort）" class="headerlink" title="拓扑排序 （Topological sort）"></a>拓扑排序 （Topological sort）</h3><p>前提：1、必须是有向图；2、图里面没有环</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Queue&lt;Integer&gt; q = <span class="keyword">new</span> LinkedList();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; V; v++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (indegree[v] == <span class="number">0</span>) q.add(v);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = q.poll();</span><br><span class="line">            print(v);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; adj[v].length; u++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (--indegree[u] == <span class="number">0</span>) &#123;</span><br><span class="line">                    q.add(u);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="堆排序-（Heap-sort）"><a href="#堆排序-（Heap-sort）" class="headerlink" title="堆排序 （Heap sort）"></a>堆排序 （Heap sort）</h3><p>堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。</p><h3 id="桶排序-（Bucket-sort）"><a href="#桶排序-（Bucket-sort）" class="headerlink" title="桶排序 （Bucket sort）"></a>桶排序 （Bucket sort）</h3>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;选择排序（Selection-sort）&quot;&gt;&lt;a href=&quot;#选择排序（Selection-sort）&quot; class=&quot;headerlink&quot; title=&quot;选择排序（Selection sort）&quot;&gt;&lt;/a&gt;选择排序（Selection sort）&lt;/h3&gt;&lt;</summary>
       
     
     
@@ -218,28 +218,6 @@
   </entry>
   
   <entry>
-    <title>渗透之域渗透</title>
-    <link href="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
-    <id>http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E5%9F%9F%E6%B8%97%E9%80%8F/</id>
-    <published>2021-03-12T08:01:51.000Z</published>
-    <updated>2021-07-18T10:45:21.493Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-什么是域"><a href="#1-什么是域" class="headerlink" title="1.什么是域"></a>1.什么是域</h2><p>将网络中多台计算机逻辑上组织到一起，进行集中管理，这种区别于工作组的逻辑环境叫做域，域是组织与存储资源的核心管理单元，在域中，至少有一台域控制器，<code>域控制器</code>中保存着整个域的用户帐号和安全数据库。</p><p>(域是一种逻辑结构，是指一个有安全边界的集合，同一个域中的计算机彼此之间建立信任关系，计算机之间允许互相访问)</p><blockquote><p>域控制器（Domain controller，简称DC）是指在计算机网络域内响应安全身份认证请求的网络服务器负责允许发出请求的主机访问域内资源，以及对用户进行身份验证，存储用户账户信息，并执行域的安全策略。</p></blockquote><h2 id="域渗透思路"><a href="#域渗透思路" class="headerlink" title="域渗透思路"></a>域渗透思路</h2>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;1-什么是域&quot;&gt;&lt;a href=&quot;#1-什么是域&quot; class=&quot;headerlink&quot; title=&quot;1.什么是域&quot;&gt;&lt;/a&gt;1.什么是域&lt;/h2&gt;&lt;p&gt;将网络中多台计算机逻辑上组织到一起，进行集中管理，这种区别于工作组的逻辑环境叫做域，域是组织与存储资源的核心</summary>
-      
-    
-    
-    
-    
-    <category term="渗透" scheme="http://yejuns.github.io/tags/%E6%B8%97%E9%80%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>渗透之webshell</title>
     <link href="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8Bwebshell/"/>
     <id>http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8Bwebshell/</id>
@@ -252,6 +230,28 @@
       
       
     <summary type="html">&lt;h2 id=&quot;webshell&quot;&gt;&lt;a href=&quot;#webshell&quot; class=&quot;headerlink&quot; title=&quot;webshell&quot;&gt;&lt;/a&gt;webshell&lt;/h2&gt;&lt;p&gt;webshell是以asp、jsp、php或cgi等网页文件形式存在的一种命令执行环境，也可</summary>
+      
+    
+    
+    
+    
+    <category term="渗透" scheme="http://yejuns.github.io/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>渗透之域渗透</title>
+    <link href="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
+    <id>http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E5%9F%9F%E6%B8%97%E9%80%8F/</id>
+    <published>2021-03-12T08:01:51.000Z</published>
+    <updated>2021-07-18T10:45:21.493Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-什么是域"><a href="#1-什么是域" class="headerlink" title="1.什么是域"></a>1.什么是域</h2><p>将网络中多台计算机逻辑上组织到一起，进行集中管理，这种区别于工作组的逻辑环境叫做域，域是组织与存储资源的核心管理单元，在域中，至少有一台域控制器，<code>域控制器</code>中保存着整个域的用户帐号和安全数据库。</p><p>(域是一种逻辑结构，是指一个有安全边界的集合，同一个域中的计算机彼此之间建立信任关系，计算机之间允许互相访问)</p><blockquote><p>域控制器（Domain controller，简称DC）是指在计算机网络域内响应安全身份认证请求的网络服务器负责允许发出请求的主机访问域内资源，以及对用户进行身份验证，存储用户账户信息，并执行域的安全策略。</p></blockquote><h2 id="域渗透思路"><a href="#域渗透思路" class="headerlink" title="域渗透思路"></a>域渗透思路</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;1-什么是域&quot;&gt;&lt;a href=&quot;#1-什么是域&quot; class=&quot;headerlink&quot; title=&quot;1.什么是域&quot;&gt;&lt;/a&gt;1.什么是域&lt;/h2&gt;&lt;p&gt;将网络中多台计算机逻辑上组织到一起，进行集中管理，这种区别于工作组的逻辑环境叫做域，域是组织与存储资源的核心</summary>
       
     
     
@@ -351,28 +351,6 @@
   </entry>
   
   <entry>
-    <title>burpsuite使用</title>
-    <link href="http://yejuns.github.io/2020/12/31/burpsuite%E4%BD%BF%E7%94%A8/"/>
-    <id>http://yejuns.github.io/2020/12/31/burpsuite%E4%BD%BF%E7%94%A8/</id>
-    <published>2020-12-31T08:01:51.000Z</published>
-    <updated>2021-07-05T00:21:11.994Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;-1&quot;&gt;&lt;a href=&quot;#-1&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;</summary>
-      
-    
-    
-    
-    
-    <category term="测试" scheme="http://yejuns.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>bwapp学习笔记-A1 Injection</title>
     <link href="http://yejuns.github.io/2020/12/31/bwapp-%E9%9D%B6%E5%9C%BA%E9%A2%98%E8%A7%A3%E6%80%9D%E8%B7%AFA1/"/>
     <id>http://yejuns.github.io/2020/12/31/bwapp-%E9%9D%B6%E5%9C%BA%E9%A2%98%E8%A7%A3%E6%80%9D%E8%B7%AFA1/</id>
@@ -392,6 +370,28 @@
     
     
     <category term="靶场" scheme="http://yejuns.github.io/tags/%E9%9D%B6%E5%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>burpsuite使用</title>
+    <link href="http://yejuns.github.io/2020/12/31/burpsuite%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yejuns.github.io/2020/12/31/burpsuite%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-07-05T00:21:11.994Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;-1&quot;&gt;&lt;a href=&quot;#-1&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;</summary>
+      
+    
+    
+    
+    
+    <category term="测试" scheme="http://yejuns.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
