@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yejuns.github.io/2020/06/10/LSM%E6%A0%91%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2021-07-23</lastmod>
+  </url>
+  <url>
+    <loc>http://yejuns.github.io/2020/06/20/MergeTree%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2021-07-23</lastmod>
+  </url>
+  <url>
+    <loc>http://yejuns.github.io/2020/05/11/%E6%97%B6%E5%BA%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E5%BF%B5%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2021-07-23</lastmod>
+  </url>
+  <url>
     <loc>http://yejuns.github.io/2018/11/04/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B8%89%E8%AF%BE/</loc>
     <lastmod>2021-07-20</lastmod>
   </url>
