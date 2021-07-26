@@ -196,6 +196,31 @@
   </entry>
   
   <entry>
+    <title>进程、线程和协程.md</title>
+    <link href="http://yejuns.github.io/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/"/>
+    <id>http://yejuns.github.io/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/</id>
+    <published>2021-03-23T07:56:49.000Z</published>
+    <updated>2021-07-23T08:53:06.038Z</updated>
+    
+    <content type="html"><![CDATA[<p>计算机里有两类大的资源：CPU 资源和 IO 资源。</p><ul><li>计算型的任务 主要消耗CPU 资源，比如对字符串进行 base64 编码；</li><li>输入输出类的系统调用 主要消耗 IO 资源，部分 IO 和硬件中断相关。CPU 芯片引脚上接入了很多控制芯片，比如中断控制器芯片 <code>8259A</code>。当键盘打字，中断芯片触发 CPU 上的硬件中断，CPU 被调度来处理键盘输入。</li></ul><p>进程：<br>一个进程好比是一个程序，它是资源分配的最小单位 。同一时刻执行的进程数不会超过核心数。但是单核CPU也可以运行多进程，只不过不是同时，而是极快地在进程间来回切换实现的多进程。举个简单的例子，就算是十年前的单核CPU的电脑，也可以聊QQ的同时看视频。</p><p>电脑中有许多进程需要处于「同时」开启的状态，而利用CPU在进程间的快速切换，可以实现「同时」运行多个程序。而进程切换则意味着需要保留进程切换前的状态，以备切换回去的时候能够继续接着工作。所以进程拥有自己的地址空间，全局变量，文件描述符，各种硬件等等资源。操作系统通过调度CPU去执行进程的记录、回复、切换等等。</p><p>线程：<br>线程是依赖于进程的，也称为 「微进程」。它是程序执行过程中的最小单元 。假设现在 8 核 CPU 上有 4 个进程，每个进程开 10 个线程，理论上也只能同步并行跑 8 个线程，其他线程都是假性的并行运行。</p><h2 id="进程与线程的区别"><a href="#进程与线程的区别" class="headerlink" title="进程与线程的区别"></a>进程与线程的区别</h2><ol><li>进程是CPU资源分配的基本单位，线程是独立运行和独立调度的基本单位（CPU上真正运行的是线程）</li><li>进程拥有自己的资源空间，一个进程包含若干个线程，线程与CPU资源分配无关，多个线程共享同一进程内的资源。</li><li>线程的调度与切换比进程快很多</li></ol><p>举个例子：<br>电脑上跑着chrome和QQ，着就是2个不同的进程。<br>Chrome进程里有多个线程进行，比如下载文件、视频播放。每个线程占据一个核心（8核CUP中的一个）。<br>从chrome切换到QQ，意味着进程进程了切换。</p><p><code>ps -T -p &lt;pid&gt;  查看该进程下的所有线程</code></p><h2 id="协程："><a href="#协程：" class="headerlink" title="协程："></a>协程：</h2><ul><li>协程是一种用户态的轻量级线程，拥有自己的寄存器上下文和栈，协程调度切换时，将寄存器上下文和栈保存在其他地方，再切回来的时候，回复先前的寄存器上下文和栈</li><li>协程表示一个执行单元，有自己的本地数据，与其他协程共享全局数据和其他资源</li><li>我们的代码跑在线程中的，而线程是跑在进程中的。协程没有直接和操作系统关联，但他是跑在线程中的，可以是单线程，也可以是多线程</li><li>线程进程都是同步机制，而协程则是异步（一个线程内的多个协程的运行是串行的）</li></ul><p>协程优点</p><ol><li>无需线程上下文切换的开销</li><li>无需原子操作锁定及同步的开销</li><li>方便切换控制流</li><li>高并发低成本</li></ol><p>使用协程一般是解决   I/O阻塞   </p><p>（为什么线程不能解决：   因为一个IO操作就阻塞了当前线程，导致其他代码无法执行，所以我们必须使用多线程或者多进程来并发执行代码，为多个用户服务。每个用户都会分配一个线程，如果遇到IO导致线程被挂起，其他用户的线程不受影响。多线程和多进程的模型虽然解决了并发问题，但是系统不能无上限地增加线程。由于系统切换线程的开销也很大，所以，一旦线程数量过多，CPU的时间就花在线程切换上了，真正运行代码的时间就少了，结果导致性能严重下降。）</p><p>因为当一个I/O阻塞时，它可以切换到其他没有阻塞的协程上去继续执行，这样就有了比较高的效率</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><p><a href="http://fuzhii.com/2021/04/02/coroutine-switch/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">http://fuzhii.com/2021/04/02/coroutine-switch/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io</a><br><a href="https://mp.weixin.qq.com/s/Tp680dfOB7Zb6xlXSay7XA">https://mp.weixin.qq.com/s/Tp680dfOB7Zb6xlXSay7XA</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;计算机里有两类大的资源：CPU 资源和 IO 资源。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;计算型的任务 主要消耗CPU 资源，比如对字符串进行 base64 编码；&lt;/li&gt;
+&lt;li&gt;输入输出类的系统调用 主要消耗 IO 资源，部分 IO 和硬件中断相关。CPU 芯片引脚上接入了很多</summary>
+      
+    
+    
+    
+    
+    <category term="计算机基础" scheme="http://yejuns.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
     <title>冰蝎使用</title>
     <link href="http://yejuns.github.io/2021/03/13/%E5%86%B0%E8%9D%8E%E4%BD%BF%E7%94%A8/"/>
     <id>http://yejuns.github.io/2021/03/13/%E5%86%B0%E8%9D%8E%E4%BD%BF%E7%94%A8/</id>
@@ -240,28 +265,6 @@
   </entry>
   
   <entry>
-    <title>渗透之域渗透</title>
-    <link href="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
-    <id>http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E5%9F%9F%E6%B8%97%E9%80%8F/</id>
-    <published>2021-03-12T08:01:51.000Z</published>
-    <updated>2021-07-18T10:45:21.493Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-什么是域"><a href="#1-什么是域" class="headerlink" title="1.什么是域"></a>1.什么是域</h2><p>将网络中多台计算机逻辑上组织到一起，进行集中管理，这种区别于工作组的逻辑环境叫做域，域是组织与存储资源的核心管理单元，在域中，至少有一台域控制器，<code>域控制器</code>中保存着整个域的用户帐号和安全数据库。</p><p>(域是一种逻辑结构，是指一个有安全边界的集合，同一个域中的计算机彼此之间建立信任关系，计算机之间允许互相访问)</p><blockquote><p>域控制器（Domain controller，简称DC）是指在计算机网络域内响应安全身份认证请求的网络服务器负责允许发出请求的主机访问域内资源，以及对用户进行身份验证，存储用户账户信息，并执行域的安全策略。</p></blockquote><h2 id="域渗透思路"><a href="#域渗透思路" class="headerlink" title="域渗透思路"></a>域渗透思路</h2>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;1-什么是域&quot;&gt;&lt;a href=&quot;#1-什么是域&quot; class=&quot;headerlink&quot; title=&quot;1.什么是域&quot;&gt;&lt;/a&gt;1.什么是域&lt;/h2&gt;&lt;p&gt;将网络中多台计算机逻辑上组织到一起，进行集中管理，这种区别于工作组的逻辑环境叫做域，域是组织与存储资源的核心</summary>
-      
-    
-    
-    
-    
-    <category term="渗透" scheme="http://yejuns.github.io/tags/%E6%B8%97%E9%80%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>渗透之端口转发</title>
     <link href="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/"/>
     <id>http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</id>
@@ -274,6 +277,28 @@
       
       
     <summary type="html">&lt;h2 id=&quot;端口转发&quot;&gt;&lt;a href=&quot;#端口转发&quot; class=&quot;headerlink&quot; title=&quot;端口转发&quot;&gt;&lt;/a&gt;端口转发&lt;/h2&gt;&lt;p&gt;在渗透测试过程中，我们经常会用到端口转发，利用代理脚本将内网的流量代理到本地进行访问，方便对内网进行横向渗透。端口转发可以很</summary>
+      
+    
+    
+    
+    
+    <category term="渗透" scheme="http://yejuns.github.io/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>渗透之域渗透</title>
+    <link href="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
+    <id>http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E5%9F%9F%E6%B8%97%E9%80%8F/</id>
+    <published>2021-03-12T08:01:51.000Z</published>
+    <updated>2021-07-18T10:45:21.493Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-什么是域"><a href="#1-什么是域" class="headerlink" title="1.什么是域"></a>1.什么是域</h2><p>将网络中多台计算机逻辑上组织到一起，进行集中管理，这种区别于工作组的逻辑环境叫做域，域是组织与存储资源的核心管理单元，在域中，至少有一台域控制器，<code>域控制器</code>中保存着整个域的用户帐号和安全数据库。</p><p>(域是一种逻辑结构，是指一个有安全边界的集合，同一个域中的计算机彼此之间建立信任关系，计算机之间允许互相访问)</p><blockquote><p>域控制器（Domain controller，简称DC）是指在计算机网络域内响应安全身份认证请求的网络服务器负责允许发出请求的主机访问域内资源，以及对用户进行身份验证，存储用户账户信息，并执行域的安全策略。</p></blockquote><h2 id="域渗透思路"><a href="#域渗透思路" class="headerlink" title="域渗透思路"></a>域渗透思路</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;1-什么是域&quot;&gt;&lt;a href=&quot;#1-什么是域&quot; class=&quot;headerlink&quot; title=&quot;1.什么是域&quot;&gt;&lt;/a&gt;1.什么是域&lt;/h2&gt;&lt;p&gt;将网络中多台计算机逻辑上组织到一起，进行集中管理，这种区别于工作组的逻辑环境叫做域，域是组织与存储资源的核心</summary>
       
     
     
@@ -396,6 +421,30 @@
   </entry>
   
   <entry>
+    <title>Linux常用命令</title>
+    <link href="http://yejuns.github.io/2020/12/31/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yejuns.github.io/2020/12/31/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2020-12-31T08:01:51.000Z</published>
+    <updated>2021-07-25T09:08:05.663Z</updated>
+    
+    <content type="html"><![CDATA[<p>wget 在下载时会以最后一个/后面的内容为文件命名，使用-o可以自定义文件名  </p><p><code>wget -o wordpress.zip http://www.linuxde.net/download.aspx?id=1080</code></p><p>wget -c 断点续传</p><hr><ul><li>df -h     查看磁盘剩余空间</li><li>du -sh   显示当前目录的总大小</li><li>du -h  –max-depth=1  输出当前目录下各个子目录所使用的空间</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &#x27;*.tmp&#x27; -exec rm &#123;&#125; \;</span><br></pre></td></tr></table></figure><p>从当前目录下查找以tmp为后缀的所有文件， -exec 是表示查找后紧接着执行的命令 因为rm 不接受管du道输入，<br>所以不能写成 <code>find . -name &quot;.ab&quot; | rm</code> 的形似，rm -f 就是删除文件的意思， {} 代表的是find 到的结果传给-exec参数<br>而使用 <code>-exec</code> 参数必须用分号；结尾 但是在shell中不懂分号;是什么，所有要用转义符加分号，所以就有了 <code>\;</code></p><p>locate 与 find 不同: find 是去硬盘找，locate 只在 /var/lib/slocate 资料库中找。</p><ul><li>locate passwd    查找系统中所有的passwd文件</li><li>updatedb         更新locate数据库</li></ul><hr><ul><li>uname -a      # 查看系统信息</li><li>cat /proc/version      # 查看Linux内核版本</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;wget 在下载时会以最后一个/后面的内容为文件命名，使用-o可以自定义文件名  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;wget -o wordpress.zip http://www.linuxde.net/download.aspx?id=1080&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;w</summary>
+      
+    
+    
+    
+    
+    <category term="linux" scheme="http://yejuns.github.io/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>js原型链</title>
     <link href="http://yejuns.github.io/2020/12/31/js%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
     <id>http://yejuns.github.io/2020/12/31/js%E5%8E%9F%E5%9E%8B%E9%93%BE/</id>
@@ -414,52 +463,6 @@
     
     
     <category term="javaScript" scheme="http://yejuns.github.io/tags/javaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>web安全之CSRF</title>
-    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BCSRF/"/>
-    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BCSRF/</id>
-    <published>2020-12-31T08:01:51.000Z</published>
-    <updated>2021-07-02T08:40:17.090Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><p>数据包的中Cookie 的值是浏览器从本地存储中取出，并自动填充到数据包中。</p><p>如果攻击者控制了用户浏览器并且窃取了cookie。</p><p>浏览器会自动完成Cookie 的填充，目标网站会误认为该数据包就是管理员发送的，会以管理员的权限进行相关的操作。</p><h2 id="CSRF的原因"><a href="#CSRF的原因" class="headerlink" title="CSRF的原因"></a>CSRF的原因</h2><p>HTTP 是一种无状态协议，即服务器不会保留与客户交易时的状态。</p><p>用户A 在很短的时间间隔内向Web服务器发送了两次同样的请求，服务器并不会因为已经响应了该请求一次就不对第二次请求进行响应，因为服务器并不知道已经响应过一次该请求。</p><p>假设用户在网站A的某一个页面上已经完成了登录操作，当在该网站的另一个页面上执行的操作需要验证用户登录的时候任然需要用户再次登录，因为HTTP 并不知道你已经登录，它不会维持你的登录状态。</p><p>为了让服务器能够记住用户引入了Cookie 机制。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;CSRF&quot;&gt;&lt;a href=&quot;#CSRF&quot; class=&quot;headerlink&quot; title=&quot;CSRF&quot;&gt;&lt;/a&gt;CSRF&lt;/h2&gt;&lt;p&gt;数据包的中Cookie 的值是浏览器从本地存储中取出，并自动填充到数据包中。&lt;/p&gt;
-&lt;p&gt;如果攻击者控制了用户浏览器并且窃</summary>
-      
-    
-    
-    
-    
-    <category term="web安全" scheme="http://yejuns.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>web安全之SQL注入一</title>
-    <link href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSQL%E6%B3%A8%E5%85%A5-1/"/>
-    <id>http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BSQL%E6%B3%A8%E5%85%A5-1/</id>
-    <published>2020-12-31T08:01:51.000Z</published>
-    <updated>2021-07-05T06:02:16.858Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="SQL注入的原理"><a href="#SQL注入的原理" class="headerlink" title="SQL注入的原理"></a>SQL注入的原理</h2><p>是发生于<code>应用程序与数据库层</code>的安全漏洞</p><p>网站内部直接发送的SQL请求一般不会有危险，但实际情况是很多时候需要结合用户的输入数据动态构造SQL语句，如果用户输入的数据被构造成恶意SQL代码，Web应用又未对动态构造的SQL语句使用的参数进行审查，则会带来意想不到的危险。</p><h3 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span> <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span> </span><br><span class="line"><span class="comment"># 用户输入，用 1 or 1=1 代替 1</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span> <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span></span><br><span class="line"><span class="comment"># 最后产生的效果类似 select id,name from test</span></span><br><span class="line"><span class="comment"># 实现了一个越权操作</span></span><br></pre></td></tr></table></figure><h3 id="常用的数据库操作"><a href="#常用的数据库操作" class="headerlink" title="常用的数据库操作"></a>常用的数据库操作</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">version</span>();    <span class="comment"># 显示数据库版本</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">database</span>();   <span class="comment"># 查看当前正在使用的数据库</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">user</span>();       <span class="comment"># 查看使用当前数据库的用户</span></span><br><span class="line"><span class="keyword">select</span> @@datadir;    <span class="comment"># 查看数据库路径</span></span><br><span class="line"><span class="keyword">select</span> @@version_compile_os <span class="comment"># 查看数据库安装的操作系统</span></span><br></pre></td></tr></table></figure><h3 id="渗透过程中使用的数据库和表"><a href="#渗透过程中使用的数据库和表" class="headerlink" title="渗透过程中使用的数据库和表"></a>渗透过程中使用的数据库和表</h3><p><code>information_schema</code> ，是信息数据库。其中保存着关于MySQL服务器所维护的所有其他数据库的信息。如数据库名，数据库的表，表栏的数据类型与访问权限等</p><ol><li><code>SCHEMATA</code>表：提供了当前MySQL实例中所有数据库的信息。是show databases的结果取之此表</li><li><code>TABLES</code>表：提供了关于数据库中的表的信息（包括视图）</li><li><code>COLUMNS</code>表：提供了表中的列信息。详细表述了某张表的所有列以及每个列的信息。</li></ol><h3 id="常用构造注入方法"><a href="#常用构造注入方法" class="headerlink" title="常用构造注入方法"></a>常用构造注入方法</h3><p>使用union语句，<code>select 1,2 union select 1,2</code></p><h2 id="SQL注入类型"><a href="#SQL注入类型" class="headerlink" title="SQL注入类型"></a>SQL注入类型</h2><h3 id="按网络协议分"><a href="#按网络协议分" class="headerlink" title="按网络协议分"></a>按网络协议分</h3><ol><li>get注入</li><li>post注入</li></ol><h3 id="按注入的方式分"><a href="#按注入的方式分" class="headerlink" title="按注入的方式分"></a>按注入的方式分</h3><ol><li>Boolean-based blind SQL injection（布尔型注入）<br>     例如： <a href="http://test.com/view?id=1">http://test.com/view?id=1</a> and substring(version(),1,1)=5</li><li>UNION query SQL injection（联合查询注入）, <br>                    例如：使用union语句，<code>select 1,2 union select 1,2</code></li><li>Time-based blind SQL injection（基于时间延迟注入），<br> 例如：使用sleep(3)函数，select * from user where id= ‘4’ and sleep(3)</li><li>Error-based SQL injection（报错型注入）</li><li>Stacked queries SQL injection（可多语句查询注入）</li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;SQL注入的原理&quot;&gt;&lt;a href=&quot;#SQL注入的原理&quot; class=&quot;headerlink&quot; title=&quot;SQL注入的原理&quot;&gt;&lt;/a&gt;SQL注入的原理&lt;/h2&gt;&lt;p&gt;是发生于&lt;code&gt;应用程序与数据库层&lt;/code&gt;的安全漏洞&lt;/p&gt;
-&lt;p&gt;网站内部直接发</summary>
-      
-    
-    
-    
-    
-    <category term="SQL注入" scheme="http://yejuns.github.io/tags/SQL%E6%B3%A8%E5%85%A5/"/>
     
   </entry>
   
