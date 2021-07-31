@@ -18,15 +18,15 @@
   
   
   <title>web漏洞 | Hexo</title>
-  <meta name="description" content="xss攻击xss攻击可以分成3类，   反射型XSS    存储型XSS    DOM型XSS    反射型XSS非持久化的，用户必须点击带有特定参数的链接才可以生效，影响范围小，只影响执行脚本的用户比如对于一个未检测xss的文本框，输入 1&lt;script&gt;alert(&quot;点击开始修复&quot;)；location.href&#x3D;&quot;https:&#x2F;&amp;#">
+  <meta name="description" content="xss攻击本质是攻击者在web页面插入恶意的script代码（这个代码可以是JS脚本、CSS样式或者其他意料之外的代码），当用户浏览该页面之时，嵌入其中的script代码会被执行，从而达到恶意攻击用户的目的。比如读取cookie，session，tokens，或者网站其他敏感的网站信息，对用户进行钓鱼欺诈。 xss的危害  盗取cookie； 盗取账户 恶意软件下载 键盘记录 广告引流等等Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="web漏洞">
 <meta property="og:url" content="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BXSS%E6%94%BB%E5%87%BB/index.html">
 <meta property="og:site_name" content="风景这边独好">
-<meta property="og:description" content="xss攻击xss攻击可以分成3类，   反射型XSS    存储型XSS    DOM型XSS    反射型XSS非持久化的，用户必须点击带有特定参数的链接才可以生效，影响范围小，只影响执行脚本的用户比如对于一个未检测xss的文本框，输入 1&lt;script&gt;alert(&quot;点击开始修复&quot;)；location.href&#x3D;&quot;https:&#x2F;&amp;#">
+<meta property="og:description" content="xss攻击本质是攻击者在web页面插入恶意的script代码（这个代码可以是JS脚本、CSS样式或者其他意料之外的代码），当用户浏览该页面之时，嵌入其中的script代码会被执行，从而达到恶意攻击用户的目的。比如读取cookie，session，tokens，或者网站其他敏感的网站信息，对用户进行钓鱼欺诈。 xss的危害  盗取cookie； 盗取账户 恶意软件下载 键盘记录 广告引流等等Java">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-31T08:01:51.000Z">
-<meta property="article:modified_time" content="2021-07-01T14:00:14.802Z">
+<meta property="article:modified_time" content="2021-07-31T15:39:59.416Z">
 <meta property="article:author" content="Ye-Jun">
 <meta property="article:tag" content="web安全">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AE%89%E5%85%A8/" rel="tag">Linux安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AE%89%E5%85%A8/" rel="tag">Linux安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -232,7 +232,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/Android%E9%80%86%E5%90%91/" style="font-size: 13.75px;">Android逆向</a> <a href="/tags/Linux%E5%AE%89%E5%85%A8/" style="font-size: 13px;">Linux安全</a> <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 13.5px;">SQL注入</a> <a href="/tags/SqlMap/" style="font-size: 13.25px;">SqlMap</a> <a href="/tags/hexo%E4%BD%BF%E7%94%A8/" style="font-size: 13px;">hexo使用</a> <a href="/tags/javaScript/" style="font-size: 13px;">javaScript</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 14px;">web安全</a> <a href="/tags/windows/" style="font-size: 13px;">windows</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" style="font-size: 13px;">信息收集</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13.75px;">工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 13.5px;">数据库</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 13px;">测试</a> <a href="/tags/%E6%B8%97%E9%80%8F/" style="font-size: 13.5px;">渗透</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.5px;">爬虫</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.5px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 13px;">计算机基础</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 13px;">计算机网络</a> <a href="/tags/%E9%9D%B6%E5%9C%BA/" style="font-size: 13.25px;">靶场</a>
+      <a href="/tags/Android%E9%80%86%E5%90%91/" style="font-size: 13.8px;">Android逆向</a> <a href="/tags/Linux%E5%AE%89%E5%85%A8/" style="font-size: 13px;">Linux安全</a> <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 13.4px;">SQL注入</a> <a href="/tags/SqlMap/" style="font-size: 13.2px;">SqlMap</a> <a href="/tags/hexo%E4%BD%BF%E7%94%A8/" style="font-size: 13px;">hexo使用</a> <a href="/tags/javaScript/" style="font-size: 13px;">javaScript</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 14px;">web安全</a> <a href="/tags/windows/" style="font-size: 13px;">windows</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" style="font-size: 13px;">信息收集</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13.6px;">工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 13.4px;">数据库</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 13px;">测试</a> <a href="/tags/%E6%B8%97%E9%80%8F/" style="font-size: 13.4px;">渗透</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.4px;">爬虫</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.4px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 13px;">计算机基础</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 13px;">计算机网络</a> <a href="/tags/%E9%9D%B6%E5%9C%BA/" style="font-size: 13.2px;">靶场</a>
     </div>
   </div>
 
@@ -241,7 +241,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -376,29 +376,59 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="xss攻击"><a href="#xss攻击" class="headerlink" title="xss攻击"></a>xss攻击</h2><p>xss攻击可以分成3类，</p>
+        <h2 id="xss攻击"><a href="#xss攻击" class="headerlink" title="xss攻击"></a>xss攻击</h2><p>本质是攻击者在web页面插入恶意的script代码（这个代码可以是JS脚本、CSS样式或者其他意料之外的代码），当用户浏览该页面之时，嵌入其中的script代码会被执行，从而达到恶意攻击用户的目的。比如读取cookie，session，tokens，或者网站其他敏感的网站信息，对用户进行钓鱼欺诈。</p>
+<p>xss的危害</p>
+<ol>
+<li>盗取cookie；</li>
+<li>盗取账户</li>
+<li>恶意软件下载</li>
+<li>键盘记录</li>
+<li>广告引流等等JavaScript 能够写出的任意恶意功能</li>
+</ol>
+<h3 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h3><p><code>应用程序或API将 未经验证和未经转义的用户输入， 直接作为 HTML 输出的一部分</code>。</p>
+<p>反射型XSS的攻击步骤</p>
+<p>1.攻击者构造出特殊的URL，其中包含恶意代码.<br>2.用户打开有恶意代码的URL时，网站服务器端将恶意代码从URL取出，拼接在HTML返回给浏览器.<br>3.用户浏览器接收到响应后解析执行，混在其中的恶意代码也会被执行。<br>4.恶意代码窃取用户数据并发送到攻击者的网站，或者冒充用户行为，调用目标网站接口执行攻击者指定的操作。</p>
+<p>特点：</p>
 <ul>
-<li><ol>
-<li>反射型XSS</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>存储型XSS</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>DOM型XSS</li>
-</ol>
+<li>非持久化的，用户必须点击带有特定参数的链接才可以生效，</li>
+<li>影响范围小，只影响执行脚本的用户</li>
+<li>比如对于一个未检测xss的文本框，输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&quot;点击开始修复&quot;)；location.href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&quot;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<h3 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h3><p>非持久化的，用户必须点击带有特定参数的链接才可以生效，<br>影响范围小，只影响执行脚本的用户<br>比如对于一个未检测xss的文本框，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&quot;点击开始修复&quot;)；location.href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&quot;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>防御方式：</p>
+<ol>
+<li><p>对输入检查</p>
+<p>对请求参数进行检查，一旦发现可疑的特殊字符就拒绝请求。但因为用户可以绕过浏览器的检查，直接通过Postman等工具进行请求，所以这个检查最好前后端都做。</p>
+</li>
+<li><p>对输出进行转义再显示</p>
+<p>因为反射型XSS攻击要进行攻击的话需要在前端页面进行显示。所以在输出数据之前对潜在的威胁的字符进行编码、转义也是十分有效的措施。比如下面的方式:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">&#x27;/welcome&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//对查询参数进行编码，避免反射型 XSS攻击</span></span><br><span class="line">    res.send(<span class="string">`<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(req.query.type)&#125;</span>`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h2 id="存储型xss"><a href="#存储型xss" class="headerlink" title="存储型xss"></a>存储型xss</h2><p>存储型xss是指应用程序通过web请求获取到不可信赖的数据，在未校验是否有xss的情况下就存入数据库。当下一次从数据库中获取该程序时也未对其进行过滤，页面再次执行xss。<br>存储型xss可以持续攻击用户。<br>存储型xss出现的位置包括，<code>留言板、评论区、用户头像、签名、博客</code></p>
-<h2 id="DOM型XSS"><a href="#DOM型XSS" class="headerlink" title="DOM型XSS"></a>DOM型XSS</h2><p>DOM型XSS其实是一种特殊的反射型XSS，通过JS操作DOM树动态地输出数据到页面，而不依赖将数据提交给服务器端。，最常使用的函数是document.url，document.location，document.referere. </p>
+
+</li>
+</ol>
+<h2 id="存储型xss"><a href="#存储型xss" class="headerlink" title="存储型xss"></a>存储型xss</h2><p>存储型xss是指应用程序通过web请求获取到不可信赖的数据，在未校验是否有xss的情况下就存入数据库。当下一次从数据库中获取该程序时也未对其进行过滤，页面再次执行xss。<code>储型xss可以持续攻击用户</code>。</p>
+<p>存储型XSS的攻击步骤</p>
+<ol>
+<li>攻击者将恶意代码提交到目标网站的数据库中。</li>
+<li>用户打开目标网站时，网站服务端将恶意代码从数据库中取出，拼接在HTML中返回给浏览器。</li>
+<li>用户浏览器接收到响应后解析执行，混在其中的恶意代码也被执行。</li>
+<li>恶意代码窃取用户数据并发送到攻击者的网站，或冒充用户行为，凋用目标网站接口执行攻击者指定的操作.</li>
+</ol>
+<p>预防存储型XSS攻击也是从输入和输出两个方面来考虑。</p>
+<ul>
+<li>服务器接收到数据，在存储到数据库之前，进行转义和过滤危险字符;</li>
+<li>前端接收到服务器传递过来的数据，在展示到页面前，先进行转义/过滤;</li>
+</ul>
+<p>不论是反射型攻击还是存储型，攻击者总需要找到两个要点，即“输入点”与”输出点”，也只有这两者都满足，XSS攻击才会生效。“输入点”用于向 web页面注入所需的攻击代码，而“输出点”就是攻击代码被执行的地方。</p>
+<h2 id="DOM型XSS"><a href="#DOM型XSS" class="headerlink" title="DOM型XSS"></a>DOM型XSS</h2><p>实际上就是前端javascript代码不够严谨，把不可信的内容插入到了页面，</p>
+<p>DOM型XSS其实是一种特殊的反射型XSS，通过JS操作DOM树动态地输出数据到页面，而不依赖将数据提交给服务器端，它是基于DOM 文档对象<br>模型的一种漏洞。在使用.innerHTML、.outerHTML、.appendChild、document.write()等API时要特别小心，不要把不可信的数据作为HTML插入到页面上，尽量使用.innerText、.textContent、.setAttribut()等.</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="handlebars"><span class="xml">document.write(&quot;<span class="tag">&lt;<span class="name">script</span>&gt;</span>alter(0)</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>&quot;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>反射型XSS会经过后端语言，是页面引用后端输出生效。而DOM型XSS是经过JS对DOM树直接操作后插入到页面。所以不经过<code>WAF的检测</code>.</p>
-<h2 id="突变型XSS（mXSS）"><a href="#突变型XSS（mXSS）" class="headerlink" title="突变型XSS（mXSS）"></a>突变型XSS（mXSS）</h2><p>攻击者的输入看似安全，但是在浏览器解析标记时发生突变。（与浏览器有关）</p>
+<h3 id="其他防御手段"><a href="#其他防御手段" class="headerlink" title="其他防御手段"></a>其他防御手段</h3><ul>
+<li>HTTP-only Cookie:禁止JavaScript读取某些敏感Cookie，攻击者完成XSS注入后也无法窃取此Cookie属性：防止脚本冒充用户提交危险操作</li>
+</ul>
 
       
     </div>

