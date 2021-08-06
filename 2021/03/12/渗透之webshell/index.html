@@ -18,15 +18,15 @@
   
   
   <title>渗透之webshell | Hexo</title>
-  <meta name="description" content="webshellwebshell是以asp、jsp、php或cgi等网页文件形式存在的一种命令执行环境，也可以将其称做为一种网页后门  cgi（common gateway interface）：公共网关接口  常用的攻击方式有：直接上传文件、SQL注入、远程文件包含（RFI）、甚至使用XSS作为攻击的一部分。 如何隐藏webshell 将指令隐藏在UA，而不是放在$_POST传递命令 1&lt;">
+  <meta name="description" content="webshellwebshell是以asp、jsp、php或cgi等网页文件形式存在的一种命令执行环境，也可以将其称做为一种网页后门  cgi（common gateway interface）：公共网关接口  常用的攻击方式有：直接上传文件、SQL注入、远程文件包含（RFI）、甚至使用XSS作为攻击的一部分。 如何隐藏 webshell 将指令隐藏在UA，而不是放在$_POST传递命令 1&amp;lt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="渗透之webshell">
 <meta property="og:url" content="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8Bwebshell/index.html">
 <meta property="og:site_name" content="风景这边独好">
-<meta property="og:description" content="webshellwebshell是以asp、jsp、php或cgi等网页文件形式存在的一种命令执行环境，也可以将其称做为一种网页后门  cgi（common gateway interface）：公共网关接口  常用的攻击方式有：直接上传文件、SQL注入、远程文件包含（RFI）、甚至使用XSS作为攻击的一部分。 如何隐藏webshell 将指令隐藏在UA，而不是放在$_POST传递命令 1&lt;">
+<meta property="og:description" content="webshellwebshell是以asp、jsp、php或cgi等网页文件形式存在的一种命令执行环境，也可以将其称做为一种网页后门  cgi（common gateway interface）：公共网关接口  常用的攻击方式有：直接上传文件、SQL注入、远程文件包含（RFI）、甚至使用XSS作为攻击的一部分。 如何隐藏 webshell 将指令隐藏在UA，而不是放在$_POST传递命令 1&amp;lt">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-12T08:01:51.000Z">
-<meta property="article:modified_time" content="2021-07-12T12:19:41.647Z">
+<meta property="article:modified_time" content="2021-08-01T03:39:09.216Z">
 <meta property="article:author" content="Ye-Jun">
 <meta property="article:tag" content="渗透">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AE%89%E5%85%A8/" rel="tag">Linux安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AE%89%E5%85%A8/" rel="tag">Linux安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -241,7 +241,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -305,10 +305,10 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2021/04/09/%E7%88%AC%E8%99%AB%E4%B9%8B%E8%BF%87%E9%AA%8C%E8%AF%81%E7%A0%81/" class="title">爬虫过验证码</a>
+                <a href="/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B9%9D%E8%AF%BE/" class="title">Android逆向第九课 - IDA+frida联合调试</a>
               </p>
               <p class="item-date">
-                <time datetime="2021-04-09T08:01:51.000Z" itemprop="datePublished">2021-04-09</time>
+                <time datetime="2021-04-18T06:01:51.000Z" itemprop="datePublished">2021-04-18</time>
               </p>
             </div>
           </li>
@@ -320,10 +320,10 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2021/03/31/Web%E5%AE%89%E5%85%A8%E4%B9%8BXXE%E6%94%BB%E5%87%BB/" class="title">Web安全之XXE</a>
+                <a href="/2021/04/09/%E7%88%AC%E8%99%AB%E4%B9%8B%E8%BF%87%E9%AA%8C%E8%AF%81%E7%A0%81/" class="title">爬虫过验证码</a>
               </p>
               <p class="item-date">
-                <time datetime="2021-03-31T08:01:51.000Z" itemprop="datePublished">2021-03-31</time>
+                <time datetime="2021-04-09T08:01:51.000Z" itemprop="datePublished">2021-04-09</time>
               </p>
             </div>
           </li>
@@ -381,7 +381,7 @@
 <p>cgi（common gateway interface）：公共网关接口</p>
 </blockquote>
 <p>常用的攻击方式有：直接上传文件、SQL注入、远程文件包含（RFI）、甚至使用XSS作为攻击的一部分。</p>
-<h2 id="如何隐藏webshell"><a href="#如何隐藏webshell" class="headerlink" title="如何隐藏webshell"></a>如何隐藏webshell</h2><ol>
+<h3 id="如何隐藏-webshell"><a href="#如何隐藏-webshell" class="headerlink" title="如何隐藏 webshell"></a>如何隐藏 webshell</h3><ol>
 <li><p>将指令隐藏在UA，而不是放在$_POST传递命令</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> system(<span class="variable">$_SERVER</span>(<span class="string">&#x27;HTTP_USER_AGENT&#x27;</span>))&gt;</span><br></pre></td></tr></table></figure>
 <p>这种方式会在服务器日志中留下痕迹，很容易被识别</p>
@@ -404,7 +404,7 @@
 <li>存在数据库操作函数，调用系统自身的存储过程来连接数据库操作；</li>
 </ol>
 <p>这种基于特征值、危险函数的特征检测只能查找已知的webshell，无法查找0day型的webshell，而且误报率比较高。对于大型的网站，可以使用强弱特征，即把特征分为强弱两种特征，强特征命中则是webshell，弱特征由人工去判断</p>
-<h3 id="2-基于流量特征的webshell检测"><a href="#2-基于流量特征的webshell检测" class="headerlink" title="2.基于流量特征的webshell检测"></a>2.基于流量特征的webshell检测</h3><p>webshell通信是HTTP协议。只要我们把webshell特有的HTTP请求/响应做成特征库，加到IDS里面去检测所有的HTTP请求就好。webshell如果执行系统命令的话，会有进程。Linux下就是nobody用户起了bash，Win下就是IIS User启动cmd，这些都是动态特征。如果黑客反向连接的话，Agent和IDS都可以检测到。Webshell总有一个HTTP请求，如果在网络层监控HTTP，并且检测到有人访问了一个从没反问过的文件，而且返回了200，则很容易定位到webshell，这便是http异常模型检测，就和检测文件变化一样，如果非管理员新增文件，则说明被人入侵了。</p>
+<h3 id="2-基于流量特征的webshell检测"><a href="#2-基于流量特征的webshell检测" class="headerlink" title="2.基于流量特征的webshell检测"></a>2.基于流量特征的webshell检测</h3><p>webshell通信是HTTP协议。只要我们把webshell特有的HTTP请求/响应做成特征库，加到 IDS 里面去检测所有的HTTP请求就好。webshell如果执行系统命令的话，会有进程。Linux下就是nobody用户起了bash，Win下就是IIS User启动cmd，这些都是动态特征。如果黑客反向连接的话，Agent和IDS都可以检测到。Webshell总有一个HTTP请求，如果在网络层监控HTTP，并且检测到有人访问了一个从没反问过的文件，而且返回了200，则很容易定位到webshell，这便是http异常模型检测，就和检测文件变化一样，如果非管理员新增文件，则说明被人入侵了。</p>
 <p>比如中国菜刀的流量特征就很明显</p>
 <h3 id="3-日志检测"><a href="#3-日志检测" class="headerlink" title="3. 日志检测"></a>3. 日志检测</h3><p>使用Webshell一般不会在系统日志中留下记录，但是会在网站的web日志中留下Webshell页面的访问数据和数据提交记录。日志分析检测技术通过大量的日志文件建立请求模型从而检测出异常文件，这是：HTTP异常请求模型检测。例如：一个平时是GET的请求突然有了POST请求并且返回代码为200、某个页面的访问者IP、访问时间具有规律性等。</p>
 <p>ebshell的访问特征(主要特征)</p>
@@ -480,7 +480,7 @@
     
     
     <li class="next">
-      <a href="/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" title="渗透之端口转发"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/03/11/wen%E5%AE%89%E5%85%A8%E4%B9%8B%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" title="web安全之信息收集"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

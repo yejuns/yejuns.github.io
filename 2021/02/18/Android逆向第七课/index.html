@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Android逆向第七课 - IDA静态分析 | Hexo</title>
+  <meta name="description" content="ida介绍ida是一款非常强大的静态分析工具，广泛用于病毒分析，ctf（re pwn）,软件破解，二进制漏洞分析，算法分析等。ida可以分析的文件格式也非常多 包括windows下的pe格式文件（.exe .dll .sys）linux 下的elf文件（.elf .so ）mac系统的常见文件格式，以及一些不常见到系统的文件格式。对于一般的无壳保护，无混淆代码的程序 ida 能直接反汇编出位代码（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android逆向第七课 - IDA静态分析">
+<meta property="og:url" content="http://yejuns.github.io/2021/02/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B8%83%E8%AF%BE/index.html">
+<meta property="og:site_name" content="风景这边独好">
+<meta property="og:description" content="ida介绍ida是一款非常强大的静态分析工具，广泛用于病毒分析，ctf（re pwn）,软件破解，二进制漏洞分析，算法分析等。ida可以分析的文件格式也非常多 包括windows下的pe格式文件（.exe .dll .sys）linux 下的elf文件（.elf .so ）mac系统的常见文件格式，以及一些不常见到系统的文件格式。对于一般的无壳保护，无混淆代码的程序 ida 能直接反汇编出位代码（">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-4.png">
+<meta property="article:published_time" content="2021-02-18T11:01:51.000Z">
+<meta property="article:modified_time" content="2021-08-05T14:11:33.518Z">
+<meta property="article:author" content="Ye-Jun">
+<meta property="article:tag" content="Android逆向">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-1.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yejuns.github.io/2021/02/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B8%83%E8%AF%BE/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="风景这边独好" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/yejuns" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">厨师长</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">程序员 &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yejuns" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AE%89%E5%85%A8/" rel="tag">Linux安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Android%E9%80%86%E5%90%91/" style="font-size: 13.8px;">Android逆向</a> <a href="/tags/Linux%E5%AE%89%E5%85%A8/" style="font-size: 13px;">Linux安全</a> <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 13.4px;">SQL注入</a> <a href="/tags/SqlMap/" style="font-size: 13.2px;">SqlMap</a> <a href="/tags/hexo%E4%BD%BF%E7%94%A8/" style="font-size: 13px;">hexo使用</a> <a href="/tags/javaScript/" style="font-size: 13px;">javaScript</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 14px;">web安全</a> <a href="/tags/windows/" style="font-size: 13px;">windows</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" style="font-size: 13px;">信息收集</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13.6px;">工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 13.4px;">数据库</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 13px;">测试</a> <a href="/tags/%E6%B8%97%E9%80%8F/" style="font-size: 13.4px;">渗透</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.4px;">爬虫</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.4px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 13px;">计算机基础</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 13px;">计算机网络</a> <a href="/tags/%E9%9D%B6%E5%9C%BA/" style="font-size: 13.2px;">靶场</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/06/14/web%E5%AE%89%E5%85%A8%E4%B9%8B%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E-java/" class="title">web安全之反序列化漏洞-java</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-06-14T08:01:51.000Z" itemprop="datePublished">2021-06-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/05/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="title">计算机网络复习笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-05-01T13:01:21.000Z" itemprop="datePublished">2021-05-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/04/21/web%E5%AE%89%E5%85%A8%E4%B9%8BXSS%E8%A0%95%E8%99%AB/" class="title">web安全之XSS蠕虫</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-04-21T03:01:51.000Z" itemprop="datePublished">2021-04-21</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B9%9D%E8%AF%BE/" class="title">Android逆向第九课 - IDA+frida联合调试</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-04-18T06:01:51.000Z" itemprop="datePublished">2021-04-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/04/09/%E7%88%AC%E8%99%AB%E4%B9%8B%E8%BF%87%E9%AA%8C%E8%AF%81%E7%A0%81/" class="title">爬虫过验证码</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-04-09T08:01:51.000Z" itemprop="datePublished">2021-04-09</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Android逆向第七课" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android逆向第七课 - IDA静态分析
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/02/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B8%83%E8%AF%BE/" class="article-date">
+	  <time datetime="2021-02-18T11:01:51.000Z" itemprop="datePublished">2021-02-18</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/02/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B8%83%E8%AF%BE/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="ida介绍"><a href="#ida介绍" class="headerlink" title="ida介绍"></a>ida介绍</h2><p>ida是一款非常强大的静态分析工具，广泛用于病毒分析，ctf（re pwn）,软件破解，二进制漏洞分析，算法分析等。ida可以分析的文件格式也非常多 包括windows下的pe格式文件（.exe .dll .sys）linux 下的elf文件（.elf .so ）mac系统的常见文件格式，以及一些不常见到系统的文件格式。<br>对于一般的无壳保护，无混淆代码的程序 ida 能直接反汇编出位代码（F5快捷键），在一定程度上减少了逆向分析的难度和门槛。</p>
+<h3 id="ida-使用"><a href="#ida-使用" class="headerlink" title="ida 使用"></a>ida 使用</h3><p>在我们安装成功后，会出现两个 ida 的图标，一个是 <code>ida 32</code>,一个是 <code>ida 64</code>。这里的32和64是指我们进行分析的二进制文件，选择32-bit IDA分析32位程序，64-bit IDA 分析64位程序。（一般手机app中的 so文件都是32位）</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-1.png"></p>
+<p>我们用 ida 打开一个文件，界面上出现的选项是 ida 自动分析的结果，不用更改，直接ok打开就好</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-2.png"></p>
+<p>ida的各个功能比较多，我这里只介绍一些常用的。选择view下的<code>open subview</code></p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-3.png"></p>
+<ol>
+<li>hex dump：直接查看程序的二进制内容（以hex值表示）一般用于直接查找存在程序中的明文字符串,或者动态调试时的内容查看</li>
+<li>disassembly：查看程序反编译出的汇编代码（以汇编语言显示）一般用于直接分析相关函数的汇编代码，<code>按 f5 键可以把汇编代码转成 c 代码</code></li>
+<li>Functions_wiondow:函数表（重要）用于分析每一个单独的函数，在逆向分析中往往都是直接利用Function_windows 查找关键函数开始对整个程序进行分析，该窗口提供 ctrl+F 的搜索功能 例如可以直接 ctrl+f 定位到 main 函数。</li>
+<li>names:符号表,包括函数名，变量名等。</li>
+<li>strings（快捷键f12）：字符串表 包括程序中存储的字符串常量（可以用于快速定位关键函数）</li>
+</ol>
+<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><p>我们需要使用 ida 去静态调试android应用中的 .so 文件，首先要了解 .so 文件的原理</p>
+<h3 id="Java如何调用so库里的方法-函数"><a href="#Java如何调用so库里的方法-函数" class="headerlink" title="Java如何调用so库里的方法/函数"></a>Java如何调用so库里的方法/函数</h3><p>JNI是Java Native Interface的缩写，用java调用.so 库就是JNI</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在Java中申明一个Native方法</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> String <span class="title">securityCheck</span><span class="params">(Context context,String str)</span></span>;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//用System.loadLibrary()加载so库, so库的全称是 libnative-lib.so</span></span><br><span class="line"> <span class="keyword">static</span> &#123;</span><br><span class="line">    System.loadLibrary(<span class="string">&quot;native-lib&quot;</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-1-手动注册"><a href="#2-1-手动注册" class="headerlink" title="2.1 手动注册"></a>2.1 手动注册</h3><p> 默认情况下，注册native方法的规则是，<code>Java_类名_方法名()</code>,比如类名是 <code>MainActivity</code>,方法名是<code>securityCheck</code>,那么在 so 文件中对应的方法名就是 <code>Java_com_yaotong_crackme_MainActivity_securityCheck()</code>。</p>
+<p> 但为了防止分析人员进行分析，有些开发者会使用 <code>手动注册native方法</code> 的方式改写对应关系，也就是在 <code>JNI_OnLoad</code>中进行改写。这时候我们就无法在 so 文件中找到对应的方法。如果想要找到这个方法，就用通过<code>JNI_OnLoad</code>去确定。</p>
+<h3 id="2-2-System-loadLibrary-加载so文件流程"><a href="#2-2-System-loadLibrary-加载so文件流程" class="headerlink" title="2.2 System.loadLibrary()加载so文件流程"></a>2.2 System.loadLibrary()加载so文件流程</h3><ol>
+<li>先读取so文件的.init_array段</li>
+<li>再执行JNI_OnLoad函数</li>
+<li>JNI_ONLoad是.so文件的初始函数</li>
+<li>然后调用具体的native方法</li>
+</ol>
+<h3 id="2-3-静态调试-so-文件"><a href="#2-3-静态调试-so-文件" class="headerlink" title="2.3 静态调试 so 文件"></a>2.3 静态调试 so 文件</h3><p>我们选择阿里提供的<code>AliCrackme.apk</code>进行测试。打开app，可以看到就是一个简单的过密码问题。</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-5.png"></p>
+<p>首先使用 jadx 打开查看，加密的方法名是<code>securityCheck</code>，分析源码可知加密部分是通过so文件进行的，因此我们需要导出 so 文件，然后用 ida 打开</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-4.png"></p>
+<p>在 Functions_wiondow 窗口中通过 Ctrl+F 找出目标方法 <code>Java_com_yaotong_crackme_MainActivity_securityCheck()</code>，然后将汇编代码转成 c语言代码，</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> __fastcall <span class="title">Java_com_yaotong_crackme_MainActivity_securityCheck</span><span class="params">(<span class="keyword">int</span> a1, <span class="keyword">int</span> a2, <span class="keyword">int</span> a3)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">unsigned</span> __int8 *v5; <span class="comment">// r0</span></span><br><span class="line">  <span class="keyword">char</span> *v6; <span class="comment">// r2</span></span><br><span class="line">  <span class="keyword">int</span> v7; <span class="comment">// r3</span></span><br><span class="line">  <span class="keyword">int</span> v8; <span class="comment">// r1</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ( !byte_6359 )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_2494(byte_6304, <span class="number">8</span>, &amp;unk_446B, &amp;unk_4468, <span class="number">2</span>, <span class="number">7</span>);</span><br><span class="line">    byte_6359 = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( !byte_635A )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_24F4(byte_636C, <span class="number">25</span>, &amp;unk_4530, &amp;unk_4474, <span class="number">3</span>, <span class="number">117</span>);</span><br><span class="line">    byte_635A = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  _android_log_print(<span class="number">4</span>, byte_6304, byte_636C);</span><br><span class="line">  v5 = (<span class="keyword">unsigned</span> __int8 *)(*(<span class="keyword">int</span> (__fastcall **)(<span class="keyword">int</span>, <span class="keyword">int</span>, _DWORD))(*(_DWORD *)a1 + <span class="number">676</span>))(a1, a3, <span class="number">0</span>);</span><br><span class="line">  v6 = off_628C;</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    v7 = (<span class="keyword">unsigned</span> __int8)*v6;</span><br><span class="line">    <span class="keyword">if</span> ( v7 != *v5 )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    ++v6;</span><br><span class="line">    ++v5;</span><br><span class="line">    v8 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> ( !v7 )</span><br><span class="line">      <span class="keyword">return</span> v8;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以看到有一个很重要的地方 <code>(unsigned __int8 *)(*(int (__fastcall **)(int, int, _DWORD))(*(_DWORD *)a1 + 676))(a1, a3, 0);</code>这个地方说明 c 程序调用了 java 方法（a1 + 676 前面是一个指针，表示 a1 是<code>JNIEnv*</code>类型），所以可以将JNI函数方法还原。选中 <code>a1</code> 按 y 键进行类型替换，替换类型为 <code>JNIEnv*</code> ,就可以看到对应的真实方法。</p>
+<p>最后，可以确定密码是在 <code>off_628C</code>。我们双击<code>off_628C</code>常量，最后会找到一个字符串（这个字符串也可以通过 <code>shift+F12</code> 找出）。</p>
+<h3 id="静态调试的一些技巧"><a href="#静态调试的一些技巧" class="headerlink" title="静态调试的一些技巧"></a>静态调试的一些技巧</h3><ul>
+<li>面板左侧函数列表可以查看每个函数的偏移量（相较于.so文件头的偏移量）</li>
+<li>F5键（windows fn+F5） 把汇编代码转成C代码</li>
+<li>shift+F12 查看so文件中所有常量字符串的值 有的密码之类的可能就在这里面</li>
+<li>ctrl + s 查看so文件段信息</li>
+<li>JNI函数方法名还原 选中v3 按y建 作用（类型还原）</li>
+<li>变量重命名 代码加注解</li>
+</ul>
+<p>参考文献</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://tech.youzan.com/qian-tan-android-dexwen-jian/">https://tech.youzan.com/qian-tan-android-dexwen-jian/</a></p>
+</blockquote>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yejuns.github.io/2021/02/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B8%83%E8%AF%BE/" title="Android逆向第七课 - IDA静态分析" target="_blank" rel="external">http://yejuns.github.io/2021/02/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B8%83%E8%AF%BE/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/yejuns" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/yejuns" target="_blank"><span class="text-dark">厨师长</span><small class="ml-1x">程序员 &amp; Designer</small></a></h3>
+        <div>平凡的时间，不平凡的你我。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2021/03/03/NMap%E4%BD%BF%E7%94%A8/" title="web安全之Nmap使用"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/12/31/Linux%20%E4%B8%AD%E7%9A%84%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B/" title="Linux 中的安全模型"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yejuns" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'z6IxiHbvPL5ILrUKq4XWV0py-gzGzoHsz',
+    appKey: 'MqpLIyiIaepCg2gruAt2hAEY',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

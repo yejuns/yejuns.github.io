@@ -17,21 +17,34 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>web安全之伪协议 | Hexo</title>
-  <meta name="description" content="伪协议file伪协议，通过这个协议可以对系统中的文件进行包含， 条件:   allow_url_fopen:off&#x2F;on   allow_url_include :off&#x2F;on  示例：  file:&#x2F;&#x2F;[文件的绝对路径和文件名]1http:&#x2F;&#x2F;127.0.0.1&#x2F;include.php?file&#x3D;file:&#x2F;&#x2F;E:\phpStudy\PHPTutorial\WWW\phpinfo.txt [文件">
+  <title>Android逆向第八课 - IDA动态调试 | Hexo</title>
+  <meta name="description" content="ida动态调试如果要进行动态调试，首先需要搭建相关环境，我使用的还是阿里的 crackMe.apk 进行测试。 1、将 IDAPro\dbgsrv 目录下的android_server push 到手机&#x2F;data&#x2F;local&#x2F;tmp&#x2F;目录下 给777权限 并.&#x2F;运行,  adb push android_x86_server(cpu型号要对应 模拟器是x86) &#x2F;data&#x2F;local&#x2F;tmp&#x2F; 2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="web安全之伪协议">
-<meta property="og:url" content="http://yejuns.github.io/2020/08/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E4%BC%AA%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:title" content="Android逆向第八课 - IDA动态调试">
+<meta property="og:url" content="http://yejuns.github.io/2021/03/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AB%E8%AF%BE/index.html">
 <meta property="og:site_name" content="风景这边独好">
-<meta property="og:description" content="伪协议file伪协议，通过这个协议可以对系统中的文件进行包含， 条件:   allow_url_fopen:off&#x2F;on   allow_url_include :off&#x2F;on  示例：  file:&#x2F;&#x2F;[文件的绝对路径和文件名]1http:&#x2F;&#x2F;127.0.0.1&#x2F;include.php?file&#x3D;file:&#x2F;&#x2F;E:\phpStudy\PHPTutorial\WWW\phpinfo.txt [文件">
+<meta property="og:description" content="ida动态调试如果要进行动态调试，首先需要搭建相关环境，我使用的还是阿里的 crackMe.apk 进行测试。 1、将 IDAPro\dbgsrv 目录下的android_server push 到手机&#x2F;data&#x2F;local&#x2F;tmp&#x2F;目录下 给777权限 并.&#x2F;运行,  adb push android_x86_server(cpu型号要对应 模拟器是x86) &#x2F;data&#x2F;local&#x2F;tmp&#x2F; 2">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-31T08:01:51.000Z">
-<meta property="article:modified_time" content="2021-07-31T08:02:46.568Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-8.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-10.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-11.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-12.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-14.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-13.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-15.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-16.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-17.png">
+<meta property="article:published_time" content="2021-03-18T11:01:51.000Z">
+<meta property="article:modified_time" content="2021-08-06T09:27:01.975Z">
 <meta property="article:author" content="Ye-Jun">
-<meta property="article:tag" content="web安全">
+<meta property="article:tag" content="Android逆向">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-6.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yejuns.github.io/2020/08/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E4%BC%AA%E5%8D%8F%E8%AE%AE/index.html">
+  <link rel="canonical" href="http://yejuns.github.io/2021/03/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AB%E8%AF%BE/index.html">
   
     <link rel="alternate" href="/atom.xml" title="风景这边独好" type="application/atom+xml">
   
@@ -222,7 +235,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AE%89%E5%85%A8/" rel="tag">Linux安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AE%89%E5%85%A8/" rel="tag">Linux安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -241,7 +254,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -305,10 +318,10 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2021/04/09/%E7%88%AC%E8%99%AB%E4%B9%8B%E8%BF%87%E9%AA%8C%E8%AF%81%E7%A0%81/" class="title">爬虫过验证码</a>
+                <a href="/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B9%9D%E8%AF%BE/" class="title">Android逆向第九课 - IDA+frida联合调试</a>
               </p>
               <p class="item-date">
-                <time datetime="2021-04-09T08:01:51.000Z" itemprop="datePublished">2021-04-09</time>
+                <time datetime="2021-04-18T06:01:51.000Z" itemprop="datePublished">2021-04-18</time>
               </p>
             </div>
           </li>
@@ -320,10 +333,10 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2021/03/31/Web%E5%AE%89%E5%85%A8%E4%B9%8BXXE%E6%94%BB%E5%87%BB/" class="title">Web安全之XXE</a>
+                <a href="/2021/04/09/%E7%88%AC%E8%99%AB%E4%B9%8B%E8%BF%87%E9%AA%8C%E8%AF%81%E7%A0%81/" class="title">爬虫过验证码</a>
               </p>
               <p class="item-date">
-                <time datetime="2021-03-31T08:01:51.000Z" itemprop="datePublished">2021-03-31</time>
+                <time datetime="2021-04-09T08:01:51.000Z" itemprop="datePublished">2021-04-09</time>
               </p>
             </div>
           </li>
@@ -341,14 +354,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-web安全之伪协议" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Android逆向第八课" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      web安全之伪协议
+      Android逆向第八课 - IDA动态调试
     </h1>
   
 
@@ -356,89 +369,95 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/08/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E4%BC%AA%E5%8D%8F%E8%AE%AE/" class="article-date">
-	  <time datetime="2020-08-31T08:01:51.000Z" itemprop="datePublished">2020-08-31</time>
+	<a href="/2021/03/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AB%E8%AF%BE/" class="article-date">
+	  <time datetime="2021-03-18T11:01:51.000Z" itemprop="datePublished">2021-03-18</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a>
+	<a class="article-tag-link-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/08/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E4%BC%AA%E5%8D%8F%E8%AE%AE/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AB%E8%AF%BE/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="伪协议"><a href="#伪协议" class="headerlink" title="伪协议"></a>伪协议</h2><h3 id="file伪协议，通过这个协议可以对系统中的文件进行包含，"><a href="#file伪协议，通过这个协议可以对系统中的文件进行包含，" class="headerlink" title="file伪协议，通过这个协议可以对系统中的文件进行包含，"></a>file伪协议，通过这个协议可以对系统中的文件进行包含，</h3><ul>
-<li><p>条件:</p>
-<p>  allow_url_fopen:off/on</p>
-<p>  allow_url_include :off/on</p>
-</li>
-<li><p>示例：</p>
+        <h2 id="ida动态调试"><a href="#ida动态调试" class="headerlink" title="ida动态调试"></a>ida动态调试</h2><p>如果要进行动态调试，首先需要搭建相关环境，我使用的还是阿里的 <code>crackMe.apk</code> 进行测试。</p>
+<p>1、将 IDAPro\dbgsrv 目录下的<code>android_server</code> push 到手机/data/local/tmp/目录下 给777权限 并./运行,  <code>adb push android_x86_server(cpu型号要对应 模拟器是x86) /data/local/tmp/</code></p>
+<p>2、端口转发,命令 <code>adb forward tcp:23946 tcp:23946</code></p>
+<p>3、本地打开IDA，选中 <code>Go</code>按钮，然后入下图操作，就可以进行动态分析<br><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-6.png"></p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-7.png"></p>
+<p>4、 获取进程信息成功后，在主页面通过<code>ctrl + s</code> 找到要调试的so文件 选择有 X 的（可执行的），这里我们也可以使用 ctrl+F 找出目标so文件</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-8.png"></p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-9.png"></p>
+<p>5、 在对 <code>so</code>文件进行静态分析的时候，我们可以获取到每个函数的偏移，而在进行动态调试的时候，由于 <code>so</code>文件被加载到内存，每个函数都存在真实的地址，我们需要算出目标函数的真实地址。比如：<code>check()</code> 函数的偏移量是 <code>0x65403</code>，(可以理解为相对于so文件头的距离),我们动态打开ida，选中 so 文件的时候，会显示这个 so 文件头的绝对地址 <code>F4012C6</code>，F4012C6 + 0x65403 就是 check 函数的绝对地址。</p>
+<p>按G键， 输入绝对地址，跳转到要调试的函数处</p>
+<p>如何计算要调试函数的绝对地址？</p>
+<ul>
+<li>绝对地址 = so文件的基地址 + 该函数的偏移量</li>
+</ul>
+<p>so文件的基地址在哪儿找？</p>
+<ul>
+<li>快捷键 ctrl + s 找到目标so文件 Start 那一项就是 基地址</li>
+</ul>
+<p>函数的偏移量在哪儿找？</p>
+<ul>
+<li>以静态方式打开so文件，函数列表里</li>
+</ul>
+<h3 id="1-调试原理"><a href="#1-调试原理" class="headerlink" title="1. 调试原理"></a>1. 调试原理</h3><p>利用Linux系统 <code>ptrace</code> 来实现，<code>ptrace 系统调用</code>可以允许一个进程控制另外一个进程并从内部替换 Peek and poke 被控制进程的内核镜像的值（Peek and poke 指的是直接读写内存内容）</p>
+<p>当我们使用Ptrace方式跟踪一个进程时，目标进程会记录自己被谁跟踪，可以查看/proc/pid/status看到这个信息, 当应用被调试时，<code>TracerPid</code> 字段就不为 0。</p>
+<p><strong>反调试</strong>，既检测 <code>TracerPid</code> 是否被占用。新建一个线程不停的检测TracerPid这个字段是否不为0，不为0，就立即退出程序。</p>
+<p><strong>反反调试</strong>，动态调试，找到检测 TracerPid 的代码，不执行此代码，</p>
+<p>此检查代码一般在<code>.init_arra</code> 和 <code>JNI_OnLoad</code> 两处, 在 JNI_OnLoad 函数出打断点调试，找到检测 TracerPid 的代码，不执行此代码</p>
+<h3 id="2-实例"><a href="#2-实例" class="headerlink" title="2. 实例"></a>2. 实例</h3><p>我们上次通过静态分析找出了 <code>crackMe.apk</code> 中密码所在的关键位置<code>off_628C</code>，现在我们需要通过动态调试进行确认内容。</p>
+<p>首先，使用ida静态确定 <code>Java_com_yaotong_crackme_MainActivity_securityCheck()</code> 这个方法的偏移量，<code>000011A8</code></p>
+<p>然后，用ida动态加载app，找出crakeMe.so 文件的启始位置是 <code>F40B8000</code>，使用计算机器，可以算出 <code>securityCheck()</code> 的绝对地址是 <code>F40B91A8</code>。在ida的动态调试界面，使用快捷键 <code>G</code>,进行地址跳转，跳转后的结果也证明我们的目标没有错</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-10.png"></p>
+<p>右击方法名添加断点，断点设置好后，点击左上角三角形运行，等待APP运行到此断点处，就会停止，此时即可调试（有时候会不能成功运行，那就需要重新加载该 so 文件)。我们这里会直接退出，主页面上显示 <code>ffffffff</code>, 这说明该 so 文件加了反调试。</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-11.png"></p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-12.png"></p>
+<p>接下来的任务就是如何去绕过程序的反调试机制 ?</p>
+<p><strong>如何找到反调试代码</strong></p>
+<p>指令一般会整过执行完，直到函数末尾。多次IDA中，如果指令在中途某个地方退出了，说明该处就是反调试指令</p>
+<p><strong>如何在JNI_OnLoad函数打断点</strong></p>
+<p>so文件在加载阶段会执行JNI_ONLoad，此后不再执行，要在so文件加载阶段才给JNI_OnLoad 打断点</p>
 <ol>
-<li>file://[文件的绝对路径和文件名]<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=file://E:\phpStudy\PHPTutorial\WWW\phpinfo.txt</span></span><br></pre></td></tr></table></figure></li>
-<li>[文件的相对路径和文件名]<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=./phpinfo.txt</span></span><br></pre></td></tr></table></figure></li>
-<li>[http：//网络路径和文件名]<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt</span></span><br></pre></td></tr></table></figure>
-
+<li><p>修改APP AndroidMenifest.xml文件， 给APP加上可调试权限，android:debuggable=”true”，然后重新打包APP，签名，安装;<br><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-14.png"></p>
+</li>
+<li><p>检查flags中是否允许debug项：</p>
+<p>adb shell dumpsys package com.yaotong.crackme<br>（会显示相关进行的信息，是否允许debug等）</p>
+</li>
+<li><p>以调试模式启动APP，APP此时会挂住</p>
+<p>adb shell am start -D -n 包名/.类名</p>
+<p>adb shell am start -D -n com.yaotong.crackme/.MainActivity</p>
+</li>
+<li><p>在ida的 DebuggerOptions 里勾选 <code>Suspend on thread start/exit</code> 和<code>Suspend on library load/unload</code>。 JNI_OnLoad 函数是 lib 刚加载时就会执行，必须要在lib载入时就让程序停下来，才能调试JNI_OnLoad；</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-13.png"></p>
+</li>
+<li><p>在ida里点击运行按钮，然在设备里查看APP的进程ID，<code>ps | grep 应用包名</code>;</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-15.png"></p>
+</li>
+<li><p>使用JDB命令让 APP 恢复运行</p>
+<p>adb forward tcp:8700 jdwp:873（APP的PID）</p>
+<p>jdb -connect com.sun.jdi.SocketAttach:hostname=127.0.0.1,port=8700</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-16.png"></p>
+</li>
+<li><p>在so文件被加载时，IDA会停止住，使用ctrl+s 查看目标so文件是否加载. 若加载了目标so文件，计算JNI_OnLoad的绝对地址，按G键跳转到JNI_OnLoad出设置断点，恢复APP执行。<br><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-17.png"></p>
+</li>
+<li><p>找到反调试代码处，pthread_create()，（关键地方，可按f5，把汇编代码转成C语言辅助）反复按 <code>F8</code> 单步执行，程序退出处，既为反调）</p>
+</li>
+<li><p>让反调试代码不执行。 让该指令变为空指令，既 NOP，NOP指令的16进制是 <code>00 00 00 00</code>。记住反调试处的汇编指令，同时以静态方式再打开一个IDA，打开so文件，在静态ida里查找到此汇编指令，鼠标选中后面的寄存器，然后切换到 <code>Hex View</code>，会显示该<br>指令的16进制。复制该16进制，再用一文本工具打开目标so文件，找到该16进制处，替换成 <code>00 00 00 00</code> ，既空指令。既不执行反调试代码.</p>
+</li>
+<li><p>保存so文件，再重新打包APP，签名，重新安装APP。</p>
 </li>
 </ol>
-</li>
-</ul>
-<h3 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a>php伪协议</h3><ul>
-<li><p>条件：</p>
-<p>  allow_url_fopen:off/on</p>
-<p>  allow_url_include :仅php://input php://stdin php://memory php://temp 需要on</p>
-</li>
-<li><p>作用：php:// 访问各个输入/输出流（I/O streams），</p>
-</li>
-</ul>
-<p>经常使用的是 php://filter 和 php://input，php://filter用于读取源码，php://input用于执行php代码。</p>
-<h3 id="zip-amp-bzip2-amp-zlib-协议"><a href="#zip-amp-bzip2-amp-zlib-协议" class="headerlink" title="zip:// &amp; bzip2:// &amp; zlib:// 协议"></a>zip:// &amp; bzip2:// &amp; zlib:// 协议</h3><ul>
-<li><p>条件<br>  allow_url_fopen:off/on</p>
-<p>  allow_url_include :off/on</p>
-</li>
-<li><p>作用</p>
-<p>zip:// &amp; bzip2:// &amp; zlib:// 均属于压缩流，可以访问压缩文件中的子文件，更重要的是不需要指定后缀名，可修改为任意后缀：jpg png gif xxx 等等</p>
-</li>
-<li><p>示例</p>
-<p> 压缩 phpinfo.txt 为 phpinfo.zip ，压缩包重命名为 phpinfo.jpg ，并上传</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=zip://E:\phpStudy\PHPTutorial\WWW\phpinfo.jpg%23phpinfo.txt</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="phar-协议"><a href="#phar-协议" class="headerlink" title="phar:// 协议"></a>phar:// 协议</h3><p>phar://协议与zip://类似，同样可以访问zip格式压缩包内容<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=phar://E:/phpStudy/PHPTutorial/WWW/phpinfo.zip/phpinfo.txt</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="data-协议"><a href="#data-协议" class="headerlink" title="data:// 协议"></a>data:// 协议</h3><ul>
-<li><p>条件<br>  allow_url_fopen:on</p>
-<p>  allow_url_include:on</p>
-</li>
-<li><p>作用</p>
-<p>  自PHP&gt;=5.2.0起，可以使用data://数据流封装器，以传递相应格式的数据。通常可以用来执行PHP代码。</p>
-</li>
-<li><p>示例</p>
-<p>data://text/plain,</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=data://text/plain,&lt;?php%20phpinfo();?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p> data://text/plain;base64,</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2b</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="http-amp-https-协议"><a href="#http-amp-https-协议" class="headerlink" title="http:// &amp; https:// 协议"></a>http:// &amp; https:// 协议</h3></li>
-<li><p>条件<br>  allow_url_fopen:on</p>
-<p>  allow_url_include:on</p>
-</li>
-<li><p>作用</p>
-<p>  常规 URL形式，允许通过<code>HTTP 1.0</code>的 GET方法，以只读访问文件或资源。通常用于远程包含。</p>
-</li>
-<li><p>示例</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
 
       
     </div>
@@ -448,7 +467,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://yejuns.github.io/2020/08/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E4%BC%AA%E5%8D%8F%E8%AE%AE/" title="web安全之伪协议" target="_blank" rel="external">http://yejuns.github.io/2020/08/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E4%BC%AA%E5%8D%8F%E8%AE%AE/</a>
+      <a href="http://yejuns.github.io/2021/03/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AB%E8%AF%BE/" title="Android逆向第八课 - IDA动态调试" target="_blank" rel="external">http://yejuns.github.io/2021/03/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AB%E8%AF%BE/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -495,12 +514,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2020/08/31/SqlMap%E4%BD%BF%E7%94%A8/" title="SqlMap使用"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/" title="进程、线程和协程.md"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2020/08/31/web%E5%AE%89%E5%85%A8%E4%B9%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" title="web安全之伪协议与文件包含"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/03/13/%E5%86%B0%E8%9D%8E%E4%BD%BF%E7%94%A8/" title="冰蝎使用"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
