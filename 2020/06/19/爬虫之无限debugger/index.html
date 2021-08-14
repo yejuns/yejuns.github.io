@@ -17,21 +17,26 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>进程、线程和协程.md | Hexo</title>
-  <meta name="description" content="计算机里有两类大的资源：CPU 资源和 IO 资源。  计算型的任务 主要消耗CPU 资源，比如对字符串进行 base64 编码； 输入输出类的系统调用 主要消耗 IO 资源，部分 IO 和硬件中断相关。CPU 芯片引脚上接入了很多控制芯片，比如中断控制器芯片 8259A。当键盘打字，中断芯片触发 CPU 上的硬件中断，CPU 被调度来处理键盘输入。  进程：一个进程好比是一个程序，它是资源分配的">
+  <title>爬虫之无限debugger | Hexo</title>
+  <meta name="description" content="无限debugger无限debugger 也叫做无限断点。 在 JavaScript 中，debugger 指令就是用来添加断点的。所以，开发者在反调试的时候，会在 JavaScript 中开启一个单独的线程，来循环调用 debugger。这样一来，如果有人想要进入到调试模式，就会不断地停滞在无意义的断点处，而无法正常调试。在正常运行JavaScript 的时候，debugger 不会生效，也就不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="进程、线程和协程.md">
-<meta property="og:url" content="http://yejuns.github.io/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/index.html">
+<meta property="og:title" content="爬虫之无限debugger">
+<meta property="og:url" content="http://yejuns.github.io/2020/06/19/%E7%88%AC%E8%99%AB%E4%B9%8B%E6%97%A0%E9%99%90debugger/index.html">
 <meta property="og:site_name" content="风景这边独好">
-<meta property="og:description" content="计算机里有两类大的资源：CPU 资源和 IO 资源。  计算型的任务 主要消耗CPU 资源，比如对字符串进行 base64 编码； 输入输出类的系统调用 主要消耗 IO 资源，部分 IO 和硬件中断相关。CPU 芯片引脚上接入了很多控制芯片，比如中断控制器芯片 8259A。当键盘打字，中断芯片触发 CPU 上的硬件中断，CPU 被调度来处理键盘输入。  进程：一个进程好比是一个程序，它是资源分配的">
+<meta property="og:description" content="无限debugger无限debugger 也叫做无限断点。 在 JavaScript 中，debugger 指令就是用来添加断点的。所以，开发者在反调试的时候，会在 JavaScript 中开启一个单独的线程，来循环调用 debugger。这样一来，如果有人想要进入到调试模式，就会不断地停滞在无意义的断点处，而无法正常调试。在正常运行JavaScript 的时候，debugger 不会生效，也就不">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-23T07:56:49.000Z">
-<meta property="article:modified_time" content="2021-08-02T15:11:47.543Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTools-5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTools-6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTools-7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTools-8.png">
+<meta property="article:published_time" content="2020-06-19T08:01:51.000Z">
+<meta property="article:modified_time" content="2021-08-14T14:53:02.735Z">
 <meta property="article:author" content="Ye-Jun">
-<meta property="article:tag" content="计算机基础">
+<meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTools-5.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yejuns.github.io/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/index.html">
+  <link rel="canonical" href="http://yejuns.github.io/2020/06/19/%E7%88%AC%E8%99%AB%E4%B9%8B%E6%97%A0%E9%99%90debugger/index.html">
   
     <link rel="alternate" href="/atom.xml" title="风景这边独好" type="application/atom+xml">
   
@@ -341,14 +346,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-进程、线程和协程md" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-爬虫之无限debugger" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      进程、线程和协程.md
+      爬虫之无限debugger
     </h1>
   
 
@@ -356,60 +361,71 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/" class="article-date">
-	  <time datetime="2021-03-23T07:56:49.000Z" itemprop="datePublished">2021-03-23</time>
+	<a href="/2020/06/19/%E7%88%AC%E8%99%AB%E4%B9%8B%E6%97%A0%E9%99%90debugger/" class="article-date">
+	  <time datetime="2020-06-19T08:01:51.000Z" itemprop="datePublished">2020-06-19</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a>
+	<a class="article-tag-link-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/19/%E7%88%AC%E8%99%AB%E4%B9%8B%E6%97%A0%E9%99%90debugger/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>计算机里有两类大的资源：CPU 资源和 IO 资源。</p>
-<ul>
-<li>计算型的任务 主要消耗CPU 资源，比如对字符串进行 base64 编码；</li>
-<li>输入输出类的系统调用 主要消耗 IO 资源，部分 IO 和硬件中断相关。CPU 芯片引脚上接入了很多控制芯片，比如中断控制器芯片 <code>8259A</code>。当键盘打字，中断芯片触发 CPU 上的硬件中断，CPU 被调度来处理键盘输入。</li>
-</ul>
-<h3 id="进程："><a href="#进程：" class="headerlink" title="进程："></a>进程：</h3><p>一个进程好比是一个程序，它是资源分配的最小单位 。同一时刻执行的进程数不会超过核心数。但是单核CPU也可以运行多进程，只不过不是同时，而是极快地在进程间来回切换实现的多进程。举个简单的例子，就算是十年前的单核CPU的电脑，也可以聊QQ的同时看视频。</p>
-<p>电脑中有许多进程需要处于「同时」开启的状态，而利用CPU在进程间的快速切换，可以实现「同时」运行多个程序。而进程切换则意味着需要保留进程切换前的状态，以备切换回去的时候能够继续接着工作。所以进程拥有自己的地址空间，全局变量，文件描述符，各种硬件等等资源。操作系统通过调度CPU去执行进程的记录、回复、切换等等。</p>
-<h3 id="线程："><a href="#线程：" class="headerlink" title="线程："></a>线程：</h3><p>线程是依赖于进程的，也称为 「微进程」。它是程序执行过程中的最小单元 。假设现在 8 核 CPU 上有 4 个进程，每个进程开 10 个线程，理论上也只能同步并行跑 8 个线程，其他线程都是假性的并行运行。</p>
-<h2 id="进程与线程的区别"><a href="#进程与线程的区别" class="headerlink" title="进程与线程的区别"></a>进程与线程的区别</h2><ol>
-<li>进程是CPU资源分配的基本单位，线程是独立运行和独立调度的基本单位（CPU上真正运行的是线程）</li>
-<li>进程拥有自己的资源空间，一个进程包含若干个线程，线程与CPU资源分配无关，多个线程共享同一进程内的资源。</li>
-<li>线程的调度与切换比进程快很多</li>
+        <h2 id="无限debugger"><a href="#无限debugger" class="headerlink" title="无限debugger"></a>无限debugger</h2><p>无限debugger 也叫做无限断点。 在 JavaScript 中，debugger 指令就是用来添加断点的。所以，开发者在反调试的时候，会在 JavaScript 中开启一个单独的线程，来循环调用 debugger。这样一来，如果有人想要进入到调试模式，就会不断地停滞在无意义的断点处，而无法正常调试。在正常运行JavaScript 的时候，debugger 不会生效，也就不会影响用户的正常使用。</p>
+<h3 id="进入debugger模式"><a href="#进入debugger模式" class="headerlink" title="进入debugger模式"></a>进入debugger模式</h3><ol>
+<li>在控制台输入<code>debugger</code>，即可进入 debugger 模式；</li>
+<li>通过在控制台输入 <code>eval(&quot;debugger;alert(1234)&quot;)</code>,我们可以进入 debugger 模式；</li>
+<li>通过 function 实现 debugger , 在终端输入，<code>Function(&#39;debugger&#39;).apply()</code> 或者 <code>Function(&#39;debugger&#39;).call()</code></li>
 </ol>
-<p>举个例子：<br>电脑上跑着chrome和QQ，着就是2个不同的进程。<br>Chrome进程里有多个线程进行，比如下载文件、视频播放。每个线程占据一个核心（8核CUP中的一个）。<br>从chrome切换到QQ，意味着进程进程了切换。</p>
-<p><code>ps -T -p &lt;pid&gt;  查看该进程下的所有线程</code></p>
-<h3 id="协程："><a href="#协程：" class="headerlink" title="协程："></a>协程：</h3><ul>
-<li>协程是一种用户态的轻量级线程，拥有自己的寄存器上下文和栈，协程调度切换时，将寄存器上下文和栈保存在其他地方，再切回来的时候，恢复先前的寄存器上下文和栈</li>
-<li>协程表示一个执行单元，有自己的本地数据，与其他协程共享全局数据和其他资源</li>
-<li>我们的代码跑在线程中的，而线程是跑在进程中的。协程没有直接和操作系统关联，但他是跑在线程中的，可以是单线程，也可以是多线程</li>
-<li>线程进程都是同步机制，而协程则是异步（一个线程内的多个协程的运行是串行的）</li>
-</ul>
-<p>协程优点</p>
+<p>我这边以百度为例，以上面的任意一种方式，都可以进入网页的 debugger 模式<br><img src="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTools-5.png"></p>
+<h3 id="无限debugger-1"><a href="#无限debugger-1" class="headerlink" title="无限debugger"></a>无限debugger</h3><p>实际上不可能存在真正的无限debugger，那样会造成浏览器卡死。假如某网站的无限 debugger 这样实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">  <span class="keyword">debugger</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在关闭 devTools 的一瞬间，整个 chrome 会被卡住，因为主线程会阻塞在 debugger 的地方，导致别的地方无法继续运行。</p>
+<p>所以大部分是通过一个定时器去频繁地执行debugger，或者是在业务代码之前或者之后设置了几百个debugger。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">debugger</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">setInterval</span>(a,<span class="number">500</span>);</span><br></pre></td></tr></table></figure>
+<p>对于这样的定时任务，我们可以直接注入，将相关定时任务删除。</p>
+<h2 id="怎么处理无限debugger"><a href="#怎么处理无限debugger" class="headerlink" title="怎么处理无限debugger"></a>怎么处理无限debugger</h2><h3 id="1、无限debugger贯穿全局"><a href="#1、无限debugger贯穿全局" class="headerlink" title="1、无限debugger贯穿全局"></a>1、无限debugger贯穿全局</h3><p>我们需要重写定时器等全局事件</p>
 <ol>
-<li>无需线程上下文切换的开销</li>
-<li>无需原子操作锁定及同步的开销</li>
-<li>方便切换控制流</li>
-<li>高并发低成本</li>
+<li><p>我们需要给当前页面打上一个 script 的 <strong>Event Listener Breakpoints</strong> 断点，保证在刷新时没有任何 js 代码被执行</p>
+</li>
+<li><p>在控制台加入如下代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> setInterval_back = <span class="built_in">setInterval</span>;</span><br><span class="line">  <span class="built_in">setInterval</span> = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a.toString().indexOf(<span class="string">&quot;debugger&quot;</span>) != -<span class="number">1</span>)&#123;</span><br><span class="line">       <span class="keyword">return</span> setInterval_back(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,b);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> setInterval_back(a,b);</span><br><span class="line">  &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTools-6.png"></p>
+</li>
+<li><p>这时候就可以绕过这个 无限debugger。（这就是一种hook代码的方式）</p>
+</li>
 </ol>
-<p>使用协程一般是解决   I/O阻塞   </p>
-<p>（为什么线程不能解决：   因为一个IO操作就阻塞了当前线程，导致其他代码无法执行，所以我们必须使用多线程或者多进程来并发执行代码，为多个用户服务。每个用户都会分配一个线程，如果遇到IO导致线程被挂起，其他用户的线程不受影响。多线程和多进程的模型虽然解决了并发问题，但是系统不能无上限地增加线程。由于系统切换线程的开销也很大，所以，一旦线程数量过多，CPU的时间就花在线程切换上了，真正运行代码的时间就少了，结果导致性能严重下降。）</p>
-<p>因为当一个I/O阻塞时，它可以切换到其他没有阻塞的协程上去继续执行，这样就有了比较高的效率</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="http://fuzhii.com/2021/04/02/coroutine-switch/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">http://fuzhii.com/2021/04/02/coroutine-switch/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Tp680dfOB7Zb6xlXSay7XA">https://mp.weixin.qq.com/s/Tp680dfOB7Zb6xlXSay7XA</a></p>
-</blockquote>
+<h3 id="2、无限debugger在加密逻辑之后"><a href="#2、无限debugger在加密逻辑之后" class="headerlink" title="2、无限debugger在加密逻辑之后"></a>2、无限debugger在加密逻辑之后</h3><ol>
+<li>直接在 script 第一行打上断点，不让代码执行到这里就行。</li>
+<li>在某个方法右击，会显示一些其他的方法，使用 <code>conditional breakpoint（条件断点）</code> 或者 <code>Never pause here（让这行代码用于不执行）</code><br> <img src="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTools-7.png"></li>
+</ol>
+<p>（条件断点的使用很值得探究）</p>
+<h3 id="3、无限debugger在加密逻辑之前"><a href="#3、无限debugger在加密逻辑之前" class="headerlink" title="3、无限debugger在加密逻辑之前"></a>3、无限debugger在加密逻辑之前</h3><p>针对静态文件/伪动态文件（大部分都是这个情况）</p>
+<ol>
+<li><p>可以使用 fiddler  Autoresponse 替换掉 debugger 相关的js文件</p>
+<p>对于目标网站，其中的无限debugger代码是<strong>test.js</strong>, 可以将其替换为本地电脑上的 <strong>test.js</strong><br><img src="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTools-8.png"></p>
+</li>
+<li><p>打断点时，右击 never pause here</p>
+</li>
+</ol>
+<p>针对真动态文件或Autoresponse失效或删掉debugger逻辑很繁琐的情况下</p>
+<ul>
+<li>如果是 Function 原理的 debugger，可以重写函数构造器</li>
+<li>如果是eval型的构造器，可以重构 eval函数</li>
+<li>如果是定时器，可以重构定时器</li>
+<li>在以上方式都失效时，向上找堆栈，在进入无限debugger之前打上断点将触发无限debugger的函数置空（最麻烦，但是适用性最广）</li>
+</ul>
 
       
     </div>
@@ -419,7 +435,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://yejuns.github.io/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/" title="进程、线程和协程.md" target="_blank" rel="external">http://yejuns.github.io/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/</a>
+      <a href="http://yejuns.github.io/2020/06/19/%E7%88%AC%E8%99%AB%E4%B9%8B%E6%97%A0%E9%99%90debugger/" title="爬虫之无限debugger" target="_blank" rel="external">http://yejuns.github.io/2020/06/19/%E7%88%AC%E8%99%AB%E4%B9%8B%E6%97%A0%E9%99%90debugger/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -466,12 +482,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2021/03/30/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%9B%9E%E6%9C%94/" title="常用算法-回朔"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2020/06/20/MergeTree%E8%A7%A3%E6%9E%90/" title="MergeTree解析"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2021/03/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AB%E8%AF%BE/" title="Android逆向第八课 - IDA动态调试"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/06/10/LSM%E6%A0%91%E8%A7%A3%E6%9E%90/" title="LSM树解析"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

@@ -17,21 +17,25 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>进程、线程和协程.md | Hexo</title>
-  <meta name="description" content="计算机里有两类大的资源：CPU 资源和 IO 资源。  计算型的任务 主要消耗CPU 资源，比如对字符串进行 base64 编码； 输入输出类的系统调用 主要消耗 IO 资源，部分 IO 和硬件中断相关。CPU 芯片引脚上接入了很多控制芯片，比如中断控制器芯片 8259A。当键盘打字，中断芯片触发 CPU 上的硬件中断，CPU 被调度来处理键盘输入。  进程：一个进程好比是一个程序，它是资源分配的">
+  <title>爬虫之前端调试 | Hexo</title>
+  <meta name="description" content="当我们做爬虫的时候，有时候一些关键的参数是在网站的前端生成的。由于前端代码被混淆的原因，我们无法去直接分析出相关字段的生成算法，这样就需要通过 chrome 的 devTools 去打断点进行分析。这里就介绍一下chrome的 devTools 的使用，以及通过 devTools 进行前端的调试。 devToolsChrome 开发者工具 (Chrome DevTools) 是一套内置于 Goog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="进程、线程和协程.md">
-<meta property="og:url" content="http://yejuns.github.io/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/index.html">
+<meta property="og:title" content="爬虫之前端调试">
+<meta property="og:url" content="http://yejuns.github.io/2020/06/01/%E7%88%AC%E8%99%AB%E4%B9%8B%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/index.html">
 <meta property="og:site_name" content="风景这边独好">
-<meta property="og:description" content="计算机里有两类大的资源：CPU 资源和 IO 资源。  计算型的任务 主要消耗CPU 资源，比如对字符串进行 base64 编码； 输入输出类的系统调用 主要消耗 IO 资源，部分 IO 和硬件中断相关。CPU 芯片引脚上接入了很多控制芯片，比如中断控制器芯片 8259A。当键盘打字，中断芯片触发 CPU 上的硬件中断，CPU 被调度来处理键盘输入。  进程：一个进程好比是一个程序，它是资源分配的">
+<meta property="og:description" content="当我们做爬虫的时候，有时候一些关键的参数是在网站的前端生成的。由于前端代码被混淆的原因，我们无法去直接分析出相关字段的生成算法，这样就需要通过 chrome 的 devTools 去打断点进行分析。这里就介绍一下chrome的 devTools 的使用，以及通过 devTools 进行前端的调试。 devToolsChrome 开发者工具 (Chrome DevTools) 是一套内置于 Goog">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-23T07:56:49.000Z">
-<meta property="article:modified_time" content="2021-08-02T15:11:47.543Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTool-2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTool-1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTools-4.png">
+<meta property="article:published_time" content="2020-06-01T08:01:51.000Z">
+<meta property="article:modified_time" content="2021-08-14T14:52:23.661Z">
 <meta property="article:author" content="Ye-Jun">
-<meta property="article:tag" content="计算机基础">
+<meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTool-2.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yejuns.github.io/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/index.html">
+  <link rel="canonical" href="http://yejuns.github.io/2020/06/01/%E7%88%AC%E8%99%AB%E4%B9%8B%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/index.html">
   
     <link rel="alternate" href="/atom.xml" title="风景这边独好" type="application/atom+xml">
   
@@ -341,14 +345,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-进程、线程和协程md" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-爬虫之前端调试" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      进程、线程和协程.md
+      爬虫之前端调试
     </h1>
   
 
@@ -356,60 +360,42 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/" class="article-date">
-	  <time datetime="2021-03-23T07:56:49.000Z" itemprop="datePublished">2021-03-23</time>
+	<a href="/2020/06/01/%E7%88%AC%E8%99%AB%E4%B9%8B%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/" class="article-date">
+	  <time datetime="2020-06-01T08:01:51.000Z" itemprop="datePublished">2020-06-01</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a>
+	<a class="article-tag-link-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/01/%E7%88%AC%E8%99%AB%E4%B9%8B%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>计算机里有两类大的资源：CPU 资源和 IO 资源。</p>
+        <p>当我们做爬虫的时候，有时候一些关键的参数是在网站的前端生成的。由于前端代码被混淆的原因，我们无法去直接分析出相关字段的生成算法，这样就需要通过 chrome 的 devTools 去打断点进行分析。这里就介绍一下chrome的 devTools 的使用，以及通过 devTools 进行前端的调试。</p>
+<h2 id="devTools"><a href="#devTools" class="headerlink" title="devTools"></a>devTools</h2><p>Chrome 开发者工具 (Chrome DevTools) 是一套内置于 Google Chrome 中的 Web 开发和调试工具，可用来对网站进行迭代、调试和分析.</p>
+<p>Chrome DevTools 官方文档: <a target="_blank" rel="noopener" href="https://developer.chrome.com/docs/devtools/">https://developer.chrome.com/docs/devtools/</a></p>
+<h3 id="打断点"><a href="#打断点" class="headerlink" title="打断点"></a>打断点</h3><p>chrome为我们提供了丰富的打断点功能，具体可以下图，基本上由于所有的事件，我们都可以去打上断点，观察程序的行为。</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTool-2.png"></p>
+<p>比如我们想要观察页面在向外发送 XHR 的时候具体代码的执行逻辑，就可以打一个 XHR 断点，然后刷新页面，程序就会在发送 AJAX 的时候进入 debug 模式，我们就可以去调试相关代码。</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTool-1.png"></p>
 <ul>
-<li>计算型的任务 主要消耗CPU 资源，比如对字符串进行 base64 编码；</li>
-<li>输入输出类的系统调用 主要消耗 IO 资源，部分 IO 和硬件中断相关。CPU 芯片引脚上接入了很多控制芯片，比如中断控制器芯片 <code>8259A</code>。当键盘打字，中断芯片触发 CPU 上的硬件中断，CPU 被调度来处理键盘输入。</li>
+<li>非常频繁使用的事件监听断点：script、XHR</li>
+<li>一般频繁使用的：Dom断点、Control、timer</li>
 </ul>
-<h3 id="进程："><a href="#进程：" class="headerlink" title="进程："></a>进程：</h3><p>一个进程好比是一个程序，它是资源分配的最小单位 。同一时刻执行的进程数不会超过核心数。但是单核CPU也可以运行多进程，只不过不是同时，而是极快地在进程间来回切换实现的多进程。举个简单的例子，就算是十年前的单核CPU的电脑，也可以聊QQ的同时看视频。</p>
-<p>电脑中有许多进程需要处于「同时」开启的状态，而利用CPU在进程间的快速切换，可以实现「同时」运行多个程序。而进程切换则意味着需要保留进程切换前的状态，以备切换回去的时候能够继续接着工作。所以进程拥有自己的地址空间，全局变量，文件描述符，各种硬件等等资源。操作系统通过调度CPU去执行进程的记录、回复、切换等等。</p>
-<h3 id="线程："><a href="#线程：" class="headerlink" title="线程："></a>线程：</h3><p>线程是依赖于进程的，也称为 「微进程」。它是程序执行过程中的最小单元 。假设现在 8 核 CPU 上有 4 个进程，每个进程开 10 个线程，理论上也只能同步并行跑 8 个线程，其他线程都是假性的并行运行。</p>
-<h2 id="进程与线程的区别"><a href="#进程与线程的区别" class="headerlink" title="进程与线程的区别"></a>进程与线程的区别</h2><ol>
-<li>进程是CPU资源分配的基本单位，线程是独立运行和独立调度的基本单位（CPU上真正运行的是线程）</li>
-<li>进程拥有自己的资源空间，一个进程包含若干个线程，线程与CPU资源分配无关，多个线程共享同一进程内的资源。</li>
-<li>线程的调度与切换比进程快很多</li>
-</ol>
-<p>举个例子：<br>电脑上跑着chrome和QQ，着就是2个不同的进程。<br>Chrome进程里有多个线程进行，比如下载文件、视频播放。每个线程占据一个核心（8核CUP中的一个）。<br>从chrome切换到QQ，意味着进程进程了切换。</p>
-<p><code>ps -T -p &lt;pid&gt;  查看该进程下的所有线程</code></p>
-<h3 id="协程："><a href="#协程：" class="headerlink" title="协程："></a>协程：</h3><ul>
-<li>协程是一种用户态的轻量级线程，拥有自己的寄存器上下文和栈，协程调度切换时，将寄存器上下文和栈保存在其他地方，再切回来的时候，恢复先前的寄存器上下文和栈</li>
-<li>协程表示一个执行单元，有自己的本地数据，与其他协程共享全局数据和其他资源</li>
-<li>我们的代码跑在线程中的，而线程是跑在进程中的。协程没有直接和操作系统关联，但他是跑在线程中的，可以是单线程，也可以是多线程</li>
-<li>线程进程都是同步机制，而协程则是异步（一个线程内的多个协程的运行是串行的）</li>
-</ul>
-<p>协程优点</p>
-<ol>
-<li>无需线程上下文切换的开销</li>
-<li>无需原子操作锁定及同步的开销</li>
-<li>方便切换控制流</li>
-<li>高并发低成本</li>
-</ol>
-<p>使用协程一般是解决   I/O阻塞   </p>
-<p>（为什么线程不能解决：   因为一个IO操作就阻塞了当前线程，导致其他代码无法执行，所以我们必须使用多线程或者多进程来并发执行代码，为多个用户服务。每个用户都会分配一个线程，如果遇到IO导致线程被挂起，其他用户的线程不受影响。多线程和多进程的模型虽然解决了并发问题，但是系统不能无上限地增加线程。由于系统切换线程的开销也很大，所以，一旦线程数量过多，CPU的时间就花在线程切换上了，真正运行代码的时间就少了，结果导致性能严重下降。）</p>
-<p>因为当一个I/O阻塞时，它可以切换到其他没有阻塞的协程上去继续执行，这样就有了比较高的效率</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="http://fuzhii.com/2021/04/02/coroutine-switch/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">http://fuzhii.com/2021/04/02/coroutine-switch/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Tp680dfOB7Zb6xlXSay7XA">https://mp.weixin.qq.com/s/Tp680dfOB7Zb6xlXSay7XA</a></p>
-</blockquote>
+<p>打上断点后，对于一些关键信息，我们还可以使用全局搜索的方式去寻找。</p>
+<h3 id="条件断点"><a href="#条件断点" class="headerlink" title="条件断点"></a>条件断点</h3><p>条件断点的功能非常强大</p>
+<h3 id="利用原型链"><a href="#利用原型链" class="headerlink" title="利用原型链"></a>利用原型链</h3><p>假设存在一个 Function a(){}, 我们想要改变这个 Function 在构建时结果 ，那我们可以借助原型链，即 <code>Function.prototype.constructor = function()&#123;&#125;</code></p>
+<p>本来 function a 的 Constructor 中是一大堆代码，现在我们可以用这种方法将其置空。</p>
+<p><img src="https://raw.githubusercontent.com/yejuns/imgs/main/web/devTools-4.png"></p>
 
       
     </div>
@@ -419,7 +405,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://yejuns.github.io/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/" title="进程、线程和协程.md" target="_blank" rel="external">http://yejuns.github.io/2021/03/23/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8Bmd/</a>
+      <a href="http://yejuns.github.io/2020/06/01/%E7%88%AC%E8%99%AB%E4%B9%8B%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/" title="爬虫之前端调试" target="_blank" rel="external">http://yejuns.github.io/2020/06/01/%E7%88%AC%E8%99%AB%E4%B9%8B%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -466,12 +452,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2021/03/30/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%9B%9E%E6%9C%94/" title="常用算法-回朔"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2020/06/10/LSM%E6%A0%91%E8%A7%A3%E6%9E%90/" title="LSM树解析"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2021/03/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%85%AB%E8%AF%BE/" title="Android逆向第八课 - IDA动态调试"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/05/11/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%9B%9B%E8%AF%BE/" title="Android逆向第四课-脱壳"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

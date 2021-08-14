@@ -315,28 +315,6 @@
   </entry>
   
   <entry>
-    <title>渗透之域渗透</title>
-    <link href="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
-    <id>http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E5%9F%9F%E6%B8%97%E9%80%8F/</id>
-    <published>2021-03-12T08:01:51.000Z</published>
-    <updated>2021-07-31T15:17:04.336Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-什么是域"><a href="#1-什么是域" class="headerlink" title="1.什么是域"></a>1.什么是域</h2><p>将网络中多台计算机逻辑上组织到一起，进行集中管理，这种区别于工作组的逻辑环境叫做域，域是组织与存储资源的核心管理单元，在域中，至少有一台域控制器，<code>域控制器</code>中保存着整个域的用户帐号和安全数据库。</p><p>(域是一种逻辑结构，是指一个有安全边界的集合，同一个域中的计算机彼此之间建立信任关系，计算机之间允许互相访问)</p><blockquote><p>域控制器（Domain controller，简称DC）是指在计算机网络域内响应安全身份认证请求的网络服务器负责允许发出请求的主机访问域内资源，以及对用户进行身份验证，存储用户账户信息，并执行域的安全策略。</p></blockquote><h2 id="域渗透思路"><a href="#域渗透思路" class="headerlink" title="域渗透思路"></a>域渗透思路</h2>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;1-什么是域&quot;&gt;&lt;a href=&quot;#1-什么是域&quot; class=&quot;headerlink&quot; title=&quot;1.什么是域&quot;&gt;&lt;/a&gt;1.什么是域&lt;/h2&gt;&lt;p&gt;将网络中多台计算机逻辑上组织到一起，进行集中管理，这种区别于工作组的逻辑环境叫做域，域是组织与存储资源的核心</summary>
-      
-    
-    
-    
-    
-    <category term="渗透" scheme="http://yejuns.github.io/tags/%E6%B8%97%E9%80%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>渗透之webshell</title>
     <link href="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8Bwebshell/"/>
     <id>http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8Bwebshell/</id>
@@ -349,6 +327,28 @@
       
       
     <summary type="html">&lt;h2 id=&quot;webshell&quot;&gt;&lt;a href=&quot;#webshell&quot; class=&quot;headerlink&quot; title=&quot;webshell&quot;&gt;&lt;/a&gt;webshell&lt;/h2&gt;&lt;p&gt;webshell是以asp、jsp、php或cgi等网页文件形式存在的一种命令执行环境，也可</summary>
+      
+    
+    
+    
+    
+    <category term="渗透" scheme="http://yejuns.github.io/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>渗透之域渗透</title>
+    <link href="http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
+    <id>http://yejuns.github.io/2021/03/12/%E6%B8%97%E9%80%8F%E4%B9%8B%E5%9F%9F%E6%B8%97%E9%80%8F/</id>
+    <published>2021-03-12T08:01:51.000Z</published>
+    <updated>2021-07-31T15:17:04.336Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-什么是域"><a href="#1-什么是域" class="headerlink" title="1.什么是域"></a>1.什么是域</h2><p>将网络中多台计算机逻辑上组织到一起，进行集中管理，这种区别于工作组的逻辑环境叫做域，域是组织与存储资源的核心管理单元，在域中，至少有一台域控制器，<code>域控制器</code>中保存着整个域的用户帐号和安全数据库。</p><p>(域是一种逻辑结构，是指一个有安全边界的集合，同一个域中的计算机彼此之间建立信任关系，计算机之间允许互相访问)</p><blockquote><p>域控制器（Domain controller，简称DC）是指在计算机网络域内响应安全身份认证请求的网络服务器负责允许发出请求的主机访问域内资源，以及对用户进行身份验证，存储用户账户信息，并执行域的安全策略。</p></blockquote><h2 id="域渗透思路"><a href="#域渗透思路" class="headerlink" title="域渗透思路"></a>域渗透思路</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;1-什么是域&quot;&gt;&lt;a href=&quot;#1-什么是域&quot; class=&quot;headerlink&quot; title=&quot;1.什么是域&quot;&gt;&lt;/a&gt;1.什么是域&lt;/h2&gt;&lt;p&gt;将网络中多台计算机逻辑上组织到一起，进行集中管理，这种区别于工作组的逻辑环境叫做域，域是组织与存储资源的核心</summary>
       
     
     
