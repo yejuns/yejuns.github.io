@@ -464,7 +464,7 @@
   </url>
   
   <url>
-    <loc>http://yejuns.github.io/404.html</loc>
+    <loc>http://yejuns.github.io/books/index.html</loc>
     
     <lastmod>2020-12-09</lastmod>
     
@@ -485,14 +485,7 @@
   </url>
   
   <url>
-    <loc>http://yejuns.github.io/tags/index.html</loc>
-    
-    <lastmod>2020-12-09</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yejuns.github.io/books/index.html</loc>
+    <loc>http://yejuns.github.io/404.html</loc>
     
     <lastmod>2020-12-09</lastmod>
     
@@ -500,6 +493,13 @@
   
   <url>
     <loc>http://yejuns.github.io/repository/index.html</loc>
+    
+    <lastmod>2020-12-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yejuns.github.io/tags/index.html</loc>
     
     <lastmod>2020-12-09</lastmod>
     
@@ -515,13 +515,6 @@
 
   
   <url>
-    <loc>http://yejuns.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2021-08-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yejuns.github.io/tags/Android%E9%80%86%E5%90%91/</loc>
     <lastmod>2021-08-16</lastmod>
     <changefreq>daily</changefreq>
@@ -529,7 +522,21 @@
   </url>
   
   <url>
+    <loc>http://yejuns.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2021-08-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yejuns.github.io/tags/web%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2021-08-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yejuns.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2021-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -550,7 +557,7 @@
   </url>
   
   <url>
-    <loc>http://yejuns.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>http://yejuns.github.io/tags/%E9%9D%B6%E5%9C%BA/</loc>
     <lastmod>2021-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -558,6 +565,13 @@
   
   <url>
     <loc>http://yejuns.github.io/tags/%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2021-08-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yejuns.github.io/tags/go%E8%AF%AD%E8%A8%80/</loc>
     <lastmod>2021-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -585,21 +599,7 @@
   </url>
   
   <url>
-    <loc>http://yejuns.github.io/tags/go%E8%AF%AD%E8%A8%80/</loc>
-    <lastmod>2021-08-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yejuns.github.io/tags/linux/</loc>
-    <lastmod>2021-08-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yejuns.github.io/tags/%E9%9D%B6%E5%9C%BA/</loc>
     <lastmod>2021-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -620,14 +620,14 @@
   </url>
   
   <url>
-    <loc>http://yejuns.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <loc>http://yejuns.github.io/tags/windows/</loc>
     <lastmod>2021-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yejuns.github.io/tags/windows/</loc>
+    <loc>http://yejuns.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2021-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
