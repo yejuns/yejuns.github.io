@@ -18,15 +18,15 @@
   
   
   <title>web安全之Nmap使用 | Hexo</title>
-  <meta name="description" content="NmapNmap是被专业人员广泛使用的一款功能全面的端口扫描工具 安装kali上已经自带，windows上去官网下载相关的安装包，centos就直接 yum install nmap 简单入门刚开始使用的时候可能会因为信息量太大无从下手，最简单的使用就是 nmap your-ip（域名） 就可以扫描出其对外开放的服务。 123456789101112nmap 192.168.31.13#基本格式，">
+  <meta name="description" content="NmapNmap是被专业人员广泛使用的一款功能全面的端口扫描工具 安装kali上已经自带，windows上去官网下载相关的安装包，centos就直接 yum install nmap 简单入门刚开始使用的时候可能会因为信息量太大无从下手，最简单的使用就是 nmap ip（域名） 就可以扫描出其对外开放的服务。 123456789101112nmap 192.168.31.13#基本格式，会扫描该主">
 <meta property="og:type" content="article">
 <meta property="og:title" content="web安全之Nmap使用">
 <meta property="og:url" content="http://yejuns.github.io/2021/03/03/NMap%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="风景这边独好">
-<meta property="og:description" content="NmapNmap是被专业人员广泛使用的一款功能全面的端口扫描工具 安装kali上已经自带，windows上去官网下载相关的安装包，centos就直接 yum install nmap 简单入门刚开始使用的时候可能会因为信息量太大无从下手，最简单的使用就是 nmap your-ip（域名） 就可以扫描出其对外开放的服务。 123456789101112nmap 192.168.31.13#基本格式，">
+<meta property="og:description" content="NmapNmap是被专业人员广泛使用的一款功能全面的端口扫描工具 安装kali上已经自带，windows上去官网下载相关的安装包，centos就直接 yum install nmap 简单入门刚开始使用的时候可能会因为信息量太大无从下手，最简单的使用就是 nmap ip（域名） 就可以扫描出其对外开放的服务。 123456789101112nmap 192.168.31.13#基本格式，会扫描该主">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-03T13:21:21.000Z">
-<meta property="article:modified_time" content="2021-08-11T09:06:48.295Z">
+<meta property="article:modified_time" content="2021-08-18T13:05:02.677Z">
 <meta property="article:author" content="Ye-Jun">
 <meta property="article:tag" content="web安全">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AE%89%E5%85%A8/" rel="tag">Linux安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go%E8%AF%AD%E8%A8%80/" rel="tag">go语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android%E9%80%86%E5%90%91/" rel="tag">Android逆向</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AE%89%E5%85%A8/" rel="tag">Linux安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlMap/" rel="tag">SqlMap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go%E8%AF%AD%E8%A8%80/" rel="tag">go语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%BD%BF%E7%94%A8/" rel="tag">hexo使用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA/" rel="tag">靶场</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -232,7 +232,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/Android%E9%80%86%E5%90%91/" style="font-size: 13.83px;">Android逆向</a> <a href="/tags/Linux%E5%AE%89%E5%85%A8/" style="font-size: 13px;">Linux安全</a> <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 13.33px;">SQL注入</a> <a href="/tags/SqlMap/" style="font-size: 13.17px;">SqlMap</a> <a href="/tags/go%E8%AF%AD%E8%A8%80/" style="font-size: 13px;">go语言</a> <a href="/tags/hexo%E4%BD%BF%E7%94%A8/" style="font-size: 13px;">hexo使用</a> <a href="/tags/javaScript/" style="font-size: 13px;">javaScript</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 14px;">web安全</a> <a href="/tags/windows/" style="font-size: 13px;">windows</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" style="font-size: 13px;">信息收集</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 13px;">大数据</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13.67px;">工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 13.33px;">数据库</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 13px;">测试</a> <a href="/tags/%E6%B8%97%E9%80%8F/" style="font-size: 13.33px;">渗透</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.5px;">爬虫</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 13px;">计算机基础</a> <a href="/tags/%E9%9D%B6%E5%9C%BA/" style="font-size: 13.17px;">靶场</a>
+      <a href="/tags/Android%E9%80%86%E5%90%91/" style="font-size: 13.83px;">Android逆向</a> <a href="/tags/Linux%E5%AE%89%E5%85%A8/" style="font-size: 13px;">Linux安全</a> <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 13.33px;">SQL注入</a> <a href="/tags/SqlMap/" style="font-size: 13.17px;">SqlMap</a> <a href="/tags/android/" style="font-size: 13px;">android</a> <a href="/tags/go%E8%AF%AD%E8%A8%80/" style="font-size: 13px;">go语言</a> <a href="/tags/hexo%E4%BD%BF%E7%94%A8/" style="font-size: 13px;">hexo使用</a> <a href="/tags/javaScript/" style="font-size: 13px;">javaScript</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 14px;">web安全</a> <a href="/tags/windows/" style="font-size: 13px;">windows</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" style="font-size: 13px;">信息收集</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 13px;">大数据</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13.67px;">工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 13.33px;">数据库</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 13px;">测试</a> <a href="/tags/%E6%B8%97%E9%80%8F/" style="font-size: 13.33px;">渗透</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.5px;">爬虫</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 13px;">计算机基础</a> <a href="/tags/%E9%9D%B6%E5%9C%BA/" style="font-size: 13.17px;">靶场</a>
     </div>
   </div>
 
@@ -241,7 +241,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -260,10 +260,40 @@
                 
               </p>
               <p class="item-title">
+                <a href="/2021/08/13/Android%E9%80%86%E5%90%91%E6%8A%80%E5%B7%A7/" class="title">Android逆向-技巧</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-08-13T02:19:02.000Z" itemprop="datePublished">2021-08-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
                 <a href="/2021/06/14/web%E5%AE%89%E5%85%A8%E4%B9%8B%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E-java/" class="title">web安全之反序列化漏洞-java</a>
               </p>
               <p class="item-date">
                 <time datetime="2021-06-14T08:01:51.000Z" itemprop="datePublished">2021-06-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/05/23/Android%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD/" class="title">Android 动态加载</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-05-23T02:52:15.000Z" itemprop="datePublished">2021-05-23</time>
               </p>
             </div>
           </li>
@@ -294,36 +324,6 @@
               </p>
               <p class="item-date">
                 <time datetime="2021-04-21T03:01:51.000Z" itemprop="datePublished">2021-04-21</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                
-              </p>
-              <p class="item-title">
-                <a href="/2021/04/18/Android%E9%80%86%E5%90%91%E7%AC%AC%E5%8D%81%E8%AF%BE/" class="title">Android逆向第十课 - IDA+frida联合调试</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-04-18T06:01:51.000Z" itemprop="datePublished">2021-04-18</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                
-              </p>
-              <p class="item-title">
-                <a href="/2021/04/09/%E7%88%AC%E8%99%AB%E4%B9%8B%E8%BF%87%E9%AA%8C%E8%AF%81%E7%A0%81/" class="title">爬虫过验证码</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-04-09T08:01:51.000Z" itemprop="datePublished">2021-04-09</time>
               </p>
             </div>
           </li>
@@ -378,7 +378,7 @@
       
         <h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2><p>Nmap是被专业人员广泛使用的一款功能全面的端口扫描工具</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>kali上已经自带，windows上去官网下载相关的安装包，centos就直接 <code>yum install nmap</code></p>
-<h3 id="简单入门"><a href="#简单入门" class="headerlink" title="简单入门"></a>简单入门</h3><p>刚开始使用的时候可能会因为信息量太大无从下手，最简单的使用就是 <code>nmap your-ip（域名）</code> 就可以扫描出其对外开放的服务。</p>
+<h3 id="简单入门"><a href="#简单入门" class="headerlink" title="简单入门"></a>简单入门</h3><p>刚开始使用的时候可能会因为信息量太大无从下手，最简单的使用就是 <code>nmap ip（域名）</code> 就可以扫描出其对外开放的服务。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.31.13</span><br><span class="line"><span class="meta">#</span><span class="bash">基本格式，会扫描该主机的所有端口</span></span><br><span class="line"></span><br><span class="line">nmap -p 8080 192.168.31.13</span><br><span class="line"><span class="meta">#</span><span class="bash"> 判断指定ip是否开放指定端口</span> </span><br><span class="line"></span><br><span class="line">nmap  -p 22,21,80 192.168.31.13</span><br><span class="line">nmap  -p 22,21,80 192.168.31.1-253</span><br><span class="line"><span class="meta">#</span><span class="bash"> 增加端口和网段</span> </span><br><span class="line"></span><br><span class="line">nmap 192.168.31.1/24</span><br><span class="line"><span class="meta">#</span><span class="bash"> 扫描整个子网的端口，这个过程可能会比较久</span></span><br></pre></td></tr></table></figure>
 <h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><p>Nmap扫描相关端口后，会显示出各个端口的状态，一共有6种</p>
 <ol>
@@ -393,8 +393,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">nmap -O 192.168.31.13 -p 8080</span><br><span class="line"><span class="meta">#</span><span class="bash">操作系统检测（-O）</span></span><br><span class="line"></span><br><span class="line">nmap  -Pn 80 192.168.31.13</span><br><span class="line"><span class="meta">#</span><span class="bash"> 禁用主机检测（-Pn）,如果主机屏蔽了ping请求，Nmap可能会认为该主机没有开机。这将使得Nmap无法进行进一步检测，禁用Nmap的主机检测功能后。Nmap会认为目标主机已经开机并进行全套的检测工作</span></span><br><span class="line"></span><br><span class="line">nmap -A 192.168.31.13 -p 8080</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强力检测选项（-A），Nmap将检测目标主机的下述信息</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 服务版本识别（-sV）；操作系统识别（-O）；脚本扫描（-sC）</span></span><br><span class="line"></span><br><span class="line">nmap -sT 192.168.31.1</span><br><span class="line"><span class="meta">#</span><span class="bash"> TCP连接扫描（-sT）：指定这个选项后，程序将和目标主机的每个端口都进行完整的三次 握手。如果成功建立连接，则判定该端口是开放端口。由于在检测每个端口时都需要进行三次握手，所以这种扫描方式比较慢，而且扫描行为很可能被目标主机记录下来</span></span><br><span class="line"></span><br><span class="line">nmap -sS 192.168.31.1</span><br><span class="line"><span class="meta">#</span><span class="bash"> SYN扫描（-sS）：该选项也称为半开连接或者SYN stealth。采用该选项后，Nmap将使用 含有SYN标志位的数据包进行端口探测。如果目标主机回复了SYN/ACK包，则说明该端口处 于开放状态：如果回复的是RST/ACK包，则说明这个端口处于关闭状态；如果没有任何响应 或者发送了ICMP unreachable信息，则可认为这个端口被屏蔽了。SYN模式的扫描速度非常 好。而且由于这种模式不会进行三次握手，所以是一种十分隐蔽的扫描方式</span></span><br><span class="line"></span><br><span class="line">namp -sN 192.168.31.1</span><br><span class="line">namp -sF 192.168.31.1</span><br><span class="line"><span class="meta">#</span><span class="bash">TCP NULL（-sN）、FIN（-sF）及XMAS（-sX）扫描：NULL 扫描不设置任何控制位； FIN扫描仅设置FIN标志位：XMAS扫描设置FIN、PSH和URG的标识位。如果目标主机返回 了含有RST标识位的响应数据，则说明该端口处于关闭状态；如果目标主机没有任何回应， 则该端口处于打开｜过滤状态。</span></span><br><span class="line"></span><br><span class="line">-O x.x.x.x #检测目标主机系统</span><br></pre></td></tr></table></figure>
 
 <h3 id="UDP扫描"><a href="#UDP扫描" class="headerlink" title="UDP扫描"></a>UDP扫描</h3><p><code>nmap -sU 192.168.1.1</code> <br><br>Nmap的UDP扫描仅有一种扫描方式（-sU）。虽然UDP扫描结果没有 TCP扫描结果的可靠度高，但渗透测试人员不能因此而轻视UDP扫描，毕竟UDP端口代表着可能会有价值的服务端程序。但是UDP扫描的最大问题是性能问题。由干Linux内核限制1秒内最多发送一次ICMP Port Unreachable信息。按照这个速度，对一台主机的65536个UDP端口进行完整扫描，总耗时必定会超过18个小时。</p>
-<p><strong>UDP扫描原理：</strong></p>
-<p>向目标主机的UDP端口发送探测包，如果收到回复“ ICMP port unreachable ”就说明该端口是关闭的；如果没有收到回复，那说明UDP端口可能是开放的或屏蔽的</p>
+<p><strong>UDP扫描原理：</strong> 向目标主机的UDP端口发送探测包，如果收到回复“ ICMP port unreachable ”就说明该端口是关闭的；如果没有收到回复，那说明UDP端口可能是开放的或屏蔽的</p>
 <p>优化方法主要是:</p>
 <ol>
 <li>进行并发的UDP扫描；</li>
@@ -402,11 +401,11 @@
 <li>在防火墙后面扫描；</li>
 <li>启用–host-timeout选项以跳过响应过慢的主机。</li>
 </ol>
-<p>假如我们需要找到目标主机开放了哪些 UDP端口。为提高扫描速度，我们仅扫描 53端口 （DNS）和161端口（SNMP）</p>
-<p>使用命令  <code>nmap -sU 192.168.56.103 -p 53,161</code></p>
+<p>为提高扫描速度，我们可以仅扫描 53端口 （DNS）和161端口（SNMP），使用命令  <code>nmap -sU 192.168.56.103 -p 53,161</code></p>
 <h3 id="目标端口选项"><a href="#目标端口选项" class="headerlink" title="目标端口选项"></a>目标端口选项</h3><p>默认情况下，Nmap将从每个协议的常用端口中随机选择1000个端口进行扫描。其nmapservices文件对端口的命中率进行了排名。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-p端口范围：只扫描指定的端口。扫描1〜1024号端口，可设定该选项为–p	1-1024。扫描1 〜65535端口时，可使用-p-选项。</span><br><span class="line"></span><br><span class="line">-F（快速扫描）：将仅扫描100	个常用端口。</span><br><span class="line"></span><br><span class="line">-r（顺序扫描）：指定这个选项后，程序将从按照从小到大的顺序扫描端口。</span><br><span class="line"></span><br><span class="line">-top-ports &lt;1 or=&quot;&quot;	greater=&quot;&quot;&gt;：扫描nmap-services	里排名前N的端口。</span><br></pre></td></tr></table></figure>
 
+<p>Nmap探测 WAF 有两种脚本，一种是 http-waf-detect，一种是 http-waf-fingerprint。<code>nmap -p port --script=http-waf-detect ip</code></p>
 <p>Nmap还提供了脚本引擎功能（Nmap Scripting Engine，NSE）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -p1-65000 -sV 192.168.1.1</span><br><span class="line"><span class="meta">#</span><span class="bash">扫描目标ip的1-65000端口，并进行服务版本识别</span></span><br></pre></td></tr></table></figure>
 
